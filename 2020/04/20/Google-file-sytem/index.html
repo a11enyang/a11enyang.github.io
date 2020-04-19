@@ -1,0 +1,751 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="GFS,Hadoop,大数据," />
+
+
+
+
+
+
+
+
+
+
+<meta property="og:type" content="article">
+<meta property="og:title" content="Google file sytem">
+<meta property="og:url" content="http://yoursite.com/2020/04/20/Google-file-sytem/index.html">
+<meta property="og:site_name" content="Allen Yang">
+<meta property="og:image" content="https://raw.githubusercontent.com/a11enyang/Picture/master/img/image-20200417083930033.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/a11enyang/Picture/master/img/image-20200417084143772.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/a11enyang/Picture/master/img/image-20200417084339998.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/a11enyang/Picture/master/img/image-20200417084851059.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/a11enyang/Picture/master/img/image-20200417090053397.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/a11enyang/Picture/master/img/image-20200417090400227.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/a11enyang/Picture/master/img/image-20200417090530473.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/a11enyang/Picture/master/img/image-20200417090630796.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/a11enyang/Picture/master/img/image-20200417090744753.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/a11enyang/Picture/master/img2/1.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/a11enyang/Picture/master/img2/image-20200417091109111.png">
+<meta property="article:published_time" content="2020-04-19T16:03:54.000Z">
+<meta property="article:modified_time" content="2020-04-19T16:09:53.975Z">
+<meta property="article:author" content="Allen Yang">
+<meta property="article:tag" content="GFS">
+<meta property="article:tag" content="Hadoop">
+<meta property="article:tag" content="大数据">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/a11enyang/Picture/master/img/image-20200417083930033.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2020/04/20/Google-file-sytem/"/>
+
+
+
+
+
+  <title>Google file sytem | Allen Yang</title>
+  
+
+
+
+
+
+
+
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Allen Yang</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/04/20/Google-file-sytem/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Allen Yang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avataaars.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Allen Yang">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Google file sytem</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-04-20T00:03:54+08:00">
+                2020-04-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  
+                </span>
+              
+
+              
+
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <iframe width="966" height="543" src="https://www.youtube.com/embed/WLad7CCexo8" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+<a id="more"></a>
+
+<h2 id="GFS简介"><a href="#GFS简介" class="headerlink" title="GFS简介"></a>GFS简介</h2><blockquote>
+<p>参考链接：<a href="https://www.youtube.com/watch?v=WLad7CCexo8" target="_blank" rel="noopener">https://www.youtube.com/watch?v=WLad7CCexo8</a></p>
+</blockquote>
+<h4 id="1-如何保存一个文件"><a href="#1-如何保存一个文件" class="headerlink" title="1.如何保存一个文件"></a>1.如何保存一个文件</h4><p>文件分为许多小块进行存储。在单机上，这些小块都是连续的地址；在集群上，这些小块是分布的，并不是连续的。通常一个文件需要包含文件信息，和索引。</p>
+<p><img src="https://raw.githubusercontent.com/a11enyang/Picture/master/img/image-20200417083930033.png" alt="image-20200417083930033"></p>
+<p><img src="https://raw.githubusercontent.com/a11enyang/Picture/master/img/image-20200417084143772.png" alt="image-20200417084143772"></p>
+<p>当需要保存超大文件的时候，需要一个Master结点来保存文件的相关信息和索引</p>
+<p><img src="https://raw.githubusercontent.com/a11enyang/Picture/master/img/image-20200417084339998.png" alt="image-20200417084339998"></p>
+<h4 id="2-减少Master机器的数据和流量"><a href="#2-减少Master机器的数据和流量" class="headerlink" title="2.减少Master机器的数据和流量"></a>2.减少Master机器的数据和流量</h4><p>Hadoop的设计思想就是：在Mater机器上设置NameNode，这个节点保存文件块的位置（文件的哪一块在哪台机器上）；在Slave机器上设置DataNode节点，这个节点保存文件块的偏移量，所以在文件块的顺序发生改变的时候是不需要通知MasterNode，这样减少了数据和交互。</p>
+<p><img src="https://raw.githubusercontent.com/a11enyang/Picture/master/img/image-20200417084851059.png" alt="image-20200417084851059"></p>
+<h4 id="3-如何发现数据损坏"><a href="#3-如何发现数据损坏" class="headerlink" title="3.如何发现数据损坏"></a>3.如何发现数据损坏</h4><p>通过对文件进行哈希来判断是否损坏</p>
+<p><img src="https://raw.githubusercontent.com/a11enyang/Picture/master/img/image-20200417090053397.png" alt="image-20200417090053397"></p>
+<h4 id="4-减少ChunkServer挂掉带来的损失"><a href="#4-减少ChunkServer挂掉带来的损失" class="headerlink" title="4.减少ChunkServer挂掉带来的损失"></a>4.减少ChunkServer挂掉带来的损失</h4><p><img src="https://raw.githubusercontent.com/a11enyang/Picture/master/img/image-20200417090400227.png" alt="image-20200417090400227"></p>
+<p>3和5是在同一地点的不同机架上，4是在不同的地点。</p>
+<p><img src="https://raw.githubusercontent.com/a11enyang/Picture/master/img/image-20200417090530473.png" alt="image-20200417090530473"></p>
+<h4 id="5-如何发现ChunkServer挂掉"><a href="#5-如何发现ChunkServer挂掉" class="headerlink" title="5.如何发现ChunkServer挂掉"></a>5.如何发现ChunkServer挂掉</h4><p><img src="https://raw.githubusercontent.com/a11enyang/Picture/master/img/image-20200417090630796.png" alt="image-20200417090630796"></p>
+<h4 id="6-恢复数据"><a href="#6-恢复数据" class="headerlink" title="6.恢复数据"></a>6.恢复数据</h4><p><img src="https://raw.githubusercontent.com/a11enyang/Picture/master/img/image-20200417090744753.png" alt="image-20200417090744753"></p>
+<h4 id="7-读数据的过程"><a href="#7-读数据的过程" class="headerlink" title="7.读数据的过程"></a>7.读数据的过程</h4><p><img src="https://raw.githubusercontent.com/a11enyang/Picture/master/img2/1.png" alt="image-20200417091017797"></p>
+<h4 id="8-写数据的过程"><a href="#8-写数据的过程" class="headerlink" title="8.写数据的过程"></a>8.写数据的过程</h4><p><img src="https://raw.githubusercontent.com/a11enyang/Picture/master/img2/image-20200417091109111.png" alt="image-20200417091109111"></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/GFS/" rel="tag"># GFS</a>
+          
+            <a href="/tags/Hadoop/" rel="tag"># Hadoop</a>
+          
+            <a href="/tags/%E5%A4%A7%E6%95%B0%E6%8D%AE/" rel="tag"># 大数据</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/04/19/%E5%8D%9A%E5%AE%A2%E7%9A%84%E4%B8%AA%E6%80%A7%E5%8C%96%E8%AE%BE%E7%BD%AE/" rel="next" title="博客的个性化设置">
+                <i class="fa fa-chevron-left"></i> 博客的个性化设置
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avataaars.png"
+                alt="Allen Yang" />
+            
+              <p class="site-author-name" itemprop="name">Allen Yang</p>
+              <p class="site-description motion-element" itemprop="description">TO BE A BETTER MAN.</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives%7C%7C%20archive">
+              
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#GFS简介"><span class="nav-number">1.</span> <span class="nav-text">GFS简介</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-如何保存一个文件"><span class="nav-number">1.0.1.</span> <span class="nav-text">1.如何保存一个文件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-减少Master机器的数据和流量"><span class="nav-number">1.0.2.</span> <span class="nav-text">2.减少Master机器的数据和流量</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-如何发现数据损坏"><span class="nav-number">1.0.3.</span> <span class="nav-text">3.如何发现数据损坏</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-减少ChunkServer挂掉带来的损失"><span class="nav-number">1.0.4.</span> <span class="nav-text">4.减少ChunkServer挂掉带来的损失</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-如何发现ChunkServer挂掉"><span class="nav-number">1.0.5.</span> <span class="nav-text">5.如何发现ChunkServer挂掉</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#6-恢复数据"><span class="nav-number">1.0.6.</span> <span class="nav-text">6.恢复数据</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#7-读数据的过程"><span class="nav-number">1.0.7.</span> <span class="nav-text">7.读数据的过程</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#8-写数据的过程"><span class="nav-number">1.0.8.</span> <span class="nav-text">8.写数据的过程</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Allen Yang</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
