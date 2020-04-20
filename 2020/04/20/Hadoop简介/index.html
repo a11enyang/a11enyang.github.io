@@ -1,0 +1,839 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hadoop,MapReduce," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="Hadoop简介 并行计算的框架前世今生源自google的三篇论文">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hadoop简介">
+<meta property="og:url" content="http://yoursite.com/2020/04/20/Hadoop%E7%AE%80%E4%BB%8B/index.html">
+<meta property="og:site_name" content="Allen Yang">
+<meta property="og:description" content="Hadoop简介 并行计算的框架前世今生源自google的三篇论文">
+<meta property="og:image" content="https://raw.githubusercontent.com/a11enyang/Picture/master/img/image-20200417091352948.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/a11enyang/Picture/master/img2/image-20200418180437130.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/a11enyang/Picture/master/img/image-20200417092132279.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/a11enyang/Picture/master/img2/image-20200420095725741.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/a11enyang/Picture/master/img2/image-20200420105757293.png">
+<meta property="article:published_time" content="2020-04-20T01:03:42.000Z">
+<meta property="article:modified_time" content="2020-04-20T03:34:23.786Z">
+<meta property="article:author" content="Allen Yang">
+<meta property="article:tag" content="Hadoop">
+<meta property="article:tag" content="MapReduce">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/a11enyang/Picture/master/img/image-20200417091352948.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2020/04/20/Hadoop简介/"/>
+
+
+
+
+
+  <title>Hadoop简介 | Allen Yang</title>
+  
+
+
+
+
+
+
+
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Allen Yang</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/04/20/Hadoop%E7%AE%80%E4%BB%8B/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Allen Yang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avataaars.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Allen Yang">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Hadoop简介</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-04-20T09:03:42+08:00">
+                2020-04-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="Hadoop简介-并行计算的框架"><a href="#Hadoop简介-并行计算的框架" class="headerlink" title="Hadoop简介 并行计算的框架"></a>Hadoop简介 并行计算的框架</h2><h4 id="前世今生"><a href="#前世今生" class="headerlink" title="前世今生"></a>前世今生</h4><p>源自google的三篇论文</p>
+<p><img src="https://raw.githubusercontent.com/a11enyang/Picture/master/img/image-20200417091352948.png" alt="image-20200417091352948"></p>
+<a id="more"></a>
+
+<h4 id="结构"><a href="#结构" class="headerlink" title="结构"></a>结构</h4><ul>
+<li><p>YARN：负责资源调度</p>
+<ul>
+<li>ResourceManager：负责资源的协调和调度</li>
+<li>NodeManager：负责Slave节点的资源申请和情况汇报</li>
+</ul>
+</li>
+<li><p>HDFS：hadoop distributed file system</p>
+</li>
+</ul>
+<ul>
+<li>MapReduce：基于Yarn大数据计算框架</li>
+</ul>
+<h4 id="hadoop工作原理简单介绍"><a href="#hadoop工作原理简单介绍" class="headerlink" title="hadoop工作原理简单介绍"></a>hadoop工作原理简单介绍</h4><blockquote>
+<p>参考链接：<a href="https://knpcode.com/hadoop/overview/what-is-hadoop/" target="_blank" rel="noopener">https://knpcode.com/hadoop/overview/what-is-hadoop/</a></p>
+</blockquote>
+<ul>
+<li><p>将巨型文件复制到HDFS上，框架会将大文件分为很多块，并将这些块分布到集群中的各个节点</p>
+<p>上；</p>
+</li>
+<li><p>然后，编写一个MapReduce程序，该程序具有一些逻辑来处理该数据。您将代码打包为jar，然后将打包的代码传输到存储数据块的DataNodes。这样，您的<a href="https://knpcode.com/hadoop/mapreduce/how-mapreduce-works-in-hadoop/" target="_blank" rel="noopener">MapReduce代码就</a>可以在文件部分上工作（HDFS块位于运行代码的节点上）并并行处理数据。所以要进行的编程作业就是在在这个阶段。</p>
+</li>
+</ul>
+<img src="https://raw.githubusercontent.com/a11enyang/Picture/master/img2/image-20200418180437130.png" alt="image-20200418180437130" style="zoom:50%;" />
+
+<h4 id="架构"><a href="#架构" class="headerlink" title="架构"></a>架构</h4><ul>
+<li>主从架构：<ul>
+<li>Master：主节点，运行NameNode    ResourceManager等服务进程</li>
+<li>Slave：从结点，负责DataNode   NodeManager服务进程</li>
+</ul>
+</li>
+<li>服务进程举例<ul>
+<li>NameNode,负责记录各个数据块的存储空间(NameSpace),与DataNode进行通信,获取其健康状态信息,并根据決策算法将数据分发到某些节点。</li>
+<li>DataNode,负责实际数据的存,与NameNode进行通信,将其所在节点的存储状态汇我给NameNode ,以供其决策。</li>
+</ul>
+</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/a11enyang/Picture/master/img/image-20200417092132279.png" alt="image-20200417092132279"></p>
+<blockquote>
+<p>参考链接：<a href="https://www.youtube.com/watch?v=O1QP4GCP3fw&amp;list=PL4B2N39WHsDST4kFzq-rmk3LtRLQxEcto&amp;index=5" target="_blank" rel="noopener">https://www.youtube.com/watch?v=O1QP4GCP3fw&amp;list=PL4B2N39WHsDST4kFzq-rmk3LtRLQxEcto&amp;index=5</a></p>
+</blockquote>
+<h4 id="MapReduce的工作阶段介绍"><a href="#MapReduce的工作阶段介绍" class="headerlink" title="MapReduce的工作阶段介绍"></a>MapReduce的工作阶段介绍</h4><blockquote>
+<p>参考链接：<a href="https://www.youtube.com/watch?v=CPjSvanPl7s" target="_blank" rel="noopener">https://www.youtube.com/watch?v=CPjSvanPl7s</a></p>
+</blockquote>
+<p>参考GFS的论文，可以将MapReduce的工作流程分为以下的几个阶段</p>
+<ul>
+<li>imput：将需要分布存储的文档复制到HDFS上（是否需要进行分布式存储文件，处理的文件先是存储在HDFs上的）</li>
+</ul>
+<ul>
+<li><p>split：将文档分割为块，交给几个不同的机器</p>
+</li>
+<li><p>map：每台机器各自处理自己的任务，分解块；数据转换为&lt;key, value&gt;的形式</p>
+</li>
+</ul>
+<ul>
+<li>shuffle：洗牌，每台机器处理的结果重新整理，不属于自己管理的内容就交给其他机器；重新组合，然后发送到reducer</li>
+</ul>
+<ul>
+<li>reduce：将reducer中内容进行组合</li>
+</ul>
+<ul>
+<li>finalize：最后输出</li>
+</ul>
+<h4 id="MapReduce工作流程详细介绍"><a href="#MapReduce工作流程详细介绍" class="headerlink" title="MapReduce工作流程详细介绍"></a>MapReduce工作流程详细介绍</h4><blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&gt;假设文本内容是：</span><br><span class="line">&gt;Today is your birthday</span><br><span class="line">&gt;Hadppy birthday to you</span><br><span class="line">&gt;Today is a nice day</span><br><span class="line">&gt;how is your day</span><br></pre></td></tr></table></figure>
+</blockquote>
+<p><img src="https://raw.githubusercontent.com/a11enyang/Picture/master/img2/image-20200420095725741.png" alt="image-20200420095725741"></p>
+<ul>
+<li><p>MapReduce分为两个阶段，Map和Reduce。每个阶段的输入输出内容都是&lt;key, value&gt;形式；</p>
+</li>
+<li><p>在数据进行map task之前，会进行预处理：</p>
+<ul>
+<li><p>inputSplit：根据当前的mapper机器的数量n，决定将输入文档分为n部分（比如现在有两台mapper机器，那么文档分为两部分），然后inputSplit会读取当前的mapper的工作内容；</p>
+</li>
+<li><p>RecordReader与inputSplit进行通信，然后进行处理当前部分生成键值对</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">假设当前两台中（以为文本由两台mapper处理）中的一台RecordReader：</span><br><span class="line">输入：</span><br><span class="line">Today is your birthday</span><br><span class="line">Happy birthday to you</span><br><span class="line"></span><br><span class="line">输出（键值对）：</span><br><span class="line">&lt;0, Today is your birthday&gt;</span><br><span class="line">&lt;23, Hadppy birthday to you&gt;</span><br><span class="line">key是行开头的偏移量，value是行的内容</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>Mapper</p>
+<ul>
+<li><p>输入接受RecordReader的结果</p>
+</li>
+<li><p>输出是完整的key,value集合，并且输出内容是不会存储到HDFS上的，输出内容是临时性的，因为这样会造成不必要的麻烦</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;Today, 1&gt;</span><br><span class="line">&lt;is, 1&gt;</span><br><span class="line">&lt;your, 1&gt;</span><br><span class="line">&lt;birthday, 1&gt;</span><br><span class="line">&lt;Happy, 1&gt;</span><br><span class="line">&lt;birthday, 1&gt;</span><br><span class="line">&lt;to, 1&gt;</span><br><span class="line">&lt;you, 1&gt;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>Combiner</p>
+<ul>
+<li><p>Combiner是局部聚合器，最大限度减少MApper与Reducer之间的数据数据传输</p>
+</li>
+<li><p>输出</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;Today, 1&gt;</span><br><span class="line">&lt;is, 1&gt;</span><br><span class="line">&lt;your, 1&gt;</span><br><span class="line">&lt;birthday, 2&gt;</span><br><span class="line">&lt;Happy, 1&gt;</span><br><span class="line">&lt;to, 1&gt;</span><br><span class="line">&lt;you, 1&gt;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>Partitioner</p>
+<ul>
+<li><p>作为具有相同键值的记录进入同一个分区（每个映射器内）。然后，每个分区被送到一个reducer。分区类决定给定的（key，value）对将进入哪个分区;</p>
+<p><img src="https://raw.githubusercontent.com/a11enyang/Picture/master/img2/image-20200420105757293.png" alt="image-20200420105757293"></p>
+</li>
+</ul>
+</li>
+<li><p>shuffle and sort</p>
+<p>shuffle是一个物理移动的过程，将分区中数据移动到reducer上，并且在过程中进行排序，形成list</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;birthday, 2&gt;</span><br><span class="line">&lt;day, 2&gt;</span><br><span class="line">&lt;Today, [1,1]&gt;</span><br><span class="line">&lt;your, [1,1]&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>reducer计算最后的结果</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;birthday, 2&gt;</span><br><span class="line">&lt;day, 2&gt;</span><br><span class="line">&lt;Today, 2&gt;</span><br><span class="line">&lt;your, 2&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>最后的输出结果存储在HDFS上</p>
+</li>
+</ul>
+<blockquote>
+<p>在很多教程中，上文中的partitioner是属于shuffle阶段的，本质上没有区别</p>
+<p><a href="https://knpcode.com/hadoop/mapreduce/shuffle-phase-in-hadoop-mapreduce/" target="_blank" rel="noopener">https://knpcode.com/hadoop/mapreduce/shuffle-phase-in-hadoop-mapreduce/</a></p>
+<p>其他的理解方式：</p>
+<iframe width="966" height="543" src="https://www.youtube.com/embed/6ehu2jEEXWE" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</blockquote>
+<blockquote>
+<p>参考链接：<a href="https://techvidvan.com/tutorials/hadoop-mapreduce-key-value-pair/" target="_blank" rel="noopener">https://techvidvan.com/tutorials/hadoop-mapreduce-key-value-pair/</a></p>
+<p><a href="https://techvidvan.com/tutorials/hadoop-mapreduce-shuffling-and-sorting/" target="_blank" rel="noopener">https://techvidvan.com/tutorials/hadoop-mapreduce-shuffling-and-sorting/</a></p>
+<p><a href="https://techvidvan.com/tutorials/hadoop-partitioner-introduction/" target="_blank" rel="noopener">https://techvidvan.com/tutorials/hadoop-partitioner-introduction/</a></p>
+<p><a href="https://techvidvan.com/tutorials/hadoop-combiner-introduction-working-advantages/" target="_blank" rel="noopener">https://techvidvan.com/tutorials/hadoop-combiner-introduction-working-advantages/</a></p>
+</blockquote>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Hadoop/" rel="tag"># Hadoop</a>
+          
+            <a href="/tags/MapReduce/" rel="tag"># MapReduce</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/04/20/%E5%A6%82%E4%BD%95%E5%A4%87%E4%BB%BDhexo%E5%8D%9A%E5%AE%A2/" rel="next" title="如何备份hexo博客">
+                <i class="fa fa-chevron-left"></i> 如何备份hexo博客
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avataaars.png"
+                alt="Allen Yang" />
+            
+              <p class="site-author-name" itemprop="name">Allen Yang</p>
+              <p class="site-description motion-element" itemprop="description">TO BE A BETTER MAN.</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives%7C%7C%20archive">
+              
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Hadoop简介-并行计算的框架"><span class="nav-number">1.</span> <span class="nav-text">Hadoop简介 并行计算的框架</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#前世今生"><span class="nav-number">1.0.1.</span> <span class="nav-text">前世今生</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#结构"><span class="nav-number">1.0.2.</span> <span class="nav-text">结构</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#hadoop工作原理简单介绍"><span class="nav-number">1.0.3.</span> <span class="nav-text">hadoop工作原理简单介绍</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#架构"><span class="nav-number">1.0.4.</span> <span class="nav-text">架构</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#MapReduce的工作阶段介绍"><span class="nav-number">1.0.5.</span> <span class="nav-text">MapReduce的工作阶段介绍</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#MapReduce工作流程详细介绍"><span class="nav-number">1.0.6.</span> <span class="nav-text">MapReduce工作流程详细介绍</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Allen Yang</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
