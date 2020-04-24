@@ -1,0 +1,758 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="python,test," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="准备工作准备工作">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Test driven development with python">
+<meta property="og:url" content="http://yoursite.com/2020/04/21/Test-driven-development-with-python/index.html">
+<meta property="og:site_name" content="Allen Yang">
+<meta property="og:description" content="准备工作准备工作">
+<meta property="article:published_time" content="2020-04-21T00:16:54.000Z">
+<meta property="article:modified_time" content="2020-04-21T01:25:11.823Z">
+<meta property="article:author" content="Allen Yang">
+<meta property="article:tag" content="python">
+<meta property="article:tag" content="test">
+<meta name="twitter:card" content="summary">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2020/04/21/Test-driven-development-with-python/"/>
+
+
+
+
+
+  <title>Test driven development with python | Allen Yang</title>
+  
+
+
+
+
+
+
+
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Allen Yang</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/04/21/Test-driven-development-with-python/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Allen Yang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avataaars.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Allen Yang">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Test driven development with python</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-04-21T08:16:54+08:00">
+                2020-04-21
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h1><p>准备工作</p>
+<a id="more"></a>
+
+
+
+<h1 id="第一章"><a href="#第一章" class="headerlink" title="第一章"></a>第一章</h1><p>在拥有测试之前什么都不要做，在TDD中，第一步始终都是一样的：写一个测试。首先我们编写测试，然后我们运行测试，检查他是否按照预先的一样失败。只有这样，我们才回去构建一些属于我们的APP。</p>
+<h2 id="初步尝试"><a href="#初步尝试" class="headerlink" title="初步尝试"></a>初步尝试</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">//functional_tests.py</span><br><span class="line"><span class="keyword">from</span> selenium <span class="keyword">import</span> webdriver </span><br><span class="line">browser = webdriver.Firefox()</span><br><span class="line">browser.get(<span class="string">'http://localhost:8000'</span>) </span><br><span class="line"></span><br><span class="line"><span class="keyword">assert</span> <span class="string">'Django'</span> <span class="keyword">in</span> browser.title</span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="第二章"><a href="#第二章" class="headerlink" title="第二章"></a>第二章</h1><p>功能测试 == 验收测试 == 端到端测试 == 黑盒测试</p>
+<p>功能测试中应该有一个可以让人看懂的故事，我们使用测试代码所附带的注释来明确它。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> selenium <span class="keyword">import</span> webdriver browser = webdriver.Firefox()</span><br><span class="line"><span class="comment"># Edith has heard about a cool new online to-do app. She goes # to check out its homepage browser.get('http://localhost:8000')</span></span><br><span class="line"><span class="comment"># She notices the page title and header mention to-do lists</span></span><br><span class="line"><span class="keyword">assert</span> <span class="string">'To-Do'</span> <span class="keyword">in</span> browser.title</span><br><span class="line"><span class="comment"># She is invited to enter a to-do item straight away</span></span><br><span class="line"><span class="comment"># She types "Buy peacock feathers" into a text box (Edith's hobby # is tying fly-fishing lures)</span></span><br><span class="line"><span class="comment"># When she hits enter, the page updates, and now the page lists # "1: Buy peacock feathers" as an item in a to-do list</span></span><br><span class="line"><span class="comment"># There is still a text box inviting her to add another item. She</span></span><br><span class="line"><span class="comment"># enters "Use peacock feathers to make a fly" (Edith is very methodical)</span></span><br><span class="line"><span class="comment"># The page updates again, and now shows both items on her list</span></span><br><span class="line"><span class="comment"># Edith wonders whether the site will remember her list. Then she sees # that the site has generated a unique URL for her -- there is some</span></span><br><span class="line"><span class="comment"># explanatory text to that effect.</span></span><br><span class="line"><span class="comment"># She visits that URL - her to-do list is still there. # Satisfied, she goes back to sleep</span></span><br><span class="line">browser.quit()</span><br></pre></td></tr></table></figure>
+
+
+
+<p>结果：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ python manage.py runserver</span><br><span class="line">And then, <span class="keyword">in</span> another shell, run the tests:</span><br><span class="line">$ python functional_tests.py Traceback (most recent call last):</span><br><span class="line">File <span class="string">"functional_tests.py"</span>, line <span class="number">10</span>, <span class="keyword">in</span> &lt;module&gt; <span class="keyword">assert</span> <span class="string">'To-Do'</span> <span class="keyword">in</span> browser.title</span><br><span class="line">    AssertionError</span><br></pre></td></tr></table></figure>
+
+
+
+
+<blockquote>
+<p>小贴士：</p>
+<ul>
+<li>不要写一些无意义的注释</li>
+<li>用好变量名和函数名</li>
+<li>建立一个用户故事来描述功能测试</li>
+<li>可以使用预期失败来进行铺垫，虽然我们的测试没有成功，但是我们知道失败的原因</li>
+</ul>
+</blockquote>
+<h2 id="改进1"><a href="#改进1" class="headerlink" title="改进1"></a>改进1</h2><ul>
+<li>浏览器窗口没有自动关闭</li>
+<li>错误的提示信息不够明显</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> selenium <span class="keyword">import</span> webdriver <span class="keyword">import</span> unittest</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">NewVisitorTest</span><span class="params">(unittest.TestCase)</span>:</span> </span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">setUp</span><span class="params">(self)</span>:</span></span><br><span class="line">			self.browser = webdriver.Firefox() </span><br><span class="line">      </span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">tearDown</span><span class="params">(self)</span>:</span></span><br><span class="line">			self.browser.quit()</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">test_can_start_a_list_and_retrieve_it_later</span><span class="params">(self)</span>:</span></span><br><span class="line"><span class="comment"># Edith has heard about a cool new online to-do app. She goes # to check out its homepage self.browser.get('http://localhost:8000')</span></span><br><span class="line"><span class="comment"># She notices the page title and header mention to-do lists</span></span><br><span class="line">self.assertIn(<span class="string">'To-Do'</span>, self.browser.title) self.fail(<span class="string">'Finish the test!'</span>)</span><br><span class="line"><span class="comment"># She is invited to enter a to-do item straight away</span></span><br><span class="line">[...rest of comments <span class="keyword">as</span> before] <span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">unittest.main(warnings=<span class="string">'ignore'</span>)</span><br></pre></td></tr></table></figure>
+
+<p>理解：使用测试类</p>
+<p>TDD</p>
+<p>用户故事</p>
+<p>期待的失败</p>
+<h1 id="第三章"><a href="#第三章" class="headerlink" title="第三章"></a>第三章</h1><h3 id="单元测试与功能测试："><a href="#单元测试与功能测试：" class="headerlink" title="单元测试与功能测试："></a>单元测试与功能测试：</h3><ul>
+<li>单元测试从程序员角度出发测试</li>
+<li>功能测试从用户角度出发</li>
+</ul>
+<h3 id="工作流程"><a href="#工作流程" class="headerlink" title="工作流程"></a>工作流程</h3><ul>
+<li>写一个功能测试描述新的功能特性</li>
+<li>一旦我们的功能测试失败了，我开始思考怎样最小的通过测试。使用单元测试区描述我们想要代码做的事情。</li>
+<li>单元测试失败了，进行修改能够通过单元测试</li>
+<li>然后重新运行功能测试</li>
+</ul>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/python/" rel="tag">🔥 python</a>
+          
+            <a href="/tags/test/" rel="tag">🔥 test</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/04/21/unit-test-with-python/" rel="next" title="unit test with python">
+                <i class="fa fa-chevron-left"></i> unit test with python
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2020/04/22/%E2%80%9C%E5%B0%86md%E6%96%87%E4%BB%B6%E5%88%B6%E4%BD%9C%E4%B8%BA%E5%B9%BB%E7%81%AF%E7%89%87%E2%80%9D/" rel="prev" title="“将md文件制作为幻灯片”">
+                “将md文件制作为幻灯片” <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avataaars.png"
+                alt="Allen Yang" />
+            
+              <p class="site-author-name" itemprop="name">Allen Yang</p>
+              <p class="site-description motion-element" itemprop="description">TO BE A BETTER MAN.</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives">
+              
+                  <span class="site-state-item-count">20</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">20</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#准备工作"><span class="nav-number">1.</span> <span class="nav-text">准备工作</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#第一章"><span class="nav-number">2.</span> <span class="nav-text">第一章</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#初步尝试"><span class="nav-number">2.1.</span> <span class="nav-text">初步尝试</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#第二章"><span class="nav-number">3.</span> <span class="nav-text">第二章</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#改进1"><span class="nav-number">3.1.</span> <span class="nav-text">改进1</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#第三章"><span class="nav-number">4.</span> <span class="nav-text">第三章</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#单元测试与功能测试："><span class="nav-number">4.0.1.</span> <span class="nav-text">单元测试与功能测试：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#工作流程"><span class="nav-number">4.0.2.</span> <span class="nav-text">工作流程</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Allen Yang</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

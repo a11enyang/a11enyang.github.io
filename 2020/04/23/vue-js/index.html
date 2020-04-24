@@ -1,0 +1,785 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="vue.js," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="12345678910111213141516171819&lt;script src &#x3D; &quot;&lt;script src&#x3D;&quot;https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;npm&#x2F;vue&#x2F;dist&#x2F;vue.js&quot;&gt;&lt;&#x2F;script&gt;&quot;&gt;&lt;&#x2F;script&gt;&lt;div id&#x3D;&quot;app&quot;&gt;  &lt;input type&#x3D;&quot;text&quot; v-on:inpu">
+<meta property="og:type" content="article">
+<meta property="og:title" content="vue.js">
+<meta property="og:url" content="http://yoursite.com/2020/04/23/vue-js/index.html">
+<meta property="og:site_name" content="Allen Yang">
+<meta property="og:description" content="12345678910111213141516171819&lt;script src &#x3D; &quot;&lt;script src&#x3D;&quot;https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;npm&#x2F;vue&#x2F;dist&#x2F;vue.js&quot;&gt;&lt;&#x2F;script&gt;&quot;&gt;&lt;&#x2F;script&gt;&lt;div id&#x3D;&quot;app&quot;&gt;  &lt;input type&#x3D;&quot;text&quot; v-on:inpu">
+<meta property="og:image" content="https://raw.githubusercontent.com/a11enyang/Picture/master/img2/image-20200423093540542.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/a11enyang/Picture/master/img2/image-20200423111258038.png">
+<meta property="og:image" content="http://yoursite.com/Users/austin/Library/Application%20Support/typora-user-images/image-20200423165530999.png">
+<meta property="article:published_time" content="2020-04-23T01:20:49.000Z">
+<meta property="article:modified_time" content="2020-04-24T05:18:25.247Z">
+<meta property="article:author" content="Allen Yang">
+<meta property="article:tag" content="vue.js">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/a11enyang/Picture/master/img2/image-20200423093540542.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2020/04/23/vue-js/"/>
+
+
+
+
+
+  <title>vue.js | Allen Yang</title>
+  
+
+
+
+
+
+
+
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Allen Yang</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/04/23/vue-js/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Allen Yang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avataaars.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Allen Yang">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">vue.js</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-04-23T09:20:49+08:00">
+                2020-04-23
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span> = <span class="string">"&lt;script src="</span><span class="attr">https:</span>//<span class="attr">cdn.jsdelivr.net</span>/<span class="attr">npm</span>/<span class="attr">vue</span>/<span class="attr">dist</span>/<span class="attr">vue.js</span>"&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span>"&gt;<span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"app"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">v-on:input</span>=<span class="string">"changeTitle"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">p</span>&gt;</span></span><br><span class="line">    &#123; &#123; title &#125; &#125;</span><br><span class="line">  <span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"></span><br><span class="line">new Vue (&#123;</span><br><span class="line">	ek:"#app",</span><br><span class="line">	data: &#123;</span><br><span class="line">	title: "Hello World",</span><br><span class="line">&#125;,</span><br><span class="line">	methods: &#123;</span><br><span class="line">		changeTitle: function(event) &#123;</span><br><span class="line">			this.title = event.target.value;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>理解：html中的代码相当于是前置条件，js代码相当于是后置条件；在html代码的标签中指明要执行的动作，vue引擎会知道你想要干什么。</p>
+<a id="more"></a>
+
+<h3 id="5"><a href="#5" class="headerlink" title="5"></a>5</h3><p><img src="https://raw.githubusercontent.com/a11enyang/Picture/master/img2/image-20200423093540542.png" alt="image-20200423093540542"></p>
+<p>课程介绍</p>
+<h3 id="6"><a href="#6" class="headerlink" title="6"></a>6</h3><p>布置本地的开发环境</p>
+<h3 id="理解vue-js模板"><a href="#理解vue-js模板" class="headerlink" title="理解vue.js模板"></a>理解vue.js模板</h3><p>vue（vue实例）=基于html代码生成一个模板，然后在内部存储，然后使用设个模板来生成真正的html代码，然后将它渲染成为dom。生成的模板可以访问vue实例的属性，但是js代码不可以。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">&lt;script src = <span class="string">"&lt;script src="</span>https:<span class="comment">//cdn.jsdelivr.net/npm/vue/dist/vue.js"&gt;&lt;/script&gt;"&gt;&lt;/script&gt;</span></span><br><span class="line">&lt;div id=<span class="string">"app"</span>&gt;</span><br><span class="line">  &lt;input type=<span class="string">"text"</span> v-on:input=<span class="string">"changeTitle"</span>&gt;</span><br><span class="line">  &lt;p&gt;</span><br><span class="line">    &#123; &#123; sayHello() &#125; &#125;</span><br><span class="line">  &lt;<span class="regexp">/p&gt;</span></span><br><span class="line"><span class="regexp">&lt;/</span>div&gt;</span><br><span class="line"></span><br><span class="line"><span class="keyword">new</span> Vue (&#123;</span><br><span class="line">	el:<span class="string">"#app"</span>,</span><br><span class="line">	data: &#123;</span><br><span class="line">	title: <span class="string">"Hello World"</span>,</span><br><span class="line">&#125;,</span><br><span class="line">	methods: &#123;</span><br><span class="line">		sayHello: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">			<span class="keyword">return</span> title;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>上述的做法是不可行的</p>
+<h3 id="在vue实例中得到数据"><a href="#在vue实例中得到数据" class="headerlink" title="在vue实例中得到数据"></a>在vue实例中得到数据</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">new</span> Vue (&#123;</span><br><span class="line">	el:<span class="string">"#app"</span>,</span><br><span class="line">	data: &#123;</span><br><span class="line">	title: <span class="string">"Hello World"</span>,</span><br><span class="line">&#125;,</span><br><span class="line">	methods: &#123;</span><br><span class="line">		sayHello: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">			<span class="keyword">return</span> title;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//这种方式是不可行的</span></span><br></pre></td></tr></table></figure>
+
+<p>vue给我们提供一些方便，可以使用<code>this.title</code>来进行访问</p>
+<h3 id="与属性链接"><a href="#与属性链接" class="headerlink" title="与属性链接"></a>与属性链接</h3><p>一般是不能在html标签的属性中使用{ {   } }，vue只能解析在标签之间的大括号</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"https://cdn.jsdelivr.net/npm/vue/dist/vue.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"app"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">p</span>&gt;</span></span><br><span class="line">    &#123; &#123; title &#125; &#125;</span><br><span class="line">  <span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">a</span> <span class="attr">v-bind:href</span>=<span class="string">"link"</span>&gt;</span>google<span class="tag">&lt;/<span class="name">a</span>&gt;</span> <span class="comment">&lt;!-- v-bind已经声明在模板语言中了，所以不需要再加大括号 --&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">new Vue(&#123;</span><br><span class="line">	el: &quot;#app&quot;,</span><br><span class="line">  data: &#123;</span><br><span class="line">  	title: &quot;你好世界&quot;,</span><br><span class="line">    link: &quot;https:&#x2F;&#x2F;cn.vuejs.org&#x2F;v2&#x2F;guide&#x2F;&quot;</span><br><span class="line">  &#125;,</span><br><span class="line">  methods: &#123;</span><br><span class="line">  	sayHello: function() &#123;</span><br><span class="line">    	return this.title;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>v-bind 动态绑定了数据</p>
+<h3 id=""><a href="#" class="headerlink" title=""></a></h3><h3 id="理解和使用指令"><a href="#理解和使用指令" class="headerlink" title="理解和使用指令"></a>理解和使用指令</h3><p>v-bind接受一个参数，一般情况下，使用冒号将参数传递给指令</p>
+<p>指令告诉vue绑定一些东西在我数据上，要什么东西呢，就通过冒号之后的参数来告诉</p>
+<h3 id="避免重复渲染"><a href="#避免重复渲染" class="headerlink" title="避免重复渲染"></a>避免重复渲染</h3><p>v-once 告诉vue该属性只会渲染一次    </p>
+<h3 id="输出html代码并渲染"><a href="#输出html代码并渲染" class="headerlink" title="输出html代码并渲染"></a>输出html代码并渲染</h3><p>v-html</p>
+<h3 id="练习"><a href="#练习" class="headerlink" title="练习"></a>练习</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">new Vue(&#123;</span><br><span class="line">	el: "#exercise",</span><br><span class="line">  data: &#123;</span><br><span class="line">  	name: "yangweidong",</span><br><span class="line">    age: 21,</span><br><span class="line">    link: "https://sites.psu.edu/siowfa16/files/2016/10/YeDYzSR-10apkm4.png",</span><br><span class="line">  &#125;,</span><br><span class="line">  methods: &#123;</span><br><span class="line">  	ageTripple: function() &#123;</span><br><span class="line">    	return (this.age * 3);</span><br><span class="line">    &#125;,</span><br><span class="line">    random01: function() &#123;</span><br><span class="line">    	return Math.random();</span><br><span class="line">    &#125;,</span><br><span class="line">    changeName: function(event) &#123;</span><br><span class="line">    	this.name = event.target.value;</span><br><span class="line">    &#125;,</span><br><span class="line">    </span><br><span class="line">  &#125;,</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"https://unpkg.com/vue/dist/vue.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"exercise"</span>&gt;</span></span><br><span class="line">   <span class="comment">&lt;!-- 1) Fill the &lt;p&gt; below with your Name and Age - using Interpolation --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span>VueJS is pretty cool - &#123; &#123; name &#125; &#125; (&#123; &#123; age &#125; &#125;)<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 2) Output your age, multiplied by 3 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span>&#123; &#123; ageTripple() &#125; &#125;<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 3) Call a function to output a random float between 0 and 1 (Math.random()) --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span> <span class="attr">v-once</span>&gt;</span>&#123; &#123; random01() &#125; &#125;<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 4) Search any image on Google and output it here by binding the "src" attribute --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">img</span> <span class="attr">style</span>=<span class="string">"width:100px;height:100px"</span> <span class="attr">v-bind:src</span>=<span class="string">"link"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 5) Pre-Populate this input with your name (set the "value" attribute) --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">v-on:input</span>=<span class="string">"changeName"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="监听事件"><a href="#监听事件" class="headerlink" title="监听事件"></a>监听事件</h3><p>v-on 监听原HTML文件的时间，在模板文件中做出改变</p>
+<p>v-bind 将标签属性与模板文件进行绑定，以便可以使用模板文件的属性</p>
+<img src="https://raw.githubusercontent.com/a11enyang/Picture/master/img2/image-20200423111258038.png" alt="image-20200423111258038" style="zoom:50%;" />
+
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;script src=<span class="string">"https://unpkg.com/vue/dist/vue.js"</span>&gt;&lt;<span class="regexp">/script&gt;</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">&lt;div id="app"&gt;</span></span><br><span class="line"><span class="regexp">  &lt;button v-on:click="increase()"&gt;click me!&lt;/</span>button&gt;</span><br><span class="line">  &lt;p&gt; &#123; &#123; counter &#125; &#125;&lt;<span class="regexp">/p&gt;</span></span><br><span class="line"><span class="regexp">&lt;/</span>div&gt;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">new Vue(&#123;</span><br><span class="line">	el: "#app",</span><br><span class="line">  data: &#123;</span><br><span class="line">  	counter: 0,</span><br><span class="line">  &#125;,</span><br><span class="line">  methods: &#123;</span><br><span class="line">  	increase: function() &#123;</span><br><span class="line">    	this.counter++;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<h3 id="从事件中获取数据"><a href="#从事件中获取数据" class="headerlink" title="从事件中获取数据"></a>从事件中获取数据</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"https://unpkg.com/vue/dist/vue.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"app"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">button</span> <span class="attr">v-on:click</span>=<span class="string">"increase()"</span>&gt;</span>click me!<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">p</span>&gt;</span> &#123; &#123; counter &#125; &#125;<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">p</span> <span class="attr">v-on:mousemove</span>=<span class="string">"update"</span>&gt;</span>&#123; &#123; x &#125; &#125; / &#123; &#123; y &#125; &#125; <span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">new</span> Vue(&#123;</span><br><span class="line">	el: <span class="string">"#app"</span>,</span><br><span class="line">  data: &#123;</span><br><span class="line">  	counter: <span class="number">0</span>,</span><br><span class="line">    x: <span class="number">0</span>,</span><br><span class="line">    y: <span class="number">0</span>,</span><br><span class="line">  &#125;,</span><br><span class="line">  methods: &#123;</span><br><span class="line">  	increase: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    	<span class="keyword">this</span>.counter++;</span><br><span class="line">    &#125;,</span><br><span class="line">    update: <span class="function"><span class="keyword">function</span>(<span class="params">event</span>) </span>&#123;</span><br><span class="line">    	<span class="keyword">this</span>.x = event.x;</span><br><span class="line">      <span class="keyword">this</span>.y = event.y;</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="修改一个事件"><a href="#修改一个事件" class="headerlink" title="修改一个事件"></a>修改一个事件</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">v-on:mousemove.stop</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="监听键盘事件"><a href="#监听键盘事件" class="headerlink" title="监听键盘事件"></a>监听键盘事件</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;script src=<span class="string">"https://unpkg.com/vue/dist/vue.js"</span>&gt;&lt;<span class="regexp">/script&gt;</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">&lt;div id="app"&gt;</span></span><br><span class="line"><span class="regexp">  &lt;button v-on:click="increase()"&gt;click me!&lt;/</span>button&gt;</span><br><span class="line">  &lt;p&gt; &#123; &#123; counter &#125; &#125;&lt;<span class="regexp">/p&gt;</span></span><br><span class="line"><span class="regexp">  &lt;p v-on:mousemove="update"&gt;&#123; &#123; x &#125; &#125; /</span> &#123; &#123; y &#125; &#125; &lt;span v-on:mousemove.stop&gt;stsdfasdfasfop&lt;<span class="regexp">/span&gt; &lt;/</span>p&gt;</span><br><span class="line">  &lt;input type=<span class="string">"text"</span> v-on:keyup.enter=<span class="string">"alertMe"</span>&gt;</span><br><span class="line">  </span><br><span class="line">&lt;<span class="regexp">/div&gt;</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="在模板文件中写js"><a href="#在模板文件中写js" class="headerlink" title="在模板文件中写js"></a>在模板文件中写js</h3><p>任何使用vue.js的地方都可以直接写js代码</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"https://unpkg.com/vue/dist/vue.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"app"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">button</span> <span class="attr">v-on:click</span>=<span class="string">"counter++"</span>&gt;</span>click me!<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">p</span>&gt;</span> &#123; &#123; counter &#125; &#125;<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">p</span> <span class="attr">v-on:mousemove</span>=<span class="string">"update"</span>&gt;</span>&#123; &#123; x &#125; &#125; / &#123; &#123; y &#125; &#125; <span class="tag">&lt;<span class="name">span</span> <span class="attr">v-on:mousemove.stop</span>&gt;</span>stsdfasdfasfop<span class="tag">&lt;/<span class="name">span</span>&gt;</span> <span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">v-on:keyup.enter</span>=<span class="string">"alertMe"</span>&gt;</span></span><br><span class="line">  </span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="数据的双向绑定"><a href="#数据的双向绑定" class="headerlink" title="数据的双向绑定"></a>数据的双向绑定</h3><p>v-model</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;input type&#x3D;&quot;text&quot; v-model&#x3D;&quot;counter&quot;&gt;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="computed属性"><a href="#computed属性" class="headerlink" title="computed属性"></a>computed属性</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">&lt;script src=<span class="string">"https://unpkg.com/vue/dist/vue.js"</span>&gt;&lt;<span class="regexp">/script&gt;</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">&lt;div id="app"&gt;</span></span><br><span class="line"><span class="regexp">  &lt;button v-on:click="counter++"&gt;增加!&lt;/</span>button&gt;</span><br><span class="line">  &lt;button v-on:click=<span class="string">"counter--"</span>&gt;减少!&lt;<span class="regexp">/button&gt;</span></span><br><span class="line"><span class="regexp">  &lt;button v-on:click="secondCounter++"&gt;第二个按钮&lt;/</span>button&gt;</span><br><span class="line">  &lt;p&gt;&#123; &#123; counter &#125; &#125;&lt;<span class="regexp">/p&gt;</span></span><br><span class="line"><span class="regexp">  &lt;p&gt; &#123; &#123; result() &#125; &#125; &lt;/</span>p&gt;</span><br><span class="line">  &lt;p&gt;&#123; &#123; secondCounter &#125; &#125;&lt;<span class="regexp">/p&gt;</span></span><br><span class="line"><span class="regexp">&lt;/</span>div&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">new</span> Vue(&#123;</span><br><span class="line"> el: <span class="string">"#app"</span>,</span><br><span class="line"> data: &#123;</span><br><span class="line"> 		counter: <span class="number">0</span>,</span><br><span class="line">    secondCounter: <span class="number">0</span>,</span><br><span class="line"> &#125;,</span><br><span class="line"> methods: &#123;</span><br><span class="line"> 		result: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    	<span class="built_in">console</span>.log(<span class="string">"11111111"</span>);</span><br><span class="line">    	<span class="keyword">return</span> <span class="keyword">this</span>.counter &gt; <span class="number">5</span> ? <span class="string">"counter 大于 5"</span> : <span class="string">"counter 小于 5"</span>;</span><br><span class="line">    &#125;</span><br><span class="line"> &#125;,</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>如果是vue中的数据发生改变，并且这个数据是显示在外面的，所以vue会重新创新页面，导致vue中的方法被重新执行一次；那么如何保证定义的方法不会重新执行呢，那么就可以将该函数放置在computed中</p>
+<p>computed中的函数使用就像是属性一样</p>
+<p>computed相当于提供了一个缓存机制，如果想要使用缓存的话，那么使用computed；如果不想使用缓存的话，那么使用method</p>
+<p>computed：依赖属性，如果依赖的内容没有发生改变的话，不会执行；如果依赖的内容发生了改变的话， 会执行</p>
+<h3 id="watch"><a href="#watch" class="headerlink" title="watch"></a>watch</h3><p>computed的属性总是同步执行的，有时候需要异步执行</p>
+<h3 id="命令的简写"><a href="#命令的简写" class="headerlink" title="命令的简写"></a>命令的简写</h3><p>v-on:   ==  @</p>
+<p>v-bind: == :</p>
+<h3 id="与CSS类的动态链接"><a href="#与CSS类的动态链接" class="headerlink" title="与CSS类的动态链接"></a>与CSS类的动态链接</h3><img src="/Users/austin/Library/Application Support/typora-user-images/image-20200423165530999.png" alt="image-20200423165530999" style="zoom:50%;" />
+
+
+
+
+
+<h3 id="v-if"><a href="#v-if" class="headerlink" title="v-if"></a>v-if</h3><p>v-if   v-else</p>
+<h3 id="v-show"><a href="#v-show" class="headerlink" title="v-show"></a>v-show</h3><h3 id="v-for"><a href="#v-for" class="headerlink" title="v-for"></a>v-for</h3>
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/vue-js/" rel="tag">🔥 vue.js</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/04/22/%E7%BD%91%E7%AB%99%E7%99%BE%E5%AE%9D%E7%AE%B1/" rel="next" title="网站百宝箱">
+                <i class="fa fa-chevron-left"></i> 网站百宝箱
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avataaars.png"
+                alt="Allen Yang" />
+            
+              <p class="site-author-name" itemprop="name">Allen Yang</p>
+              <p class="site-description motion-element" itemprop="description">TO BE A BETTER MAN.</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives">
+              
+                  <span class="site-state-item-count">20</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">20</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#5"><span class="nav-number">1.</span> <span class="nav-text">5</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6"><span class="nav-number">2.</span> <span class="nav-text">6</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#理解vue-js模板"><span class="nav-number">3.</span> <span class="nav-text">理解vue.js模板</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#在vue实例中得到数据"><span class="nav-number">4.</span> <span class="nav-text">在vue实例中得到数据</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#与属性链接"><span class="nav-number">5.</span> <span class="nav-text">与属性链接</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#"><span class="nav-number">6.</span> <span class="nav-text"></span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#理解和使用指令"><span class="nav-number">7.</span> <span class="nav-text">理解和使用指令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#避免重复渲染"><span class="nav-number">8.</span> <span class="nav-text">避免重复渲染</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#输出html代码并渲染"><span class="nav-number">9.</span> <span class="nav-text">输出html代码并渲染</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#练习"><span class="nav-number">10.</span> <span class="nav-text">练习</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#监听事件"><span class="nav-number">11.</span> <span class="nav-text">监听事件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#从事件中获取数据"><span class="nav-number">12.</span> <span class="nav-text">从事件中获取数据</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#修改一个事件"><span class="nav-number">13.</span> <span class="nav-text">修改一个事件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#监听键盘事件"><span class="nav-number">14.</span> <span class="nav-text">监听键盘事件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#在模板文件中写js"><span class="nav-number">15.</span> <span class="nav-text">在模板文件中写js</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数据的双向绑定"><span class="nav-number">16.</span> <span class="nav-text">数据的双向绑定</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#computed属性"><span class="nav-number">17.</span> <span class="nav-text">computed属性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#watch"><span class="nav-number">18.</span> <span class="nav-text">watch</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#命令的简写"><span class="nav-number">19.</span> <span class="nav-text">命令的简写</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#与CSS类的动态链接"><span class="nav-number">20.</span> <span class="nav-text">与CSS类的动态链接</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#v-if"><span class="nav-number">21.</span> <span class="nav-text">v-if</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#v-show"><span class="nav-number">22.</span> <span class="nav-text">v-show</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#v-for"><span class="nav-number">23.</span> <span class="nav-text">v-for</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Allen Yang</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
