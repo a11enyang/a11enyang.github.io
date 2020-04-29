@@ -12,7 +12,7 @@ tags:
 
 源自google的三篇论文
 
-![image-20200417091352948](https://raw.githubusercontent.com/a11enyang/Picture/master/img/image-20200417091352948.png)
+![image-20200417091352948](https://cdn.jsdelivr.net/gh/a11enyang/Picture@1.0/img/image-20200417091352948.png)
 
 <!-- more -->
 
@@ -40,7 +40,7 @@ tags:
 
 * 然后，编写一个MapReduce程序，该程序具有一些逻辑来处理该数据。您将代码打包为jar，然后将打包的代码传输到存储数据块的DataNodes。这样，您的[MapReduce代码就](https://knpcode.com/hadoop/mapreduce/how-mapreduce-works-in-hadoop/)可以在文件部分上工作（HDFS块位于运行代码的节点上）并并行处理数据。所以要进行的编程作业就是在在这个阶段。
 
-<img src="https://raw.githubusercontent.com/a11enyang/Picture/master/img2/image-20200418180437130.png" alt="image-20200418180437130" style="zoom:50%;" />
+<img src="https://cdn.jsdelivr.net/gh/a11enyang/Picture@1.0/img2/image-20200418180437130.png" alt="image-20200418180437130" style="zoom:50%;" />
 
 #### 架构
 
@@ -51,7 +51,7 @@ tags:
   * NameNode,负责记录各个数据块的存储空间(NameSpace),与DataNode进行通信,获取其健康状态信息,并根据決策算法将数据分发到某些节点。
   * DataNode,负责实际数据的存,与NameNode进行通信,将其所在节点的存储状态汇我给NameNode ,以供其决策。
 
-![image-20200417092132279](https://raw.githubusercontent.com/a11enyang/Picture/master/img/image-20200417092132279.png)
+![image-20200417092132279](https://cdn.jsdelivr.net/gh/a11enyang/Picture@1.0/img/image-20200417092132279.png)
 
 
 
@@ -96,7 +96,7 @@ tags:
 >how is your day
 >```
 
-![image-20200420095725741](https://raw.githubusercontent.com/a11enyang/Picture/master/img2/image-20200420095725741.png)
+![image-20200420095725741](https://cdn.jsdelivr.net/gh/a11enyang/Picture@1.0/img2/image-20200420095725741.png)
 
 * MapReduce分为两个阶段，Map和Reduce。每个阶段的输入输出内容都是<key, value>形式；
 
@@ -155,7 +155,7 @@ tags:
 
   * 作为具有相同键值的记录进入同一个分区（每个映射器内）。然后，每个分区被送到一个reducer。分区类决定给定的（key，value）对将进入哪个分区;
 
-    ![image-20200420105757293](https://raw.githubusercontent.com/a11enyang/Picture/master/img2/image-20200420105757293.png)
+    ![image-20200420105757293](https://cdn.jsdelivr.net/gh/a11enyang/Picture@1.0/img2/image-20200420105757293.png)
 
 * shuffle and sort
 

@@ -4,7 +4,7 @@ tags:
 	- hexo配置
 	- 配置
 ---
-![image-20200419233533057](https://raw.githubusercontent.com/a11enyang/Picture/master/img2/image-20200419233533057.png)
+![image-20200419233533057](https://cdn.jsdelivr.net/gh/a11enyang/Picture@1.0/img2/image-20200419233533057.png)
 
 <!-- more -->
 

@@ -34,5 +34,5 @@ public String toString() {
 
 |                                                              |                                                              |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| ![image-20200422225106784](https://raw.githubusercontent.com/a11enyang/Picture/master/img2/image-20200422225106784.png) | ![image-20200422225326650](https://raw.githubusercontent.com/a11enyang/Picture/master/img2/image-20200422225326650.png) |
+| ![image-20200422225106784](https://cdn.jsdelivr.net/gh/a11enyang/Picture@1.0/img2/image-20200422225106784.png) | ![image-20200422225326650](https://cdn.jsdelivr.net/gh/a11enyang/Picture@1.0/img2/image-20200422225326650.png) |
 

@@ -33,7 +33,7 @@ new Vue ({
 
 ### 5
 
-![image-20200423093540542](https://raw.githubusercontent.com/a11enyang/Picture/master/img2/image-20200423093540542.png)
+![image-20200423093540542](https://cdn.jsdelivr.net/gh/a11enyang/Picture@1.0/img2/image-20200423093540542.png)
 
 课程介绍
 
@@ -202,7 +202,7 @@ v-on 监听原HTML文件的时间，在模板文件中做出改变
 
 v-bind 将标签属性与模板文件进行绑定，以便可以使用模板文件的属性
 
-<img src="https://raw.githubusercontent.com/a11enyang/Picture/master/img2/image-20200423111258038.png" alt="image-20200423111258038" style="zoom:50%;" />
+<img src="https://cdn.jsdelivr.net/gh/a11enyang/Picture@1.0/img2/image-20200423111258038.png" alt="image-20200423111258038" style="zoom:50%;" />
 
 ```javascript
 <script src="https://unpkg.com/vue/dist/vue.js"></script>
@@ -355,11 +355,11 @@ computed相当于提供了一个缓存机制，如果想要使用缓存的话，
 
 computed：依赖属性，如果依赖的内容没有发生改变的话，不会执行；如果依赖的内容发生了改变的话， 会执行
 
-
+根据数据元数据的值进行计算然后显示在页面上
 
 ### watch
 
-computed的属性总是同步执行的，有时候需要异步执行
+computed的属性总是同步执行的，有时候需要异步执行。当监视的属性发生改变的时候，会调用这个方法。
 
 
 
@@ -392,3 +392,44 @@ v-if   v-else
 
 
 ### v-for
+
+
+
+### vue组件
+
+
+
+
+
+
+
+### vue过滤器
+
+```html
+<div id="app">
+  { { message | toupper } }  <!-- 有点类似于bash的语法 -->
+</div>
+```
+
+```js
+<script>
+  new Vue({
+  el: "#app",
+  data: {
+    message: "helloworld",
+  },
+  filter: {
+    toupper: function(value) {
+      return value.toUpperCase();
+    }
+  }
+});
+<script/>
+```
+
+
+
+### vue组件
+
+![](https://cdn.jsdelivr.net/gh/a11enyang/Picture@1.0/img2/image-20200427161752238.png)
+

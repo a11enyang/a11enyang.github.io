@@ -57,10 +57,10 @@ public class A implements GenericInterface<String, Integer> {
 
 # 泛型函数
 
-![image-20200420161800421](https://raw.githubusercontent.com/a11enyang/Picture/master/img2/image-20200420161800421.png)
+![image-20200420161800421](https://cdn.jsdelivr.net/gh/a11enyang/Picture@1.0/img2/image-20200420161800421.png)
 
 需要在函数头进行声明
 
 # 泛型构造器
 
-![image-20200420161909403](https://raw.githubusercontent.com/a11enyang/Picture/master/img2/image-20200420161909403.png)
+![image-20200420161909403](https://cdn.jsdelivr.net/gh/a11enyang/Picture@1.0/img2/image-20200420161909403.png)
