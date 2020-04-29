@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="GFS,Hadoop,大数据," />
+  <meta name="keywords" content="Hadoop,GFS,大数据," />
 
 
 
@@ -83,25 +83,25 @@
 <meta property="og:title" content="Google file sytem">
 <meta property="og:url" content="http://yoursite.com/2020/04/20/Google-file-sytem/index.html">
 <meta property="og:site_name" content="Allen Yang">
-<meta property="og:image" content="https://raw.githubusercontent.com/a11enyang/Picture/master/img/image-20200417083930033.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/a11enyang/Picture/master/img/image-20200417084143772.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/a11enyang/Picture/master/img/image-20200417084339998.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/a11enyang/Picture/master/img/image-20200417084851059.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/a11enyang/Picture/master/img/image-20200417090053397.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/a11enyang/Picture/master/img/image-20200417090400227.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/a11enyang/Picture/master/img/image-20200417090530473.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/a11enyang/Picture/master/img/image-20200417090630796.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/a11enyang/Picture/master/img/image-20200417090744753.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/a11enyang/Picture/master/img2/1.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/a11enyang/Picture/master/img2/image-20200417091109111.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/a11enyang/Picture@1.0/img/image-20200417083930033.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/a11enyang/Picture@1.0/img/image-20200417084143772.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/a11enyang/Picture@1.0/img/image-20200417084339998.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/a11enyang/Picture@1.0/img/image-20200417084851059.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/a11enyang/Picture@1.0/img/image-20200417090053397.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/a11enyang/Picture@1.0/img/image-20200417090400227.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/a11enyang/Picture@1.0/img/image-20200417090530473.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/a11enyang/Picture@1.0/img/image-20200417090630796.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/a11enyang/Picture@1.0/img/image-20200417090744753.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/a11enyang/Picture@1.0/img2/1.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/a11enyang/Picture@1.0/img2/image-20200417091109111.png">
 <meta property="article:published_time" content="2020-04-19T16:03:54.000Z">
-<meta property="article:modified_time" content="2020-04-19T16:09:53.975Z">
+<meta property="article:modified_time" content="2020-04-29T15:45:49.380Z">
 <meta property="article:author" content="Allen Yang">
-<meta property="article:tag" content="GFS">
 <meta property="article:tag" content="Hadoop">
+<meta property="article:tag" content="GFS">
 <meta property="article:tag" content="大数据">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://raw.githubusercontent.com/a11enyang/Picture/master/img/image-20200417083930033.png">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/a11enyang/Picture@1.0/img/image-20200417083930033.png">
 
 
 
@@ -339,21 +339,21 @@
 <p>参考链接：<a href="https://www.youtube.com/watch?v=WLad7CCexo8" target="_blank" rel="noopener">https://www.youtube.com/watch?v=WLad7CCexo8</a></p>
 </blockquote>
 <h4 id="1-如何保存一个文件"><a href="#1-如何保存一个文件" class="headerlink" title="1.如何保存一个文件"></a>1.如何保存一个文件</h4><p>文件分为许多小块进行存储。在单机上，这些小块都是连续的地址；在集群上，这些小块是分布的，并不是连续的。通常一个文件需要包含文件信息，和索引。</p>
-<p><img src="https://raw.githubusercontent.com/a11enyang/Picture/master/img/image-20200417083930033.png" alt="image-20200417083930033"></p>
-<p><img src="https://raw.githubusercontent.com/a11enyang/Picture/master/img/image-20200417084143772.png" alt="image-20200417084143772"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/a11enyang/Picture@1.0/img/image-20200417083930033.png" alt="image-20200417083930033"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/a11enyang/Picture@1.0/img/image-20200417084143772.png" alt="image-20200417084143772"></p>
 <p>当需要保存超大文件的时候，需要一个Master结点来保存文件的相关信息和索引</p>
-<p><img src="https://raw.githubusercontent.com/a11enyang/Picture/master/img/image-20200417084339998.png" alt="image-20200417084339998"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/a11enyang/Picture@1.0/img/image-20200417084339998.png" alt="image-20200417084339998"></p>
 <h4 id="2-减少Master机器的数据和流量"><a href="#2-减少Master机器的数据和流量" class="headerlink" title="2.减少Master机器的数据和流量"></a>2.减少Master机器的数据和流量</h4><p>Hadoop的设计思想就是：在Mater机器上设置NameNode，这个节点保存文件块的位置（文件的哪一块在哪台机器上）；在Slave机器上设置DataNode节点，这个节点保存文件块的偏移量，所以在文件块的顺序发生改变的时候是不需要通知MasterNode，这样减少了数据和交互。</p>
-<p><img src="https://raw.githubusercontent.com/a11enyang/Picture/master/img/image-20200417084851059.png" alt="image-20200417084851059"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/a11enyang/Picture@1.0/img/image-20200417084851059.png" alt="image-20200417084851059"></p>
 <h4 id="3-如何发现数据损坏"><a href="#3-如何发现数据损坏" class="headerlink" title="3.如何发现数据损坏"></a>3.如何发现数据损坏</h4><p>通过对文件进行哈希来判断是否损坏</p>
-<p><img src="https://raw.githubusercontent.com/a11enyang/Picture/master/img/image-20200417090053397.png" alt="image-20200417090053397"></p>
-<h4 id="4-减少ChunkServer挂掉带来的损失"><a href="#4-减少ChunkServer挂掉带来的损失" class="headerlink" title="4.减少ChunkServer挂掉带来的损失"></a>4.减少ChunkServer挂掉带来的损失</h4><p><img src="https://raw.githubusercontent.com/a11enyang/Picture/master/img/image-20200417090400227.png" alt="image-20200417090400227"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/a11enyang/Picture@1.0/img/image-20200417090053397.png" alt="image-20200417090053397"></p>
+<h4 id="4-减少ChunkServer挂掉带来的损失"><a href="#4-减少ChunkServer挂掉带来的损失" class="headerlink" title="4.减少ChunkServer挂掉带来的损失"></a>4.减少ChunkServer挂掉带来的损失</h4><p><img src="https://cdn.jsdelivr.net/gh/a11enyang/Picture@1.0/img/image-20200417090400227.png" alt="image-20200417090400227"></p>
 <p>3和5是在同一地点的不同机架上，4是在不同的地点。</p>
-<p><img src="https://raw.githubusercontent.com/a11enyang/Picture/master/img/image-20200417090530473.png" alt="image-20200417090530473"></p>
-<h4 id="5-如何发现ChunkServer挂掉"><a href="#5-如何发现ChunkServer挂掉" class="headerlink" title="5.如何发现ChunkServer挂掉"></a>5.如何发现ChunkServer挂掉</h4><p><img src="https://raw.githubusercontent.com/a11enyang/Picture/master/img/image-20200417090630796.png" alt="image-20200417090630796"></p>
-<h4 id="6-恢复数据"><a href="#6-恢复数据" class="headerlink" title="6.恢复数据"></a>6.恢复数据</h4><p><img src="https://raw.githubusercontent.com/a11enyang/Picture/master/img/image-20200417090744753.png" alt="image-20200417090744753"></p>
-<h4 id="7-读数据的过程"><a href="#7-读数据的过程" class="headerlink" title="7.读数据的过程"></a>7.读数据的过程</h4><p><img src="https://raw.githubusercontent.com/a11enyang/Picture/master/img2/1.png" alt="image-20200417091017797"></p>
-<h4 id="8-写数据的过程"><a href="#8-写数据的过程" class="headerlink" title="8.写数据的过程"></a>8.写数据的过程</h4><p><img src="https://raw.githubusercontent.com/a11enyang/Picture/master/img2/image-20200417091109111.png" alt="image-20200417091109111"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/a11enyang/Picture@1.0/img/image-20200417090530473.png" alt="image-20200417090530473"></p>
+<h4 id="5-如何发现ChunkServer挂掉"><a href="#5-如何发现ChunkServer挂掉" class="headerlink" title="5.如何发现ChunkServer挂掉"></a>5.如何发现ChunkServer挂掉</h4><p><img src="https://cdn.jsdelivr.net/gh/a11enyang/Picture@1.0/img/image-20200417090630796.png" alt="image-20200417090630796"></p>
+<h4 id="6-恢复数据"><a href="#6-恢复数据" class="headerlink" title="6.恢复数据"></a>6.恢复数据</h4><p><img src="https://cdn.jsdelivr.net/gh/a11enyang/Picture@1.0/img/image-20200417090744753.png" alt="image-20200417090744753"></p>
+<h4 id="7-读数据的过程"><a href="#7-读数据的过程" class="headerlink" title="7.读数据的过程"></a>7.读数据的过程</h4><p><img src="https://cdn.jsdelivr.net/gh/a11enyang/Picture@1.0/img2/1.png" alt="image-20200417091017797"></p>
+<h4 id="8-写数据的过程"><a href="#8-写数据的过程" class="headerlink" title="8.写数据的过程"></a>8.写数据的过程</h4><p><img src="https://cdn.jsdelivr.net/gh/a11enyang/Picture@1.0/img2/image-20200417091109111.png" alt="image-20200417091109111"></p>
 
       
     </div>
@@ -371,9 +371,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/GFS/" rel="tag">🔥 GFS</a>
-          
             <a href="/tags/Hadoop/" rel="tag">🔥 Hadoop</a>
+          
+            <a href="/tags/GFS/" rel="tag">🔥 GFS</a>
           
             <a href="/tags/%E5%A4%A7%E6%95%B0%E6%8D%AE/" rel="tag">🔥 大数据</a>
           
@@ -481,7 +481,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">32</span>
+                  <span class="site-state-item-count">31</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -494,7 +494,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">33</span>
+                  <span class="site-state-item-count">32</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>

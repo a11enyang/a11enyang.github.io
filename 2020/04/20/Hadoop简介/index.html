@@ -85,18 +85,18 @@
 <meta property="og:url" content="http://yoursite.com/2020/04/20/Hadoop%E7%AE%80%E4%BB%8B/index.html">
 <meta property="og:site_name" content="Allen Yang">
 <meta property="og:description" content="Hadoop简介 并行计算的框架前世今生源自google的三篇论文">
-<meta property="og:image" content="https://raw.githubusercontent.com/a11enyang/Picture/master/img/image-20200417091352948.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/a11enyang/Picture/master/img2/image-20200418180437130.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/a11enyang/Picture/master/img/image-20200417092132279.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/a11enyang/Picture/master/img2/image-20200420095725741.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/a11enyang/Picture/master/img2/image-20200420105757293.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/a11enyang/Picture@1.0/img/image-20200417091352948.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/a11enyang/Picture@1.0/img2/image-20200418180437130.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/a11enyang/Picture@1.0/img/image-20200417092132279.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/a11enyang/Picture@1.0/img2/image-20200420095725741.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/a11enyang/Picture@1.0/img2/image-20200420105757293.png">
 <meta property="article:published_time" content="2020-04-20T01:03:42.000Z">
-<meta property="article:modified_time" content="2020-04-20T03:34:23.786Z">
+<meta property="article:modified_time" content="2020-04-29T15:47:16.463Z">
 <meta property="article:author" content="Allen Yang">
 <meta property="article:tag" content="Hadoop">
 <meta property="article:tag" content="MapReduce">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://raw.githubusercontent.com/a11enyang/Picture/master/img/image-20200417091352948.png">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/a11enyang/Picture@1.0/img/image-20200417091352948.png">
 
 
 
@@ -327,7 +327,7 @@
 
       
         <h2 id="Hadoop简介-并行计算的框架"><a href="#Hadoop简介-并行计算的框架" class="headerlink" title="Hadoop简介 并行计算的框架"></a>Hadoop简介 并行计算的框架</h2><h4 id="前世今生"><a href="#前世今生" class="headerlink" title="前世今生"></a>前世今生</h4><p>源自google的三篇论文</p>
-<p><img src="https://raw.githubusercontent.com/a11enyang/Picture/master/img/image-20200417091352948.png" alt="image-20200417091352948"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/a11enyang/Picture@1.0/img/image-20200417091352948.png" alt="image-20200417091352948"></p>
 <a id="more"></a>
 
 <h4 id="结构"><a href="#结构" class="headerlink" title="结构"></a>结构</h4><ul>
@@ -353,7 +353,7 @@
 <li><p>然后，编写一个MapReduce程序，该程序具有一些逻辑来处理该数据。您将代码打包为jar，然后将打包的代码传输到存储数据块的DataNodes。这样，您的<a href="https://knpcode.com/hadoop/mapreduce/how-mapreduce-works-in-hadoop/" target="_blank" rel="noopener">MapReduce代码就</a>可以在文件部分上工作（HDFS块位于运行代码的节点上）并并行处理数据。所以要进行的编程作业就是在在这个阶段。</p>
 </li>
 </ul>
-<img src="https://raw.githubusercontent.com/a11enyang/Picture/master/img2/image-20200418180437130.png" alt="image-20200418180437130" style="zoom:50%;" />
+<img src="https://cdn.jsdelivr.net/gh/a11enyang/Picture@1.0/img2/image-20200418180437130.png" alt="image-20200418180437130" style="zoom:50%;" />
 
 <h4 id="架构"><a href="#架构" class="headerlink" title="架构"></a>架构</h4><ul>
 <li>主从架构：<ul>
@@ -367,7 +367,7 @@
 </ul>
 </li>
 </ul>
-<p><img src="https://raw.githubusercontent.com/a11enyang/Picture/master/img/image-20200417092132279.png" alt="image-20200417092132279"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/a11enyang/Picture@1.0/img/image-20200417092132279.png" alt="image-20200417092132279"></p>
 <blockquote>
 <p>参考链接：<a href="https://www.youtube.com/watch?v=O1QP4GCP3fw&amp;list=PL4B2N39WHsDST4kFzq-rmk3LtRLQxEcto&amp;index=5" target="_blank" rel="noopener">https://www.youtube.com/watch?v=O1QP4GCP3fw&amp;list=PL4B2N39WHsDST4kFzq-rmk3LtRLQxEcto&amp;index=5</a></p>
 </blockquote>
@@ -396,7 +396,7 @@
 <h4 id="MapReduce工作流程详细介绍"><a href="#MapReduce工作流程详细介绍" class="headerlink" title="MapReduce工作流程详细介绍"></a>MapReduce工作流程详细介绍</h4><blockquote>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&gt;假设文本内容是：</span><br><span class="line">&gt;Today is your birthday</span><br><span class="line">&gt;Hadppy birthday to you</span><br><span class="line">&gt;Today is a nice day</span><br><span class="line">&gt;how is your day</span><br></pre></td></tr></table></figure>
 </blockquote>
-<p><img src="https://raw.githubusercontent.com/a11enyang/Picture/master/img2/image-20200420095725741.png" alt="image-20200420095725741"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/a11enyang/Picture@1.0/img2/image-20200420095725741.png" alt="image-20200420095725741"></p>
 <ul>
 <li><p>MapReduce分为两个阶段，Map和Reduce。每个阶段的输入输出内容都是&lt;key, value&gt;形式；</p>
 </li>
@@ -430,7 +430,7 @@
 <li><p>Partitioner</p>
 <ul>
 <li><p>作为具有相同键值的记录进入同一个分区（每个映射器内）。然后，每个分区被送到一个reducer。分区类决定给定的（key，value）对将进入哪个分区;</p>
-<p><img src="https://raw.githubusercontent.com/a11enyang/Picture/master/img2/image-20200420105757293.png" alt="image-20200420105757293"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/a11enyang/Picture@1.0/img2/image-20200420105757293.png" alt="image-20200420105757293"></p>
 </li>
 </ul>
 </li>
@@ -581,7 +581,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">32</span>
+                  <span class="site-state-item-count">31</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -594,7 +594,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">33</span>
+                  <span class="site-state-item-count">32</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
