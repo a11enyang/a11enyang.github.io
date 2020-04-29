@@ -1,0 +1,824 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="springboot,vuejs," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="参考链接：https:&#x2F;&#x2F;dev.to&#x2F;brunodrugowick&#x2F;complete-api-in-5-minutes-with-spring-data-rest-aqap-series-1ie8">
+<meta property="og:type" content="article">
+<meta property="og:title" content="springboot+vuejs+boostrap+axios">
+<meta property="og:url" content="http://yoursite.com/2020/04/26/springboot-vuejs-boostrap-axios/index.html">
+<meta property="og:site_name" content="Allen Yang">
+<meta property="og:description" content="参考链接：https:&#x2F;&#x2F;dev.to&#x2F;brunodrugowick&#x2F;complete-api-in-5-minutes-with-spring-data-rest-aqap-series-1ie8">
+<meta property="article:published_time" content="2020-04-26T11:20:41.000Z">
+<meta property="article:modified_time" content="2020-04-29T12:14:19.308Z">
+<meta property="article:author" content="Allen Yang">
+<meta property="article:tag" content="springboot">
+<meta property="article:tag" content="vuejs">
+<meta name="twitter:card" content="summary">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2020/04/26/springboot-vuejs-boostrap-axios/"/>
+
+
+
+
+
+  <title>springboot+vuejs+boostrap+axios | Allen Yang</title>
+  
+
+
+
+
+
+
+
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Allen Yang</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/04/26/springboot-vuejs-boostrap-axios/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Allen Yang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avataaars.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Allen Yang">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">springboot+vuejs+boostrap+axios</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-04-26T19:20:41+08:00">
+                2020-04-26
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>参考链接：<a href="https://dev.to/brunodrugowick/complete-api-in-5-minutes-with-spring-data-rest-aqap-series-1ie8" target="_blank" rel="noopener">https://dev.to/brunodrugowick/complete-api-in-5-minutes-with-spring-data-rest-aqap-series-1ie8</a></p>
+<a id="more"></a>
+
+<h2 id="完成一个spring-data-的restful-api"><a href="#完成一个spring-data-的restful-api" class="headerlink" title="完成一个spring data 的restful api"></a>完成一个spring data 的restful api</h2><h3 id="明确资源"><a href="#明确资源" class="headerlink" title="明确资源"></a>明确资源</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Entity</span> <span class="meta">@Data</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">User</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Id</span></span><br><span class="line">    <span class="meta">@GeneratedValue</span>(strategy = GenerationType.IDENTITY)</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">long</span> id;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> String firstName;</span><br><span class="line">    <span class="keyword">private</span> String lastName;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@ManyToOne</span></span><br><span class="line">    <span class="meta">@JoinColumn</span>(name = <span class="string">"role_id"</span>)</span><br><span class="line">    <span class="keyword">private</span> Role role;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Entity</span> <span class="meta">@Data</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Role</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Id</span></span><br><span class="line">    <span class="meta">@GeneratedValue</span>(strategy = GenerationType.IDENTITY)</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">long</span> id;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> String name;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="创建和导出数据库"><a href="#创建和导出数据库" class="headerlink" title="创建和导出数据库"></a>创建和导出数据库</h3><p>这个部分属于dao层，抽象了对于数据库的操作：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RepositoryRestResource</span>(collectionResourceRel = <span class="string">"users"</span>, itemResourceRel = <span class="string">"user"</span>, path = <span class="string">"users"</span>)</span><br><span class="line"><span class="class"><span class="keyword">interface</span> <span class="title">PersonRepository</span> <span class="keyword">extends</span> <span class="title">JpaRepository</span>&lt;<span class="title">User</span>, <span class="title">Long</span>&gt; </span>&#123;&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@RepositoryRestResource</span>(collectionResourceRel = <span class="string">"roles"</span>, itemResourceRel = <span class="string">"role"</span>, path = <span class="string">"roles"</span>)</span><br><span class="line"><span class="class"><span class="keyword">interface</span> <span class="title">RoleRepository</span> <span class="keyword">extends</span> <span class="title">JpaRepository</span>&lt;<span class="title">Role</span>, <span class="title">Long</span>&gt; </span>&#123;&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+<h2 id="Spring-Boot-Vue-js-Axios-and-Thymeleaf-with-Bootstrap"><a href="#Spring-Boot-Vue-js-Axios-and-Thymeleaf-with-Bootstrap" class="headerlink" title="Spring Boot, Vue.js, Axios and Thymeleaf with Bootstrap"></a>Spring Boot, Vue.js, Axios and Thymeleaf with Bootstrap</h2><h3 id="1-基础依赖"><a href="#1-基础依赖" class="headerlink" title="1 基础依赖"></a>1 基础依赖</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;org.webjars&lt;&#x2F;groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;bootstrap&lt;&#x2F;artifactId&gt;</span><br><span class="line">    &lt;version&gt;4.4.1&lt;&#x2F;version&gt;</span><br><span class="line">&lt;&#x2F;dependency&gt;</span><br><span class="line">&lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;org.webjars&lt;&#x2F;groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;webjars-locator&lt;&#x2F;artifactId&gt;</span><br><span class="line">    &lt;version&gt;0.38&lt;&#x2F;version&gt;</span><br><span class="line">&lt;&#x2F;dependency&gt;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="2-DAO和View的设置"><a href="#2-DAO和View的设置" class="headerlink" title="2 DAO和View的设置"></a>2 DAO和View的设置</h3><p>DAO</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">@Entity(name &#x3D; &quot;role&quot;)</span><br><span class="line">@Data</span><br><span class="line">public class Role &#123;</span><br><span class="line"></span><br><span class="line">    @Id</span><br><span class="line">    @GeneratedValue(strategy &#x3D; GenerationType.IDENTITY)</span><br><span class="line">    private long id;</span><br><span class="line"></span><br><span class="line">    private String name;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">@Entity(name &#x3D; &quot;user&quot;)</span><br><span class="line">@Data</span><br><span class="line">public class User &#123;</span><br><span class="line"></span><br><span class="line">    @Id</span><br><span class="line">    @GeneratedValue(strategy &#x3D; GenerationType.IDENTITY)</span><br><span class="line">    private long id;</span><br><span class="line"></span><br><span class="line">    private String firstName;</span><br><span class="line">    private String lastName;</span><br><span class="line"></span><br><span class="line">    @ManyToOne</span><br><span class="line">    @JoinColumn(name &#x3D; &quot;role_id&quot;)</span><br><span class="line">    private Role role;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">@Repository</span><br><span class="line">public interface RoleRepository extends JpaRepository&lt;Role, Long&gt; &#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">@Repository</span><br><span class="line">public interface UserRepository extends JpaRepository&lt;User, Long&gt; &#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<p>Controller</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">@Controller</span><br><span class="line">public class MainController &#123;</span><br><span class="line"></span><br><span class="line">    @RequestMapping(&quot;&#x2F;&quot;)</span><br><span class="line">    public String index() &#123;</span><br><span class="line">        return &quot;index&quot;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<p>模板设置</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang&#x3D;&quot;en&quot; xmlns:th&#x3D;&quot;http:&#x2F;&#x2F;www.thymeleaf.org&quot;&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;link href&#x3D;&#39;&#x2F;webjars&#x2F;bootstrap&#x2F;css&#x2F;bootstrap.min.css&#39; rel&#x3D;&#39;stylesheet&#39;&gt;</span><br><span class="line"></span><br><span class="line">    &lt;meta charset&#x3D;&quot;UTF-8&quot;&gt;</span><br><span class="line">    &lt;title&gt;Home&lt;&#x2F;title&gt;</span><br><span class="line">&lt;&#x2F;head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line"></span><br><span class="line">&lt;div th:replace&#x3D;&quot;fragments&#x2F;header :: header&quot;&gt;&lt;&#x2F;div&gt;</span><br><span class="line"></span><br><span class="line">&lt;script src&#x3D;&quot;&#x2F;webjars&#x2F;jquery&#x2F;jquery.min.js&quot;&gt;&lt;&#x2F;script&gt;</span><br><span class="line">&lt;script src&#x3D;&quot;&#x2F;webjars&#x2F;bootstrap&#x2F;js&#x2F;bootstrap.min.js&quot;&gt;&lt;&#x2F;script&gt;</span><br><span class="line">&lt;&#x2F;body&gt;</span><br><span class="line">&lt;&#x2F;html&gt;</span><br></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang&#x3D;&quot;en&quot; xmlns:th&#x3D;&quot;http:&#x2F;&#x2F;www.thymeleaf.org&quot;&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;link href&#x3D;&#39;&#x2F;webjars&#x2F;bootstrap&#x2F;css&#x2F;bootstrap.min.css&#39; rel&#x3D;&#39;stylesheet&#39;&gt;</span><br><span class="line"></span><br><span class="line">    &lt;meta charset&#x3D;&quot;UTF-8&quot;&gt;</span><br><span class="line">    &lt;title&gt;Restaurants&lt;&#x2F;title&gt;</span><br><span class="line">&lt;&#x2F;head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line"></span><br><span class="line">&lt;nav class&#x3D;&quot;navbar navbar-expand-lg navbar-dark bg-dark&quot; th:fragment&#x3D;&quot;header&quot;&gt;</span><br><span class="line">    &lt;a class&#x3D;&quot;navbar-brand&quot; href&#x3D;&quot;&#x2F;&quot;&gt;Home&lt;&#x2F;a&gt;</span><br><span class="line">    &lt;button aria-controls&#x3D;&quot;navbarSupportedContent&quot; aria-expanded&#x3D;&quot;false&quot; aria-label&#x3D;&quot;Toggle navigation&quot;</span><br><span class="line">            class&#x3D;&quot;navbar-toggler&quot; data-target&#x3D;&quot;#navbarSupportedContent&quot; data-toggle&#x3D;&quot;collapse&quot; type&#x3D;&quot;button&quot;&gt;</span><br><span class="line">        &lt;span class&#x3D;&quot;navbar-toggler-icon&quot;&gt;&lt;&#x2F;span&gt;</span><br><span class="line">    &lt;&#x2F;button&gt;</span><br><span class="line"></span><br><span class="line">    &lt;div class&#x3D;&quot;collapse navbar-collapse&quot; id&#x3D;&quot;navbarSupportedContent&quot;&gt;</span><br><span class="line">        &lt;ul class&#x3D;&quot;navbar-nav mr-auto&quot;&gt;</span><br><span class="line">            &lt;li class&#x3D;&quot;nav-item dropdown&quot;&gt;</span><br><span class="line">                &lt;a aria-expanded&#x3D;&quot;false&quot; aria-haspopup&#x3D;&quot;true&quot; class&#x3D;&quot;nav-link dropdown-toggle&quot; data-toggle&#x3D;&quot;dropdown&quot;</span><br><span class="line">                   href&#x3D;&quot;#&quot; id&#x3D;&quot;navbarDropdown&quot; role&#x3D;&quot;button&quot;&gt;</span><br><span class="line">                    Entities</span><br><span class="line">                &lt;&#x2F;a&gt;</span><br><span class="line">                &lt;div aria-labelledby&#x3D;&quot;navbarDropdown&quot; class&#x3D;&quot;dropdown-menu&quot;&gt;</span><br><span class="line">                    &lt;a class&#x3D;&quot;dropdown-item&quot; href&#x3D;&quot;&#x2F;users&quot;&gt;Users&lt;&#x2F;a&gt;</span><br><span class="line">                    &lt;a class&#x3D;&quot;dropdown-item&quot; href&#x3D;&quot;&#x2F;roles&quot;&gt;Roles&lt;&#x2F;a&gt;</span><br><span class="line">                    &lt;div class&#x3D;&quot;dropdown-divider&quot;&gt;&lt;&#x2F;div&gt;</span><br><span class="line">                    &lt;div class&#x3D;&quot;dropdown-item-text p-4 text-muted&quot; style&#x3D;&quot;max-width: 200px;&quot;&gt;</span><br><span class="line">                        &lt;p&gt;</span><br><span class="line">                            Administrative pages to list, edit, create and remove entities.</span><br><span class="line">                        &lt;&#x2F;p&gt;</span><br><span class="line">                    &lt;&#x2F;div&gt;</span><br><span class="line">                &lt;&#x2F;div&gt;</span><br><span class="line">            &lt;&#x2F;li&gt;</span><br><span class="line">        &lt;&#x2F;ul&gt;</span><br><span class="line">        &lt;form class&#x3D;&quot;form-inline my-2 my-lg-0&quot;&gt;</span><br><span class="line">            &lt;input aria-label&#x3D;&quot;Search&quot; class&#x3D;&quot;form-control mr-sm-2&quot; placeholder&#x3D;&quot;Search&quot; type&#x3D;&quot;search&quot;&gt;</span><br><span class="line">            &lt;button class&#x3D;&quot;btn btn-outline-success my-2 my-sm-0&quot; type&#x3D;&quot;submit&quot;&gt;Search&lt;&#x2F;button&gt;</span><br><span class="line">        &lt;&#x2F;form&gt;</span><br><span class="line">    &lt;&#x2F;div&gt;</span><br><span class="line">&lt;&#x2F;nav&gt;</span><br><span class="line"></span><br><span class="line">&lt;script src&#x3D;&quot;&#x2F;webjars&#x2F;jquery&#x2F;jquery.min.js&quot;&gt;&lt;&#x2F;script&gt;</span><br><span class="line">&lt;script src&#x3D;&quot;&#x2F;webjars&#x2F;bootstrap&#x2F;js&#x2F;bootstrap.min.js&quot;&gt;&lt;&#x2F;script&gt;</span><br><span class="line">&lt;&#x2F;body&gt;</span><br><span class="line">&lt;&#x2F;html&gt;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="3-The-HTML-templates-for-the-entities"><a href="#3-The-HTML-templates-for-the-entities" class="headerlink" title="3 The HTML templates for the entities"></a>3 The HTML templates for the entities</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">@Controller</span><br><span class="line">public class RoleController &#123;</span><br><span class="line"></span><br><span class="line">    @GetMapping(&quot;&#x2F;roles&quot;)</span><br><span class="line">    public String rolesPage() &#123;</span><br><span class="line">        return &quot;roles&quot;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">@Controller</span><br><span class="line">public class UserController &#123;</span><br><span class="line"></span><br><span class="line">    @GetMapping(&quot;&#x2F;users&quot;)</span><br><span class="line">    public String users() &#123;</span><br><span class="line">        return &quot;users&quot;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<p>roles.html</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang&#x3D;&quot;en&quot; xmlns:th&#x3D;&quot;http:&#x2F;&#x2F;www.thymeleaf.org&quot;&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;link href&#x3D;&#39;&#x2F;webjars&#x2F;bootstrap&#x2F;css&#x2F;bootstrap.min.css&#39; rel&#x3D;&#39;stylesheet&#39;&gt;</span><br><span class="line"></span><br><span class="line">    &lt;meta charset&#x3D;&quot;UTF-8&quot;&gt;</span><br><span class="line">    &lt;title&gt;Roles&lt;&#x2F;title&gt;</span><br><span class="line">&lt;&#x2F;head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line"></span><br><span class="line">&lt;div th:replace&#x3D;&quot;fragments&#x2F;header :: header&quot;&gt;&lt;&#x2F;div&gt;</span><br><span class="line"></span><br><span class="line">&lt;br&gt;&lt;br&gt;</span><br><span class="line"></span><br><span class="line">&lt;div class&#x3D;&quot;container&quot; id&#x3D;&quot;main&quot;&gt;</span><br><span class="line"></span><br><span class="line">    &lt;table class&#x3D;&quot;table table-striped table-bordered&quot;&gt;</span><br><span class="line">        &lt;thead&gt;</span><br><span class="line">        &lt;tr&gt;</span><br><span class="line">            &lt;th&gt;Role ID&lt;&#x2F;th&gt;</span><br><span class="line">            &lt;th&gt;Role Name&lt;&#x2F;th&gt;</span><br><span class="line">            &lt;th&gt;Actions&lt;&#x2F;th&gt;</span><br><span class="line">        &lt;&#x2F;tr&gt;</span><br><span class="line">        &lt;&#x2F;thead&gt;</span><br><span class="line">        &lt;tbody&gt;</span><br><span class="line">        &lt;tr&gt;</span><br><span class="line">            &lt;td&gt;&lt;&#x2F;td&gt;</span><br><span class="line">            &lt;td&gt;&lt;&#x2F;td&gt;</span><br><span class="line">            &lt;td&gt;</span><br><span class="line">                &lt;a&gt;Edit&lt;&#x2F;a&gt;</span><br><span class="line">                &lt;a&gt;Delete&lt;&#x2F;a&gt;</span><br><span class="line">            &lt;&#x2F;td&gt;</span><br><span class="line">        &lt;&#x2F;tr&gt;</span><br><span class="line">        &lt;&#x2F;tbody&gt;</span><br><span class="line">    &lt;&#x2F;table&gt;</span><br><span class="line">&lt;&#x2F;div&gt;</span><br><span class="line"></span><br><span class="line">&lt;script src&#x3D;&quot;&#x2F;webjars&#x2F;jquery&#x2F;jquery.min.js&quot;&gt;&lt;&#x2F;script&gt;</span><br><span class="line">&lt;script src&#x3D;&quot;&#x2F;webjars&#x2F;bootstrap&#x2F;js&#x2F;bootstrap.min.js&quot;&gt;&lt;&#x2F;script&gt;</span><br><span class="line">&lt;&#x2F;body&gt;</span><br><span class="line">&lt;&#x2F;html&gt;</span><br></pre></td></tr></table></figure>
+
+
+
+<p>users.html</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang&#x3D;&quot;en&quot; xmlns:th&#x3D;&quot;http:&#x2F;&#x2F;www.thymeleaf.org&quot;&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;link href&#x3D;&#39;&#x2F;webjars&#x2F;bootstrap&#x2F;css&#x2F;bootstrap.min.css&#39; rel&#x3D;&#39;stylesheet&#39;&gt;</span><br><span class="line"></span><br><span class="line">    &lt;meta charset&#x3D;&quot;UTF-8&quot;&gt;</span><br><span class="line">    &lt;title&gt;Users&lt;&#x2F;title&gt;</span><br><span class="line">&lt;&#x2F;head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line"></span><br><span class="line">&lt;div th:replace&#x3D;&quot;fragments&#x2F;header :: header&quot;&gt;&lt;&#x2F;div&gt;</span><br><span class="line"></span><br><span class="line">&lt;br&gt;&lt;br&gt;</span><br><span class="line"></span><br><span class="line">&lt;div class&#x3D;&quot;container&quot; id&#x3D;&quot;main&quot;&gt;</span><br><span class="line"></span><br><span class="line">    &lt;table class&#x3D;&quot;table table-striped table-bordered&quot;&gt;</span><br><span class="line">        &lt;thead&gt;</span><br><span class="line">        &lt;tr&gt;</span><br><span class="line">            &lt;th&gt;First Name&lt;&#x2F;th&gt;</span><br><span class="line">            &lt;th&gt;Last Name&lt;&#x2F;th&gt;</span><br><span class="line">            &lt;th&gt;Role&lt;&#x2F;th&gt;</span><br><span class="line">            &lt;th&gt;Actions&lt;&#x2F;th&gt;</span><br><span class="line">        &lt;&#x2F;tr&gt;</span><br><span class="line">        &lt;&#x2F;thead&gt;</span><br><span class="line">        &lt;tbody&gt;</span><br><span class="line">        &lt;tr&gt;</span><br><span class="line">            &lt;td&gt;&lt;&#x2F;td&gt;</span><br><span class="line">            &lt;td&gt;&lt;&#x2F;td&gt;</span><br><span class="line">            &lt;td&gt;&lt;&#x2F;td&gt;</span><br><span class="line">            &lt;td&gt;</span><br><span class="line">                &lt;a&gt;Edit&lt;&#x2F;a&gt;</span><br><span class="line">                &lt;a&gt;Delete&lt;&#x2F;a&gt;</span><br><span class="line">            &lt;&#x2F;td&gt;</span><br><span class="line">        &lt;&#x2F;tr&gt;</span><br><span class="line">        &lt;&#x2F;tbody&gt;</span><br><span class="line">    &lt;&#x2F;table&gt;</span><br><span class="line">&lt;&#x2F;div&gt;</span><br><span class="line"></span><br><span class="line">&lt;script src&#x3D;&quot;&#x2F;webjars&#x2F;jquery&#x2F;jquery.min.js&quot;&gt;&lt;&#x2F;script&gt;</span><br><span class="line">&lt;script src&#x3D;&quot;&#x2F;webjars&#x2F;bootstrap&#x2F;js&#x2F;bootstrap.min.js&quot;&gt;&lt;&#x2F;script&gt;</span><br><span class="line">&lt;&#x2F;body&gt;</span><br><span class="line">&lt;&#x2F;html&gt;</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<h1 id="The-Vue-magic"><a href="#The-Vue-magic" class="headerlink" title="The Vue magic"></a>The Vue magic</h1><p>添加vue依赖，其实我觉得可以直接利用cdn进行引用</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;org.webjars&lt;&#x2F;groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;vue&lt;&#x2F;artifactId&gt;</span><br><span class="line">    &lt;version&gt;2.6.11&lt;&#x2F;version&gt;</span><br><span class="line">&lt;&#x2F;dependency&gt;</span><br><span class="line">&lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;org.webjars.npm&lt;&#x2F;groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;axios&lt;&#x2F;artifactId&gt;</span><br><span class="line">    &lt;version&gt;0.19.0&lt;&#x2F;version&gt;</span><br><span class="line">&lt;&#x2F;dependency&gt;</span><br></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">@RestController</span><br><span class="line">@RequestMapping(&quot;&#x2F;api&#x2F;v1&quot;)</span><br><span class="line">public class RolesController &#123;</span><br><span class="line"></span><br><span class="line">    private final RoleRepository roleRepository;</span><br><span class="line"></span><br><span class="line">    public RolesController(RoleRepository roleRepository) &#123;</span><br><span class="line">        this.roleRepository &#x3D; roleRepository;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @GetMapping(&quot;roles&quot;)</span><br><span class="line">    public List&lt;Role&gt; list() &#123;</span><br><span class="line">        return roleRepository.findAll();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">@RestController</span><br><span class="line">@RequestMapping(&quot;&#x2F;api&#x2F;v1&quot;)</span><br><span class="line">public class UsersController &#123;</span><br><span class="line"></span><br><span class="line">    private final UserRepository userRepository;</span><br><span class="line"></span><br><span class="line">    public UsersController(UserRepository userRepository) &#123;</span><br><span class="line">        this.userRepository &#x3D; userRepository;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @GetMapping(&quot;&#x2F;users&quot;)</span><br><span class="line">    public List&lt;User&gt; list() &#123;</span><br><span class="line">        return userRepository.findAll();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<p>roles.html</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- unrelated code omitted for brevity --&gt;</span><br><span class="line">&lt;tr v-for&#x3D;&quot;role in roles&quot;&gt;</span><br><span class="line">    &lt;td&gt;&#123; &#123; role.id &#125; &#125;&lt;&#x2F;td&gt;</span><br><span class="line">    &lt;td&gt;&#123; &#123; role.name &#125; &#125;&lt;&#x2F;td&gt;</span><br><span class="line">&lt;!-- unrelated code omitted for brevity --&gt;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- Vue.js imports --&gt;</span><br><span class="line">&lt;script src&#x3D;&quot;webjars&#x2F;vue&#x2F;vue.min.js&quot;&gt;&lt;&#x2F;script&gt;</span><br><span class="line">&lt;script src&#x3D;&quot;webjars&#x2F;axios&#x2F;dist&#x2F;axios.min.js&quot;&gt;&lt;&#x2F;script&gt;</span><br><span class="line">&lt;!-- Actual Vue.js script --&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">    var app &#x3D; new Vue(&#123;</span><br><span class="line">        el: &#39;#main&#39;,</span><br><span class="line">        data() &#123;</span><br><span class="line">            return &#123;</span><br><span class="line">                roles: null</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;,</span><br><span class="line">        mounted()&#123;</span><br><span class="line">            axios</span><br><span class="line">                .get(&quot;&#x2F;api&#x2F;v1&#x2F;roles&quot;)</span><br><span class="line">                .then(response &#x3D;&gt; (this.roles &#x3D; response.data))</span><br><span class="line">        &#125;,</span><br><span class="line">    &#125;)</span><br><span class="line">&lt;&#x2F;script&gt;</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<p>users.html</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- unrelated code omitted for brevity --&gt;</span><br><span class="line">&lt;tr v-for&#x3D;&quot;user in users&quot;&gt;</span><br><span class="line">    &lt;td&gt;&#123; &#123; user.firstName &#125;&#125;&lt;&#x2F;td&gt;</span><br><span class="line">    &lt;td&gt;&#123; &#123; user.lastName &#125;&#125;&lt;&#x2F;td&gt;</span><br><span class="line">    &lt;td&gt;&#123; &#123; user.role.name &#125;&#125;&lt;&#x2F;td&gt;</span><br><span class="line">&lt;!-- unrelated code omitted for brevity --&gt;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- Vue.js imports --&gt;</span><br><span class="line">&lt;script src&#x3D;&quot;webjars&#x2F;vue&#x2F;vue.min.js&quot;&gt;&lt;&#x2F;script&gt;</span><br><span class="line">&lt;script src&#x3D;&quot;webjars&#x2F;axios&#x2F;dist&#x2F;axios.min.js&quot;&gt;&lt;&#x2F;script&gt;</span><br><span class="line">&lt;!-- Actual Vue.js script --&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">    var app &#x3D; new Vue(&#123;</span><br><span class="line">        el: &#39;#main&#39;,</span><br><span class="line">        data() &#123;</span><br><span class="line">            return &#123;</span><br><span class="line">                users: null</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;,</span><br><span class="line">        mounted()&#123;</span><br><span class="line">            axios</span><br><span class="line">                .get(&quot;&#x2F;api&#x2F;v1&#x2F;users&quot;)</span><br><span class="line">                .then(response &#x3D;&gt; (this.users &#x3D; response.data))</span><br><span class="line">        &#125;,</span><br><span class="line">    &#125;)</span><br><span class="line">&lt;&#x2F;script&gt;</span><br></pre></td></tr></table></figure>
+
+
+
+<p>总结：request请求Controller返回一个thymeleaf模板，在这个模板中由vuejs，vuejs中执行axios向RestController发出请求（这个过程是异步的），得到json字符串后，再在vuejs中进行处理，然后将处理结果返回到html文件中。</p>
+<h2 id="Complete-CRUD-with-Spring-Boot-Vue-js-Axios"><a href="#Complete-CRUD-with-Spring-Boot-Vue-js-Axios" class="headerlink" title="Complete CRUD with Spring Boot, Vue.js, Axios"></a>Complete CRUD with Spring Boot, Vue.js, Axios</h2><h3 id="Adding-REST-operations"><a href="#Adding-REST-operations" class="headerlink" title="Adding REST operations"></a>Adding REST operations</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">@PostMapping(&quot;roles&quot;)</span><br><span class="line">public Role save(@RequestBody Role role) &#123;</span><br><span class="line">    return roleRepository.save(role);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">@DeleteMapping(&quot;roles&#x2F;&#123;id&#125;&quot;)</span><br><span class="line">public void get(@PathVariable Long id) &#123;</span><br><span class="line">    roleRepository.deleteById(id);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="Role-Form"><a href="#Role-Form" class="headerlink" title="Role Form"></a>Role Form</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">form</span> <span class="attr">v-on:submit.prevent</span>=<span class="string">"postRole"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"card mb-auto"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">aria-controls</span>=<span class="string">"roleForm"</span> <span class="attr">aria-expanded</span>=<span class="string">"false"</span> <span class="attr">class</span>=<span class="string">"card-header"</span> <span class="attr">data-target</span>=<span class="string">"#roleForm"</span></span></span><br><span class="line"><span class="tag">             <span class="attr">data-toggle</span>=<span class="string">"collapse"</span> <span class="attr">id</span>=<span class="string">"formHeader"</span> <span class="attr">style</span>=<span class="string">"cursor: pointer"</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"float-left"</span>&gt;</span>New/Edit Role<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"float-right"</span>&gt;</span>+<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"card card-body collapse"</span> <span class="attr">id</span>=<span class="string">"roleForm"</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"form-group row"</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">label</span> <span class="attr">for</span>=<span class="string">"roleName"</span> <span class="attr">class</span>=<span class="string">"col-sm-4 col-form-label"</span>&gt;</span>Role Name<span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">input</span> <span class="attr">id</span>=<span class="string">"roleId"</span> <span class="attr">type</span>=<span class="string">"hidden"</span> <span class="attr">v-model</span>=<span class="string">"role_id"</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">input</span> <span class="attr">id</span>=<span class="string">"roleName"</span> <span class="attr">class</span>=<span class="string">"form-control col-sm-8"</span> <span class="attr">placeholder</span>=<span class="string">"Role Name"</span> <span class="attr">type</span>=<span class="string">"text"</span></span></span><br><span class="line"><span class="tag">                           <span class="attr">v-model</span>=<span class="string">"role_name"</span>/&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"form-group row"</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"col col-sm-4"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">input</span> <span class="attr">class</span>=<span class="string">"btn btn-primary col col-sm-8"</span> <span class="attr">type</span>=<span class="string">"submit"</span> <span class="attr">value</span>=<span class="string">"Save"</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="New-Edit-and-Delete-buttons"><a href="#New-Edit-and-Delete-buttons" class="headerlink" title="New Edit and Delete buttons"></a>New Edit and Delete buttons</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;td&gt;</span><br><span class="line">    &lt;button class&#x3D;&quot;btn btn-primary&quot; v-on:click&#x3D;&quot;editRole(role)&quot;&gt;Edit&lt;&#x2F;button&gt;</span><br><span class="line">    &lt;button class&#x3D;&quot;btn btn-danger&quot; v-on:click&#x3D;&quot;deleteRole(role)&quot;&gt;Delete&lt;&#x2F;button&gt;</span><br><span class="line">&lt;&#x2F;td&gt;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="vue-js"><a href="#vue-js" class="headerlink" title="vue.js"></a>vue.js</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">    var app &#x3D; new Vue(&#123;</span><br><span class="line">        el: &#39;#main&#39;,</span><br><span class="line">        data() &#123;</span><br><span class="line">            return &#123;</span><br><span class="line">                roles: null,</span><br><span class="line">                role_id: &#39;&#39;,</span><br><span class="line">                role_name: &#39;&#39;,</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;,</span><br><span class="line">        mounted()&#123;</span><br><span class="line">            this.getRoles();</span><br><span class="line">        &#125;,</span><br><span class="line">        methods: &#123;</span><br><span class="line">            getRoles: function () &#123;</span><br><span class="line">                axios</span><br><span class="line">                    .get(&quot;&#x2F;api&#x2F;v1&#x2F;roles&quot;)</span><br><span class="line">                    .then(response &#x3D;&gt; (this.roles &#x3D; response.data))</span><br><span class="line">            &#125;,</span><br><span class="line">            postRole: function (event) &#123;</span><br><span class="line">                &#x2F;&#x2F; Creating</span><br><span class="line">                if (this.role_id &#x3D;&#x3D; &#39;&#39; || this.role_id &#x3D;&#x3D; null) &#123;</span><br><span class="line">                    axios</span><br><span class="line">                        .post(&quot;&#x2F;api&#x2F;v1&#x2F;roles&quot;, &#123;</span><br><span class="line">                            &quot;name&quot;: this.role_name,</span><br><span class="line">                        &#125;)</span><br><span class="line">                        .then(savedRole &#x3D;&gt; &#123;</span><br><span class="line">                            this.roles.push(savedRole.data);</span><br><span class="line">                            this.role_name &#x3D; &#39;&#39;;</span><br><span class="line">                            this.role_id &#x3D; &#39;&#39;;</span><br><span class="line">                        &#125;)</span><br><span class="line">                &#125; else &#123; &#x2F;&#x2F; Updating</span><br><span class="line">                    axios</span><br><span class="line">                        .post(&quot;&#x2F;api&#x2F;v1&#x2F;roles&quot;, &#123;</span><br><span class="line">                            &quot;id&quot;: this.role_id,</span><br><span class="line">                            &quot;name&quot;: this.role_name,</span><br><span class="line">                        &#125;)</span><br><span class="line">                        .then(savedRole &#x3D;&gt; &#123;</span><br><span class="line">                            this.getRoles();</span><br><span class="line">                            this.role_name &#x3D; &#39;&#39;;</span><br><span class="line">                            this.role_id &#x3D; &#39;&#39;;</span><br><span class="line">                        &#125;)</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;,</span><br><span class="line">            editRole: function (role) &#123;</span><br><span class="line">                this.role_id &#x3D; role.id;</span><br><span class="line">                this.role_name &#x3D; role.name;</span><br><span class="line">                document.getElementById(&#39;roleForm&#39;).setAttribute(&quot;class&quot;, document.getElementById(&#39;roleForm&#39;).getAttribute(&quot;class&quot;) + &quot; show&quot;);</span><br><span class="line">            &#125;,</span><br><span class="line">            deleteRole: async function (role) &#123;</span><br><span class="line">                await axios</span><br><span class="line">                    .delete(&quot;&#x2F;api&#x2F;v1&#x2F;roles&#x2F;&quot; + role.id);</span><br><span class="line">                this.getRoles();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;,</span><br><span class="line">    &#125;)</span><br><span class="line">&lt;&#x2F;script&gt;</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="The-most-basic-security-for-Spring-Boot-with-Thymeleaf"><a href="#The-most-basic-security-for-Spring-Boot-with-Thymeleaf" class="headerlink" title="The most basic security for Spring Boot with Thymeleaf"></a>The most basic security for Spring Boot with Thymeleaf</h2><p><a href="https://dev.to/brunodrugowick/the-most-basic-security-for-spring-boot-with-thymeleaf-339h" target="_blank" rel="noopener">https://dev.to/brunodrugowick/the-most-basic-security-for-spring-boot-with-thymeleaf-339h</a></p>
+<p>防止跨站攻击</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/springboot/" rel="tag">🔥 springboot</a>
+          
+            <a href="/tags/vuejs/" rel="tag">🔥 vuejs</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/04/25/navicat%E4%BD%BF%E7%94%A8/" rel="next" title="navicat使用">
+                <i class="fa fa-chevron-left"></i> navicat使用
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2020/04/26/%E2%80%9CMVC%E2%80%9D/" rel="prev" title="MVC">
+                MVC <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avataaars.png"
+                alt="Allen Yang" />
+            
+              <p class="site-author-name" itemprop="name">Allen Yang</p>
+              <p class="site-description motion-element" itemprop="description">TO BE A BETTER MAN.</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives">
+              
+                  <span class="site-state-item-count">32</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">33</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#完成一个spring-data-的restful-api"><span class="nav-number">1.</span> <span class="nav-text">完成一个spring data 的restful api</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#明确资源"><span class="nav-number">1.1.</span> <span class="nav-text">明确资源</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#创建和导出数据库"><span class="nav-number">1.2.</span> <span class="nav-text">创建和导出数据库</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Spring-Boot-Vue-js-Axios-and-Thymeleaf-with-Bootstrap"><span class="nav-number">2.</span> <span class="nav-text">Spring Boot, Vue.js, Axios and Thymeleaf with Bootstrap</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-基础依赖"><span class="nav-number">2.1.</span> <span class="nav-text">1 基础依赖</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-DAO和View的设置"><span class="nav-number">2.2.</span> <span class="nav-text">2 DAO和View的设置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-The-HTML-templates-for-the-entities"><span class="nav-number">2.3.</span> <span class="nav-text">3 The HTML templates for the entities</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#The-Vue-magic"><span class="nav-number"></span> <span class="nav-text">The Vue magic</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Complete-CRUD-with-Spring-Boot-Vue-js-Axios"><span class="nav-number">1.</span> <span class="nav-text">Complete CRUD with Spring Boot, Vue.js, Axios</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Adding-REST-operations"><span class="nav-number">1.1.</span> <span class="nav-text">Adding REST operations</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Role-Form"><span class="nav-number">1.2.</span> <span class="nav-text">Role Form</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#New-Edit-and-Delete-buttons"><span class="nav-number">1.3.</span> <span class="nav-text">New Edit and Delete buttons</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#vue-js"><span class="nav-number">1.4.</span> <span class="nav-text">vue.js</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#The-most-basic-security-for-Spring-Boot-with-Thymeleaf"><span class="nav-number">2.</span> <span class="nav-text">The most basic security for Spring Boot with Thymeleaf</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Allen Yang</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

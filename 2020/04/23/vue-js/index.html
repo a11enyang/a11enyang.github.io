@@ -88,8 +88,10 @@
 <meta property="og:image" content="https://raw.githubusercontent.com/a11enyang/Picture/master/img2/image-20200423093540542.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/a11enyang/Picture/master/img2/image-20200423111258038.png">
 <meta property="og:image" content="http://yoursite.com/Users/austin/Library/Application%20Support/typora-user-images/image-20200423165530999.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/a11enyang/Picture/master/img2/image-20200427161752238.png">
+<meta property="og:image" content="https://postimg.cc/Pp7s85KQ">
 <meta property="article:published_time" content="2020-04-23T01:20:49.000Z">
-<meta property="article:modified_time" content="2020-04-24T05:22:35.548Z">
+<meta property="article:modified_time" content="2020-04-29T12:11:43.363Z">
 <meta property="article:author" content="Allen Yang">
 <meta property="article:tag" content="vue.js">
 <meta name="twitter:card" content="summary">
@@ -394,7 +396,8 @@
 <p>computed中的函数使用就像是属性一样</p>
 <p>computed相当于提供了一个缓存机制，如果想要使用缓存的话，那么使用computed；如果不想使用缓存的话，那么使用method</p>
 <p>computed：依赖属性，如果依赖的内容没有发生改变的话，不会执行；如果依赖的内容发生了改变的话， 会执行</p>
-<h3 id="watch"><a href="#watch" class="headerlink" title="watch"></a>watch</h3><p>computed的属性总是同步执行的，有时候需要异步执行</p>
+<p>根据数据元数据的值进行计算然后显示在页面上</p>
+<h3 id="watch"><a href="#watch" class="headerlink" title="watch"></a>watch</h3><p>computed的属性总是同步执行的，有时候需要异步执行。当监视的属性发生改变的时候，会调用这个方法。</p>
 <h3 id="命令的简写"><a href="#命令的简写" class="headerlink" title="命令的简写"></a>命令的简写</h3><p>v-on:   ==  @</p>
 <p>v-bind: == :</p>
 <h3 id="与CSS类的动态链接"><a href="#与CSS类的动态链接" class="headerlink" title="与CSS类的动态链接"></a>与CSS类的动态链接</h3><img src="/Users/austin/Library/Application Support/typora-user-images/image-20200423165530999.png" alt="image-20200423165530999" style="zoom:50%;" />
@@ -404,7 +407,15 @@
 
 
 <h3 id="v-if"><a href="#v-if" class="headerlink" title="v-if"></a>v-if</h3><p>v-if   v-else</p>
-<h3 id="v-show"><a href="#v-show" class="headerlink" title="v-show"></a>v-show</h3><h3 id="v-for"><a href="#v-for" class="headerlink" title="v-for"></a>v-for</h3>
+<h3 id="v-show"><a href="#v-show" class="headerlink" title="v-show"></a>v-show</h3><h3 id="v-for"><a href="#v-for" class="headerlink" title="v-for"></a>v-for</h3><h3 id="vue组件"><a href="#vue组件" class="headerlink" title="vue组件"></a>vue组件</h3><h3 id="vue过滤器"><a href="#vue过滤器" class="headerlink" title="vue过滤器"></a>vue过滤器</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"app"</span>&gt;</span></span><br><span class="line">  &#123; &#123; message | toupper &#125; &#125;  <span class="comment">&lt;!-- 有点类似于bash的语法 --&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">  <span class="keyword">new</span> Vue(&#123;</span><br><span class="line">  el: <span class="string">"#app"</span>,</span><br><span class="line">  data: &#123;</span><br><span class="line">    message: <span class="string">"helloworld"</span>,</span><br><span class="line">  &#125;,</span><br><span class="line">  filter: &#123;</span><br><span class="line">    toupper: <span class="function"><span class="keyword">function</span>(<span class="params">value</span>) </span>&#123;</span><br><span class="line">      <span class="keyword">return</span> value.toUpperCase();</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br><span class="line">&lt;script/&gt;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="vue组件-1"><a href="#vue组件-1" class="headerlink" title="vue组件"></a>vue组件</h3><p><img src="https://raw.githubusercontent.com/a11enyang/Picture/master/img2/image-20200427161752238.png" alt="image-20200427161752238"></p>
+<p><img src="https://postimg.cc/Pp7s85KQ" alt="image-20200427161752238.png"></p>
+
       
     </div>
     
@@ -527,7 +538,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">26</span>
+                  <span class="site-state-item-count">32</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -540,7 +551,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">27</span>
+                  <span class="site-state-item-count">33</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -573,7 +584,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#5"><span class="nav-number">1.</span> <span class="nav-text">5</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6"><span class="nav-number">2.</span> <span class="nav-text">6</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#理解vue-js模板"><span class="nav-number">3.</span> <span class="nav-text">理解vue.js模板</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#在vue实例中得到数据"><span class="nav-number">4.</span> <span class="nav-text">在vue实例中得到数据</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#与属性链接"><span class="nav-number">5.</span> <span class="nav-text">与属性链接</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#"><span class="nav-number">6.</span> <span class="nav-text"></span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#理解和使用指令"><span class="nav-number">7.</span> <span class="nav-text">理解和使用指令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#避免重复渲染"><span class="nav-number">8.</span> <span class="nav-text">避免重复渲染</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#输出html代码并渲染"><span class="nav-number">9.</span> <span class="nav-text">输出html代码并渲染</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#练习"><span class="nav-number">10.</span> <span class="nav-text">练习</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#监听事件"><span class="nav-number">11.</span> <span class="nav-text">监听事件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#从事件中获取数据"><span class="nav-number">12.</span> <span class="nav-text">从事件中获取数据</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#修改一个事件"><span class="nav-number">13.</span> <span class="nav-text">修改一个事件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#监听键盘事件"><span class="nav-number">14.</span> <span class="nav-text">监听键盘事件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#在模板文件中写js"><span class="nav-number">15.</span> <span class="nav-text">在模板文件中写js</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数据的双向绑定"><span class="nav-number">16.</span> <span class="nav-text">数据的双向绑定</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#computed属性"><span class="nav-number">17.</span> <span class="nav-text">computed属性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#watch"><span class="nav-number">18.</span> <span class="nav-text">watch</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#命令的简写"><span class="nav-number">19.</span> <span class="nav-text">命令的简写</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#与CSS类的动态链接"><span class="nav-number">20.</span> <span class="nav-text">与CSS类的动态链接</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#v-if"><span class="nav-number">21.</span> <span class="nav-text">v-if</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#v-show"><span class="nav-number">22.</span> <span class="nav-text">v-show</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#v-for"><span class="nav-number">23.</span> <span class="nav-text">v-for</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#5"><span class="nav-number">1.</span> <span class="nav-text">5</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6"><span class="nav-number">2.</span> <span class="nav-text">6</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#理解vue-js模板"><span class="nav-number">3.</span> <span class="nav-text">理解vue.js模板</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#在vue实例中得到数据"><span class="nav-number">4.</span> <span class="nav-text">在vue实例中得到数据</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#与属性链接"><span class="nav-number">5.</span> <span class="nav-text">与属性链接</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#"><span class="nav-number">6.</span> <span class="nav-text"></span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#理解和使用指令"><span class="nav-number">7.</span> <span class="nav-text">理解和使用指令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#避免重复渲染"><span class="nav-number">8.</span> <span class="nav-text">避免重复渲染</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#输出html代码并渲染"><span class="nav-number">9.</span> <span class="nav-text">输出html代码并渲染</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#练习"><span class="nav-number">10.</span> <span class="nav-text">练习</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#监听事件"><span class="nav-number">11.</span> <span class="nav-text">监听事件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#从事件中获取数据"><span class="nav-number">12.</span> <span class="nav-text">从事件中获取数据</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#修改一个事件"><span class="nav-number">13.</span> <span class="nav-text">修改一个事件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#监听键盘事件"><span class="nav-number">14.</span> <span class="nav-text">监听键盘事件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#在模板文件中写js"><span class="nav-number">15.</span> <span class="nav-text">在模板文件中写js</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数据的双向绑定"><span class="nav-number">16.</span> <span class="nav-text">数据的双向绑定</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#computed属性"><span class="nav-number">17.</span> <span class="nav-text">computed属性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#watch"><span class="nav-number">18.</span> <span class="nav-text">watch</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#命令的简写"><span class="nav-number">19.</span> <span class="nav-text">命令的简写</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#与CSS类的动态链接"><span class="nav-number">20.</span> <span class="nav-text">与CSS类的动态链接</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#v-if"><span class="nav-number">21.</span> <span class="nav-text">v-if</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#v-show"><span class="nav-number">22.</span> <span class="nav-text">v-show</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#v-for"><span class="nav-number">23.</span> <span class="nav-text">v-for</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#vue组件"><span class="nav-number">24.</span> <span class="nav-text">vue组件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#vue过滤器"><span class="nav-number">25.</span> <span class="nav-text">vue过滤器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#vue组件-1"><span class="nav-number">26.</span> <span class="nav-text">vue组件</span></a></li></ol></div>
             
 
           </div>
