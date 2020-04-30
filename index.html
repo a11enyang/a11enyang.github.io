@@ -332,7 +332,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-04-29 20:14:19" itemprop="dateModified" datetime="2020-04-29T20:14:19+08:00">2020-04-29</time>
+                <time title="修改时间：2020-04-30 09:43:55" itemprop="dateModified" datetime="2020-04-30T09:43:55+08:00">2020-04-30</time>
               </span>
 
           
@@ -346,76 +346,10 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>参考链接：<a href="https://dev.to/brunodrugowick/complete-api-in-5-minutes-with-spring-data-rest-aqap-series-1ie8" target="_blank" rel="noopener">https://dev.to/brunodrugowick/complete-api-in-5-minutes-with-spring-data-rest-aqap-series-1ie8</a></p>
+          <p><img src="https://cdn.jsdelivr.net/gh/a11enyang/Picture/img2/image-20200430094219940.png" alt="image-20200430094219940"></p>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2020/04/26/springboot-vuejs-boostrap-axios/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/04/25/navicat%E4%BD%BF%E7%94%A8/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Allen Yang">
-      <meta itemprop="description" content="TO BE A BETTER MAN.">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Allen Yang">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/04/25/navicat%E4%BD%BF%E7%94%A8/" class="post-title-link" itemprop="url">navicat使用</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2020-04-25 23:26:49 / 修改时间：23:29:42" itemprop="dateCreated datePublished" datetime="2020-04-25T23:26:49+08:00">2020-04-25</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>下载navicat数据库之后，进行连接，然后右键mysql创建数据库。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2020/04/25/navicat%E4%BD%BF%E7%94%A8/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -470,7 +404,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-04-30 08:57:36" itemprop="dateModified" datetime="2020-04-30T08:57:36+08:00">2020-04-30</time>
+                <time title="修改时间：2020-04-30 09:39:45" itemprop="dateModified" datetime="2020-04-30T09:39:45+08:00">2020-04-30</time>
               </span>
 
           
@@ -484,69 +418,15 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <a id="more"></a>
-
-
-
-<h3 id="层次"><a href="#层次" class="headerlink" title="层次"></a>层次</h3><p>三个层次：mvc的架构</p>
-<p>m：model  实体类  model中一般有两种类，一种是实体类（用于创建数据库实体），一种是数据库类，用于执行数据库操作</p>
-<p>v：view 视图 html页面 </p>
-<p>c：controller 处理浏览器发送来的请求</p>
-<p>service: 处理中心业务逻辑</p>
-<p>一般流程</p>
-<p>model</p>
-<ul>
-<li>创建实体类</li>
-<li>创建数据库接口，继承JpaRespository&lt;Object, ID type&gt;</li>
-</ul>
-<p>service</p>
-<ul>
-<li>创建service类</li>
-<li>调用数据库接口的自定义方法或者继承的方法</li>
-</ul>
-<p>controller</p>
-<ul>
-<li>创建controller类进行处理浏览器发送来的请求</li>
-</ul>
-<img src="/Users/austin/Library/Application Support/typora-user-images/image-20200426095049246.png" alt="image-20200426095049246" style="zoom:50%;" />
-
-
-
-
-
-<h4 id="常用注解"><a href="#常用注解" class="headerlink" title="常用注解"></a>常用注解</h4><p>@RestController 将类注册为Controller类来实现业务逻辑, 返回值是什么就返回什么</p>
-<p>@RequestMapping(“  “) url映射   可以放在类前面或者是方法的前面</p>
-<p>@Controller  返回一个字符串，但是这个字符串是映射了一个模板,spring会直接在模板文件夹里面进行寻找</p>
-<p>//这两个一般都是放在Controller类之前的</p>
-<p>@GetMapping(“  “) 在Controller类的内部的方法的前面，是在RequestMapping的基础上进行路由的</p>
-<ul>
-<li>@GetMapping(“/“) 正常情况</li>
-<li>@GetMapping(“/{id}”) 如果是这种情况，在方法的参数的前面需要加上@PathVariable来实现效果, 参数需要保持一致</li>
-</ul>
-<p>或者是通过传参的方式，那么就不需要保持一直@PathVariable(“p”)</p>
-<p>@PostMapping( “”)</p>
-<p>@RequesParam 接受的是body传过来的参数</p>
-<p>@Value(“${book.name}”) 将配置问价中的值在Controller中进行使用</p>
-<p>@ConfigurationProperties(prefix = “book”)</p>
-<p>@Component 组件</p>
-<p>@Autowired</p>
-<blockquote>
-<p>参考链接： <a href="https://juejin.im/post/5ea2593f6fb9a03c73799bf4" target="_blank" rel="noopener">https://juejin.im/post/5ea2593f6fb9a03c73799bf4</a></p>
-</blockquote>
-<h3 id="jpa"><a href="#jpa" class="headerlink" title="jpa"></a>jpa</h3><p>java持久化api，定义对象关系映射以及实体对象持久化的标准接口，jpa是一套接口规范。</p>
-<p>spring data jpa是spring基于orm框架，jpa规范的基础上封装的一套jpa应用框架</p>
-<p>常见的jpa数据操作：[<a href="https://blog.csdn.net/wangmx1993328/article/details/89603744#JpaRepository%20%E6%8E%A5%E5%8F%A3%E5%B8%B8%E7%94%A8%20API%C2%A0]" target="_blank" rel="noopener">https://blog.csdn.net/wangmx1993328/article/details/89603744#JpaRepository%20%E6%8E%A5%E5%8F%A3%E5%B8%B8%E7%94%A8%20API%C2%A0]</a>(<a href="https://blog.csdn.net/wangmx1993328/article/details/89603744#JpaRepository" target="_blank" rel="noopener">https://blog.csdn.net/wangmx1993328/article/details/89603744#JpaRepository</a> 接口常用 API )</p>
-<h3 id="踩坑记录"><a href="#踩坑记录" class="headerlink" title="踩坑记录"></a>踩坑记录</h3><ul>
-<li>在写实体类的时候记得加上get和set的方法，不然不可以获取数据库中的数据</li>
-<li>在设置dao层次的时候，记得将id设置正确</li>
-<li>putMapping需要在 form-urlencoded中设置</li>
-<li>postMapping 需要在form-data中设置</li>
-<li>当需要对数据库中的内容进行修改的时候，需要设置事务</li>
-<li>根据<a href="https://blog.csdn.net/itkool/article/details/82994124说，springboot2已经集成了thymeleaf3，不需要再去可以添加thymeleaf3" target="_blank" rel="noopener">https://blog.csdn.net/itkool/article/details/82994124说，springboot2已经集成了thymeleaf3，不需要再去可以添加thymeleaf3</a></li>
-<li>vue中的方法是methods，复数形式</li>
-</ul>
-<h3 id="学习参考网站"><a href="#学习参考网站" class="headerlink" title="学习参考网站"></a>学习参考网站</h3><p><a href="http://www.masterspringboot.com/" target="_blank" rel="noopener">http://www.masterspringboot.com/</a></p>
-
+          <p><img src="https://cdn.jsdelivr.net/gh/a11enyang/Picture/img2/image-20200430093935388.png" alt="image-20200430093935388"></p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/04/25/springboot%E5%AD%A6%E4%B9%A0/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -588,10 +468,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2020-04-25 14:04:36 / 修改时间：14:11:17" itemprop="dateCreated datePublished" datetime="2020-04-25T14:04:36+08:00">2020-04-25</time>
+              <time title="创建时间：2020-04-25 14:04:36" itemprop="dateCreated datePublished" datetime="2020-04-25T14:04:36+08:00">2020-04-25</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-04-30 09:43:37" itemprop="dateModified" datetime="2020-04-30T09:43:37+08:00">2020-04-30</time>
+              </span>
 
           
 
@@ -610,70 +496,9 @@
 <p>http : html传输协议，超文本传输协议，遵循客户-服务器模型设计</p>
 <h3 id="客户端"><a href="#客户端" class="headerlink" title="客户端"></a>客户端</h3><p>要展现一个网页，浏览器首先发送一个请求来获取页面的HTML文档，再解析文档中的资源信息发送其他请求，获取可执行脚本或CSS样式来进行页面布局渲染，以及一些其它页面资源（如图片和视频等）。然后，浏览器将这些资源整合到一起，展现出一个完整的文档，也就是网页。浏览器执行的脚本可以在之后的阶段获取更多资源，并相应地更新网页。</p>
 <h3 id="服务器"><a href="#服务器" class="headerlink" title="服务器"></a>服务器</h3><p>处理客户端发送来的请求</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/04/25/promise-in-js/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Allen Yang">
-      <meta itemprop="description" content="TO BE A BETTER MAN.">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Allen Yang">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/04/25/promise-in-js/" class="post-title-link" itemprop="url">promise in js</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2020-04-25 13:55:53 / 修改时间：13:57:08" itemprop="dateCreated datePublished" datetime="2020-04-25T13:55:53+08:00">2020-04-25</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <blockquote>
-<p>参考链接： <a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Guide/Using_promises" target="_blank" rel="noopener">https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Guide/Using_promises</a></p>
-</blockquote>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/2020/04/25/promise-in-js/#more" rel="contents">
+              <a class="btn" href="/2020/04/25/Http/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -728,7 +553,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-04-30 09:09:54" itemprop="dateModified" datetime="2020-04-30T09:09:54+08:00">2020-04-30</time>
+                <time title="修改时间：2020-04-30 09:44:52" itemprop="dateModified" datetime="2020-04-30T09:44:52+08:00">2020-04-30</time>
               </span>
 
           
@@ -804,7 +629,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-04-29 23:49:27" itemprop="dateModified" datetime="2020-04-29T23:49:27+08:00">2020-04-29</time>
+                <time title="修改时间：2020-04-30 09:36:07" itemprop="dateModified" datetime="2020-04-30T09:36:07+08:00">2020-04-30</time>
               </span>
 
           
@@ -818,14 +643,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h3 id="什么是ajax"><a href="#什么是ajax" class="headerlink" title="什么是ajax"></a>什么是ajax</h3><ul>
-<li><p>ajax全称asynchronous javascript and xml</p>
-</li>
-<li><p>发音诶贾克斯</p>
-</li>
-<li><p>web技术，用于在后台发送和检索数据的技术</p>
-</li>
-</ul>
+          <p><img src="https://cdn.jsdelivr.net/gh/a11enyang/Picture/img2/image-20200430093558594.png" alt="image-20200430093558594"></p>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2020/04/25/what-is-ajax/#more" rel="contents">
@@ -931,6 +749,150 @@
   
   
 
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/04/24/%E2%80%9C%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E2%80%9D/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Allen Yang">
+      <meta itemprop="description" content="TO BE A BETTER MAN.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Allen Yang">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/04/24/%E2%80%9C%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E2%80%9D/" class="post-title-link" itemprop="url">设计模式</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-04-24 13:24:29" itemprop="dateCreated datePublished" datetime="2020-04-24T13:24:29+08:00">2020-04-24</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-04-30 09:07:43" itemprop="dateModified" datetime="2020-04-30T09:07:43+08:00">2020-04-30</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p><img src="https://cdn.jsdelivr.net/gh/a11enyang/Picture/img2/image-20200430090720382.png" alt="image-20200430090720382"></p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/04/24/%E2%80%9C%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E2%80%9D/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/04/23/vue-js/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Allen Yang">
+      <meta itemprop="description" content="TO BE A BETTER MAN.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Allen Yang">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/04/23/vue-js/" class="post-title-link" itemprop="url">vue.js</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-04-23 09:20:49" itemprop="dateCreated datePublished" datetime="2020-04-23T09:20:49+08:00">2020-04-23</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-04-30 09:34:51" itemprop="dateModified" datetime="2020-04-30T09:34:51+08:00">2020-04-30</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p><img src="https://cdn.jsdelivr.net/gh/a11enyang/Picture/img2/image-20200430093436430.png" alt="image-20200430093436430"></p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/04/23/vue-js/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
 
   
   <nav class="pagination">
@@ -1000,14 +962,14 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">29</span>
+          <span class="site-state-item-count">24</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">30</span>
+        <span class="site-state-item-count">26</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
