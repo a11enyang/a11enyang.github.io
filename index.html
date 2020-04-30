@@ -13,7 +13,7 @@
 <link rel="stylesheet" href="/css/main.css">
 
 
-<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css">
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
@@ -309,7 +309,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-04-27 15:51:46" itemprop="dateModified" datetime="2020-04-27T15:51:46+08:00">2020-04-27</time>
+                <time title="修改时间：2020-04-30 09:09:01" itemprop="dateModified" datetime="2020-04-30T09:09:01+08:00">2020-04-30</time>
               </span>
 
           
@@ -323,19 +323,15 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">Presentation Layer  表现层</span><br><span class="line">  -&gt; Views</span><br><span class="line">  -&gt; ViewModels  </span><br><span class="line">  -&gt; Controllers </span><br><span class="line"></span><br><span class="line">Service Layer   服务层（中心业务逻辑）</span><br><span class="line">  -&gt; Includes business logic</span><br><span class="line">  -&gt; Uses data access interfaces</span><br><span class="line"></span><br><span class="line">Data Access Layer (DAOs)  数据访问层（抽象了数据存储机制）</span><br><span class="line">  -&gt; Contracts (interfaces) for persistent storage</span><br><span class="line">  -&gt; Interface implementations</span><br><span class="line"></span><br><span class="line">Entities （实体类）</span><br><span class="line">  -&gt; POCO&#x2F; POJO that represent data</span><br></pre></td></tr></table></figure>
-
-<p>POCO是指Plain Old Class Object，也就是最基本的CLR Class，在原先的EF中，实体类通常是从一个基类继承下来的，而且带有大量的属性描述。而POCO则是指最原始的Class，换句话说这个实体的 Class仅仅需要从Object继承即可，不需要从某一个特定的基类继承。主要是配合Code First使用。Cost Frist则是指我们先定义POCO这样的实体class，然后生成数据库。实际上现在也可以使用Entity Framework Power tools将已经存在的数据库反向生成POCO的class(不通过edmx文件)</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">View ---&gt; Controller ---&gt; Service ---&gt; Data Access Layer</span><br></pre></td></tr></table></figure>
-
-
-
-
-
-
-
-<p><a href="https://blog.csdn.net/zdwzzu2006/article/details/6053006" target="_blank" rel="noopener">https://blog.csdn.net/zdwzzu2006/article/details/6053006</a></p>
-
+          <p><img src="https://cdn.jsdelivr.net/gh/a11enyang/Picture/img2/image-20200430090840049.png" alt="image-20200430090840049"></p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/04/26/%E2%80%9CMVC%E2%80%9D/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -523,7 +519,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-04-27 13:26:45" itemprop="dateModified" datetime="2020-04-27T13:26:45+08:00">2020-04-27</time>
+                <time title="修改时间：2020-04-30 08:57:36" itemprop="dateModified" datetime="2020-04-30T08:57:36+08:00">2020-04-30</time>
               </span>
 
           
@@ -773,10 +769,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2020-04-25 13:40:33 / 修改时间：13:51:15" itemprop="dateCreated datePublished" datetime="2020-04-25T13:40:33+08:00">2020-04-25</time>
+              <time title="创建时间：2020-04-25 13:40:33" itemprop="dateCreated datePublished" datetime="2020-04-25T13:40:33+08:00">2020-04-25</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-04-30 09:09:54" itemprop="dateModified" datetime="2020-04-30T09:09:54+08:00">2020-04-30</time>
+              </span>
 
           
 
@@ -793,6 +795,7 @@
 <p>参考链接：<a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Functions/Arrow_functions" target="_blank" rel="noopener">https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Functions/Arrow_functions</a> MDN web docs</p>
 <p><a href="https://blog.fundebug.com/2017/05/25/arrow-function-for-beginner/" target="_blank" rel="noopener">https://blog.fundebug.com/2017/05/25/arrow-function-for-beginner/</a></p>
 </blockquote>
+<p><img src="https://cdn.jsdelivr.net/gh/a11enyang/Picture/img2/image-20200430090948041.png" alt="image-20200430090948041"></p>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2020/04/25/%E7%AE%AD%E5%A4%B4%E5%87%BD%E6%95%B0-in-js/#more" rel="contents">
@@ -897,7 +900,7 @@
 
   
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
@@ -963,7 +966,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">31</span>
+          <span class="site-state-item-count">30</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -1020,7 +1023,7 @@
   </div>
 
   
-  <script src="/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/animejs@3.1.0/lib/anime.min.js"></script>
   <script src="/lib/velocity/velocity.min.js"></script>
   <script src="/lib/velocity/velocity.ui.min.js"></script>
 
