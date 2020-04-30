@@ -6,11 +6,15 @@ tags:
 	- 博客
 ---
 
+![image-20200430091030706](https://cdn.jsdelivr.net/gh/a11enyang/Picture/img2/image-20200430091030706.png)
+
+<!-- more -->
+
 ## 背景
 
 你已经创建了一个github仓库，并且已经将博文上传到hexo了。假定你原来上传博客的文件夹叫blog。
 
-<!-- more -->
+
 
 ## 如何备份
 

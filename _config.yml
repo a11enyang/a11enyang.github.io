@@ -8,7 +8,7 @@ subtitle: ''
 description: 'TO BE A BETTER MAN.'
 keywords:
 author: Allen Yang
-language: zh-Hans
+language: zh-CN
 timezone: ''
 
 # URL
@@ -93,7 +93,7 @@ ignore:
 # Extensions
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
-theme: next
+theme: next-reloaded
 
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
