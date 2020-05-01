@@ -20,30 +20,39 @@
     var CONFIG = {"hostname":"yoursite.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="TO BE A BETTER MAN.">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Allen Yang">
-<meta property="og:url" content="http://yoursite.com/index.html">
+  <meta name="description" content="创建项目在idea中选择springboot项目进行创建，最开始依赖只选择web（新版的idea中显示的spring web） 查看项目结构  设置项目结构在启动类当前的包中添加新的几个包  model : 存放实体类，springboot会根据这个自动进行orm映射产生数据库表  dao: 数据库接口，是对数据库的抽象  service：处理中心业务逻辑  controller: 处理浏览器发来">
+<meta property="og:type" content="article">
+<meta property="og:title" content="springboot教程">
+<meta property="og:url" content="http://yoursite.com/2020/05/01/springboot%E6%95%99%E7%A8%8B/index.html">
 <meta property="og:site_name" content="Allen Yang">
-<meta property="og:description" content="TO BE A BETTER MAN.">
+<meta property="og:description" content="创建项目在idea中选择springboot项目进行创建，最开始依赖只选择web（新版的idea中显示的spring web） 查看项目结构  设置项目结构在启动类当前的包中添加新的几个包  model : 存放实体类，springboot会根据这个自动进行orm映射产生数据库表  dao: 数据库接口，是对数据库的抽象  service：处理中心业务逻辑  controller: 处理浏览器发来">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://yoursite.com/Users/austin/Library/Application%20Support/typora-user-images/image-20200501170132454.png">
+<meta property="og:image" content="http://yoursite.com/Users/austin/Library/Application%20Support/typora-user-images/image-20200501172120744.png">
+<meta property="og:image" content="http://yoursite.com/Users/austin/Library/Application%20Support/typora-user-images/image-20200501172451801.png">
+<meta property="og:image" content="http://yoursite.com/Users/austin/Library/Application%20Support/typora-user-images/image-20200501172925940.png">
+<meta property="og:image" content="http://yoursite.com/Users/austin/Library/Application%20Support/typora-user-images/image-20200501174222781.png">
+<meta property="article:published_time" content="2020-05-01T08:42:19.000Z">
+<meta property="article:modified_time" content="2020-05-01T10:38:13.077Z">
 <meta property="article:author" content="Allen Yang">
+<meta property="article:tag" content="springboot">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://yoursite.com/Users/austin/Library/Application%20Support/typora-user-images/image-20200501170132454.png">
 
-<link rel="canonical" href="http://yoursite.com/">
+<link rel="canonical" href="http://yoursite.com/2020/05/01/springboot%E6%95%99%E7%A8%8B/">
 
 
 <script id="page-configurations">
   // https://hexo.io/docs/variables.html
   CONFIG.page = {
     sidebar: "",
-    isHome : true,
-    isPost : false,
+    isHome : false,
+    isPost : true,
     lang   : 'zh-CN'
   };
 </script>
 
-  <title>Allen Yang</title>
+  <title>springboot教程 | Allen Yang</title>
   
 
 
@@ -151,9 +160,10 @@
         <div class="content-wrap">
           
 
-          <div class="content index posts-expand">
+          <div class="content post posts-expand">
             
-      
+
+    
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
@@ -169,10 +179,9 @@
       <meta itemprop="name" content="Allen Yang">
     </span>
       <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/05/01/springboot%E6%95%99%E7%A8%8B/" class="post-title-link" itemprop="url">springboot教程</a>
-        </h2>
+        <h1 class="post-title" itemprop="name headline">
+          springboot教程
+        </h1>
 
         <div class="post-meta">
             <span class="post-meta-item">
@@ -196,7 +205,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h3 id="创建项目"><a href="#创建项目" class="headerlink" title="创建项目"></a>创建项目</h3><p>在idea中选择springboot项目进行创建，最开始依赖只选择web（新版的idea中显示的spring web）</p>
+        <h3 id="创建项目"><a href="#创建项目" class="headerlink" title="创建项目"></a>创建项目</h3><p>在idea中选择springboot项目进行创建，最开始依赖只选择web（新版的idea中显示的spring web）</p>
 <h3 id="查看项目结构"><a href="#查看项目结构" class="headerlink" title="查看项目结构"></a>查看项目结构</h3><img src="/Users/austin/Library/Application Support/typora-user-images/image-20200501170132454.png" alt="image-20200501170132454" style="zoom:50%;" />
 
 <h3 id="设置项目结构"><a href="#设置项目结构" class="headerlink" title="设置项目结构"></a>设置项目结构</h3><p>在启动类当前的包中添加新的几个包</p>
@@ -274,689 +283,34 @@
 <p>参考链接：<a href="https://dev.to/brunodrugowick/complete-crud-with-spring-boot-vue-js-axios-fg1" target="_blank" rel="noopener">https://dev.to/brunodrugowick/complete-crud-with-spring-boot-vue-js-axios-fg1</a></p>
 </blockquote>
 
-      
     </div>
 
     
     
     
+
       <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
+          <div class="post-tags">
+              <a href="/tags/springboot/" rel="tag"># springboot</a>
+          </div>
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/04/29/%E6%95%B0%E6%8D%AE%E5%BA%93%E8%AE%BE%E8%AE%A1/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Allen Yang">
-      <meta itemprop="description" content="TO BE A BETTER MAN.">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Allen Yang">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/04/29/%E6%95%B0%E6%8D%AE%E5%BA%93%E8%AE%BE%E8%AE%A1/" class="post-title-link" itemprop="url">数据库设计</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-04-29 20:02:08" itemprop="dateCreated datePublished" datetime="2020-04-29T20:02:08+08:00">2020-04-29</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-04-30 09:19:21" itemprop="dateModified" datetime="2020-04-30T09:19:21+08:00">2020-04-30</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p><img src="https://cdn.jsdelivr.net/gh/a11enyang/Picture/img2/image-20200430091907154.png" alt="image-20200430091907154"></p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2020/04/29/%E6%95%B0%E6%8D%AE%E5%BA%93%E8%AE%BE%E8%AE%A1/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
         
-      
-    </div>
 
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/04/26/%E2%80%9CMVC%E2%80%9D/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Allen Yang">
-      <meta itemprop="description" content="TO BE A BETTER MAN.">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Allen Yang">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/04/26/%E2%80%9CMVC%E2%80%9D/" class="post-title-link" itemprop="url">MVC</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-04-26 19:37:29" itemprop="dateCreated datePublished" datetime="2020-04-26T19:37:29+08:00">2020-04-26</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-04-30 09:09:01" itemprop="dateModified" datetime="2020-04-30T09:09:01+08:00">2020-04-30</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p><img src="https://cdn.jsdelivr.net/gh/a11enyang/Picture/img2/image-20200430090840049.png" alt="image-20200430090840049"></p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2020/04/26/%E2%80%9CMVC%E2%80%9D/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
         
-      
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/04/29/%E6%95%B0%E6%8D%AE%E5%BA%93%E8%AE%BE%E8%AE%A1/" rel="prev" title="数据库设计">
+      <i class="fa fa-chevron-left"></i> 数据库设计
+    </a></div>
+      <div class="post-nav-item"></div>
     </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
       </footer>
+    
   </article>
   
   
   
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/04/26/springboot-vuejs-boostrap-axios/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Allen Yang">
-      <meta itemprop="description" content="TO BE A BETTER MAN.">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Allen Yang">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/04/26/springboot-vuejs-boostrap-axios/" class="post-title-link" itemprop="url">springboot+vuejs+boostrap+axios</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-04-26 19:20:41" itemprop="dateCreated datePublished" datetime="2020-04-26T19:20:41+08:00">2020-04-26</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-04-30 15:56:01" itemprop="dateModified" datetime="2020-04-30T15:56:01+08:00">2020-04-30</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p><img src="https://cdn.jsdelivr.net/gh/a11enyang/Picture/img2/image-20200430094219940.png" alt="image-20200430094219940"></p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2020/04/26/springboot-vuejs-boostrap-axios/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/04/25/springboot%E5%AD%A6%E4%B9%A0/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Allen Yang">
-      <meta itemprop="description" content="TO BE A BETTER MAN.">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Allen Yang">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/04/25/springboot%E5%AD%A6%E4%B9%A0/" class="post-title-link" itemprop="url">springboot学习</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-04-25 20:32:23" itemprop="dateCreated datePublished" datetime="2020-04-25T20:32:23+08:00">2020-04-25</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-04-30 09:39:45" itemprop="dateModified" datetime="2020-04-30T09:39:45+08:00">2020-04-30</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p><img src="https://cdn.jsdelivr.net/gh/a11enyang/Picture/img2/image-20200430093935388.png" alt="image-20200430093935388"></p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2020/04/25/springboot%E5%AD%A6%E4%B9%A0/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/04/25/Http/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Allen Yang">
-      <meta itemprop="description" content="TO BE A BETTER MAN.">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Allen Yang">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/04/25/Http/" class="post-title-link" itemprop="url">Http</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-04-25 14:04:36" itemprop="dateCreated datePublished" datetime="2020-04-25T14:04:36+08:00">2020-04-25</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-04-30 09:43:37" itemprop="dateModified" datetime="2020-04-30T09:43:37+08:00">2020-04-30</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <blockquote>
-<p>参考资料：<a href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP" target="_blank" rel="noopener">https://developer.mozilla.org/zh-CN/docs/Web/HTTP</a></p>
-</blockquote>
-<p>http : html传输协议，超文本传输协议，遵循客户-服务器模型设计</p>
-<h3 id="客户端"><a href="#客户端" class="headerlink" title="客户端"></a>客户端</h3><p>要展现一个网页，浏览器首先发送一个请求来获取页面的HTML文档，再解析文档中的资源信息发送其他请求，获取可执行脚本或CSS样式来进行页面布局渲染，以及一些其它页面资源（如图片和视频等）。然后，浏览器将这些资源整合到一起，展现出一个完整的文档，也就是网页。浏览器执行的脚本可以在之后的阶段获取更多资源，并相应地更新网页。</p>
-<h3 id="服务器"><a href="#服务器" class="headerlink" title="服务器"></a>服务器</h3><p>处理客户端发送来的请求</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2020/04/25/Http/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/04/25/%E7%AE%AD%E5%A4%B4%E5%87%BD%E6%95%B0-in-js/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Allen Yang">
-      <meta itemprop="description" content="TO BE A BETTER MAN.">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Allen Yang">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/04/25/%E7%AE%AD%E5%A4%B4%E5%87%BD%E6%95%B0-in-js/" class="post-title-link" itemprop="url">箭头函数 in js</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-04-25 13:40:33" itemprop="dateCreated datePublished" datetime="2020-04-25T13:40:33+08:00">2020-04-25</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-04-30 09:49:20" itemprop="dateModified" datetime="2020-04-30T09:49:20+08:00">2020-04-30</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p><img src="https://cdn.jsdelivr.net/gh/a11enyang/Picture/img2/image-20200430090948041.png" alt="image-20200430090948041"></p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2020/04/25/%E7%AE%AD%E5%A4%B4%E5%87%BD%E6%95%B0-in-js/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/04/25/what-is-ajax/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Allen Yang">
-      <meta itemprop="description" content="TO BE A BETTER MAN.">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Allen Yang">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/04/25/what-is-ajax/" class="post-title-link" itemprop="url">what is ajax</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-04-25 12:10:52" itemprop="dateCreated datePublished" datetime="2020-04-25T12:10:52+08:00">2020-04-25</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-04-30 09:36:07" itemprop="dateModified" datetime="2020-04-30T09:36:07+08:00">2020-04-30</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p><img src="https://cdn.jsdelivr.net/gh/a11enyang/Picture/img2/image-20200430093558594.png" alt="image-20200430093558594"></p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2020/04/25/what-is-ajax/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/04/25/axios/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Allen Yang">
-      <meta itemprop="description" content="TO BE A BETTER MAN.">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Allen Yang">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/04/25/axios/" class="post-title-link" itemprop="url">axios</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-04-25 11:02:56" itemprop="dateCreated datePublished" datetime="2020-04-25T11:02:56+08:00">2020-04-25</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-04-28 10:19:23" itemprop="dateModified" datetime="2020-04-28T10:19:23+08:00">2020-04-28</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h3 id="what-is-axios"><a href="#what-is-axios" class="headerlink" title="what is axios?"></a>what is axios?</h3><blockquote>
-<p>参考链接： <a href="https://medium.com/@MinimalGhost/what-is-axios-js-and-why-should-i-care-7eb72b111dc0" target="_blank" rel="noopener">https://medium.com/@MinimalGhost/what-is-axios-js-and-why-should-i-care-7eb72b111dc0</a></p>
-<p><a href="https://zhuanlan.zhihu.com/p/69157371" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/69157371</a></p>
-<p><a href="https://dev.to/brunodrugowick/spring-boot-vue-js-axios-and-thymeleaf-with-bootstrap-in-4-commits-2b0l" target="_blank" rel="noopener">https://dev.to/brunodrugowick/spring-boot-vue-js-axios-and-thymeleaf-with-bootstrap-in-4-commits-2b0l</a>   实例</p>
-<p><a href="http://zetcode.com/javascript/axios/" target="_blank" rel="noopener">http://zetcode.com/javascript/axios/</a>   使用方法</p>
-</blockquote>
-<ul>
-<li>他是一个应用很广泛的js库</li>
-<li>用于从node.js中发出http请求</li>
-<li>简单讲就是可以发出get post请求</li>
-<li>全称  Asynchronous JavaScript And XML  异步javascript和xml</li>
-</ul>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2020/04/25/axios/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/04/24/%E2%80%9C%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E2%80%9D/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Allen Yang">
-      <meta itemprop="description" content="TO BE A BETTER MAN.">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Allen Yang">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/04/24/%E2%80%9C%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E2%80%9D/" class="post-title-link" itemprop="url">设计模式</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-04-24 13:24:29" itemprop="dateCreated datePublished" datetime="2020-04-24T13:24:29+08:00">2020-04-24</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-04-30 09:07:43" itemprop="dateModified" datetime="2020-04-30T09:07:43+08:00">2020-04-30</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p><img src="https://cdn.jsdelivr.net/gh/a11enyang/Picture/img2/image-20200430090720382.png" alt="image-20200430090720382"></p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2020/04/24/%E2%80%9C%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E2%80%9D/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-
-  
-  <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
-  </nav>
 
 
 
@@ -1008,6 +362,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#创建项目"><span class="nav-number">1.</span> <span class="nav-text">创建项目</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#查看项目结构"><span class="nav-number">2.</span> <span class="nav-text">查看项目结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#设置项目结构"><span class="nav-number">3.</span> <span class="nav-text">设置项目结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#添加依赖"><span class="nav-number">4.</span> <span class="nav-text">添加依赖</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#自定义设置"><span class="nav-number">5.</span> <span class="nav-text">自定义设置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#启动项目"><span class="nav-number">6.</span> <span class="nav-text">启动项目</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#添加实体类"><span class="nav-number">7.</span> <span class="nav-text">添加实体类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#添加dao（data-access-object-发音“刀”）层接口执行对数据库的操作"><span class="nav-number">8.</span> <span class="nav-text">添加dao（data access object 发音“刀”）层接口执行对数据库的操作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#添加PersonService类"><span class="nav-number">9.</span> <span class="nav-text">添加PersonService类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#新建controller类"><span class="nav-number">10.</span> <span class="nav-text">新建controller类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#在template中新建一个index-html页面"><span class="nav-number">11.</span> <span class="nav-text">在template中新建一个index.html页面</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#建立PersonRestController，设置api"><span class="nav-number">12.</span> <span class="nav-text">建立PersonRestController，设置api</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#通过vue设置前端页面"><span class="nav-number">13.</span> <span class="nav-text">通过vue设置前端页面</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#查看结果"><span class="nav-number">14.</span> <span class="nav-text">查看结果</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
