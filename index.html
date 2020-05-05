@@ -182,7 +182,7 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2020-05-05 18:12:02 / 修改时间：21:09:28" itemprop="dateCreated datePublished" datetime="2020-05-05T18:12:02+08:00">2020-05-05</time>
+              <time title="创建时间：2020-05-05 18:12:02 / 修改时间：21:13:49" itemprop="dateCreated datePublished" datetime="2020-05-05T18:12:02+08:00">2020-05-05</time>
             </span>
 
           
@@ -196,138 +196,15 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <a id="more"></a>
-
-<h3 id="一、实验目的"><a href="#一、实验目的" class="headerlink" title="一、实验目的"></a>一、实验目的</h3><p>正确在本地电脑上安装和运行伪分布式hadoop系统，产生对hadoop的初步认识和理解。</p>
-<h3 id="二、实验内容"><a href="#二、实验内容" class="headerlink" title="二、实验内容"></a>二、实验内容</h3><ol>
-<li>在本地电脑上正确安装和运行伪分布式hadoop系统</li>
-<li>安装完成后，寻找英文网页数据，在本机上运行hadoop自带的WordCount可执行文件，并产生输出结果</li>
-</ol>
-<h3 id="三、试验环境"><a href="#三、试验环境" class="headerlink" title="三、试验环境"></a>三、试验环境</h3><p>macOS Catalinna10.15.3 + hadoop 3.2.1</p>
-<h3 id="四、实验过程"><a href="#四、实验过程" class="headerlink" title="四、实验过程"></a>四、实验过程</h3><ul>
-<li><p>修改主机名</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo scutil --<span class="built_in">set</span> HostName localhost</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>ssh免密登录</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">（1）ssh-keygen -t rsa      （一路回车直到完成）</span><br><span class="line">（2）cat ~/.ssh/id_rsa.pub &gt;&gt; ~/.ssh/authorized_keys</span><br><span class="line">（3）chmod og-wx ~/.ssh/authorized_keys</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>安装hadoop</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew install hadoop</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>修改相关文件</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">修改core-site.xml</span><br><span class="line">修改hdfs-site.xml</span><br><span class="line">修改环境变量</span><br><span class="line">修改hadoop-env.sh</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>格式化HDFS</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./hdfs namenode -format</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>启动hadoop</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./start-dfs.sh</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>查看hadoop是否启动成功</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">austin@localhost bin<span class="variable">$jps</span></span><br><span class="line">37568 Jps</span><br><span class="line">37408 ResourceManager</span><br><span class="line">36983 NameNode</span><br><span class="line">37082 DataNode</span><br><span class="line">37214 SecondaryNameNode</span><br><span class="line">37503 NodeManager</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://cdn.jsdelivr.net/gh/a11enyang/Picture/img2/image-20200409095109976.png" alt="image-20200409095109976"></p>
-</li>
-<li><p>访问NameNode结点网站 <a href="http://localhost:9870/" target="_blank" rel="noopener">http://localhost:9870/</a></p>
-<p><img src="https://cdn.jsdelivr.net/gh/a11enyang/Picture/img2/image-20200409093948517.png" alt="image-20200409093948517"></p>
-</li>
-<li><p>修改文件</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">修改mapred-site.xml</span><br><span class="line">修改yarn-site.xml</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>启动yarn</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sbin/start-yarn.sh</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>访问网站<a href="http://localhost:8088/" target="_blank" rel="noopener">http://localhost:8088/</a></p>
-<p><img src="https://cdn.jsdelivr.net/gh/a11enyang/Picture/img2/image-20200409100440345.png" alt=""></p>
-</li>
-</ul>
-<h3 id="五、实验结果"><a href="#五、实验结果" class="headerlink" title="五、实验结果"></a>五、实验结果</h3><ul>
-<li><p>运行hadoop自带的wordcount程序</p>
-</li>
-<li><p>启动hadoop系统</p>
-<p><img src="https://cdn.jsdelivr.net/gh/a11enyang/Picture/img2/image-20200409095109976.png" alt="image-20200409095109976"></p>
-</li>
-<li><p>在HDFS系统中创建一个input目录</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hadoop fs -mkdir /input</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://cdn.jsdelivr.net/gh/a11enyang/Picture/img2/image-20200409101020933.png" alt="image-20200409101020933"></p>
-</li>
-<li><p>查询HDFS的目录</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hadoop fs -ls</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://cdn.jsdelivr.net/gh/a11enyang/Picture/img2/image-20200409101405784.png" alt="image-20200409101405784"></p>
-</li>
-<li><p>上传传一个两个txt文件到HDFS中</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hadoop fs -put README.txt /input</span><br><span class="line">hadoop fs -put NOTICE.txt /input</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://cdn.jsdelivr.net/gh/a11enyang/Picture/img2/image-20200409104650797.png" alt="image-20200409104650797"></p>
-</li>
-<li><p>运行java包</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hadoop jar /usr/<span class="built_in">local</span>/Cellar/hadoop/3.2.1/libexec/share/hadoop/mapreduce/hadoop-mapreduce-examples-3.2.1.jar wordcount /input /output2</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://cdn.jsdelivr.net/gh/a11enyang/Picture/img2/image-20200409104726268.png" alt="image-20200409104726268"></p>
-</li>
-<li><p>查看内容</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hadoop fs -cat /output2/part-r-00000</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://cdn.jsdelivr.net/gh/a11enyang/Picture/img2/image-20200409104844738.png" alt="image-20200409104844738"></p>
-</li>
-</ul>
-<ul>
-<li><p>查看系统运行状态</p>
-<p><img src="https://cdn.jsdelivr.net/gh/a11enyang/Picture/img2/image-20200409110553497.png" alt="image-20200409110553497"></p>
-<p><img src="https://cdn.jsdelivr.net/gh/a11enyang/Picture/img2/image-20200409111612269.png" alt="image-20200409111612269"></p>
-</li>
-</ul>
-<h3 id="五、附录"><a href="#五、附录" class="headerlink" title="五、附录"></a>五、附录</h3><h4 id="实验结果总结"><a href="#实验结果总结" class="headerlink" title="实验结果总结"></a>实验结果总结</h4><ul>
-<li><p>系统运行情况</p>
-<p>正常运行，可以正常访问HDFS</p>
-</li>
-<li><p>实验数据说明</p>
-<table>
-<thead>
-<tr>
-<th>文件名称</th>
-<th>文件大小</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>NOTICE.txt</td>
-<td>21.61 KB</td>
-</tr>
-<tr>
-<td>README.txt</td>
-<td>1.33 KB</td>
-</tr>
-</tbody></table>
-<p>NOTICE.txt内容(由于内容太多，只选取了一部分)</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">This product includes software developed by The Apache Software</span><br><span class="line">Foundation (http:&#x2F;&#x2F;www.apache.org&#x2F;).</span><br><span class="line"></span><br><span class="line">The binary distribution of this product bundles binaries of</span><br><span class="line">org.iq80.leveldb:leveldb-api (https:&#x2F;&#x2F;github.com&#x2F;dain&#x2F;leveldb), which has the</span><br><span class="line">following notices:</span><br><span class="line">* Copyright 2011 Dain Sundstrom &lt;dain@iq80.com&gt;</span><br><span class="line">* Copyright 2011 FuseSource Corp. http:&#x2F;&#x2F;fusesource.com</span><br><span class="line"></span><br><span class="line">The binary distribution of this product bundles binaries of</span><br><span class="line">AWS SDK for Java - Bundle 1.11.375,</span><br><span class="line">AWS Java SDK for AWS KMS 1.11.375,</span><br><span class="line">AWS Java SDK for Amazon S3 1.11.375,</span><br><span class="line">AWS Java SDK for AWS STS 1.11.375,</span><br><span class="line">JMES Path Query library 1.0,</span><br><span class="line">which has the following notices:</span><br><span class="line"> * This software includes third party software subject to the following</span><br><span class="line"> copyrights: - XML parsing and utility functions from JetS3t - Copyright</span><br><span class="line"> 2006-2009 James Murty. - JSON parsing and utility functions from JSON.org -</span><br><span class="line"> Copyright 2002 JSON.org. - PKCS#1 PEM encoded private key parsing and utility</span><br><span class="line"> functions from oauth.googlecode.com - Copyright 1998-2010 AOL Inc.</span><br><span class="line"></span><br><span class="line">The binary distribution of this product bundles binaries of</span><br><span class="line">Gson 2.2.4,</span><br><span class="line">which has the following notices:</span><br><span class="line"></span><br><span class="line">                            The Netty Project</span><br><span class="line">                            &#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;</span><br><span class="line"></span><br><span class="line">Please visit the Netty web site for more information:</span><br><span class="line"></span><br><span class="line">  * http:&#x2F;&#x2F;netty.io&#x2F;</span><br><span class="line"></span><br><span class="line">Copyright 2014 The Netty Project</span><br><span class="line"></span><br><span class="line">The Netty Project licenses this file to you under the Apache License,</span><br><span class="line">version 2.0 (the &quot;License&quot;); you may not use this file except in compliance</span><br><span class="line">with the License. You may obtain a copy of the License at:</span><br><span class="line">.....</span><br></pre></td></tr></table></figure>
-
-
-
-</li>
-</ul>
-<p>  README.txt</p>
-  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">For the latest information about Hadoop, please visit our website at:</span><br><span class="line"></span><br><span class="line">   http:&#x2F;&#x2F;hadoop.apache.org&#x2F;</span><br><span class="line"></span><br><span class="line">and our wiki, at:</span><br><span class="line"></span><br><span class="line">   http:&#x2F;&#x2F;wiki.apache.org&#x2F;hadoop&#x2F;</span><br><span class="line"></span><br><span class="line">This distribution includes cryptographic software.  The country in </span><br><span class="line">which you currently reside may have restrictions on the import, </span><br><span class="line">possession, use, and&#x2F;or re-export to another country, of </span><br><span class="line">encryption software.  BEFORE using any encryption software, please </span><br><span class="line">check your country&#39;s laws, regulations and policies concerning the</span><br><span class="line">import, possession, or use, and re-export of encryption software, to </span><br><span class="line">see if this is permitted.  See &lt;http:&#x2F;&#x2F;www.wassenaar.org&#x2F;&gt; for more</span><br><span class="line">information.</span><br><span class="line"></span><br><span class="line">The U.S. Government Department of Commerce, Bureau of Industry and</span><br><span class="line">Security (BIS), has classified this software as Export Commodity </span><br><span class="line">Control Number (ECCN) 5D002.C.1, which includes information security</span><br><span class="line">software using or performing cryptographic functions with asymmetric</span><br><span class="line">algorithms.  The form and manner of this Apache Software Foundation</span><br><span class="line">distribution makes it eligible for export under the License Exception</span><br><span class="line">ENC Technology Software Unrestricted (TSU) exception (see the BIS </span><br><span class="line">Export Administration Regulations, Section 740.13) for both object </span><br><span class="line">code and source code.</span><br><span class="line"></span><br><span class="line">The following provides more details on the included cryptographic</span><br><span class="line">software:</span><br><span class="line">  Hadoop Core uses the SSL libraries from the Jetty project written </span><br><span class="line">by mortbay.org.</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><p>❌Debug过程</p>
-<blockquote>
-<h3 id="hadoop3-2-1下MapReduce操作出现错误-找不到或无法加载主类"><a href="#hadoop3-2-1下MapReduce操作出现错误-找不到或无法加载主类" class="headerlink" title="hadoop3.2.1下MapReduce操作出现错误: 找不到或无法加载主类"></a>hadoop3.2.1下MapReduce操作出现错误: 找不到或无法加载主类</h3></blockquote>
-<p>解决办法</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">hadoop classpath</span><br><span class="line">在yarn-site中添加如下内容</span><br><span class="line">&lt;configuration&gt;</span><br><span class="line">    &lt;property&gt;</span><br><span class="line">        &lt;name&gt;yarn.application.classpath&lt;&#x2F;name&gt;</span><br><span class="line">        &lt;value&gt;输入刚才返回的Hadoop classpath路径&lt;&#x2F;value&gt;</span><br><span class="line">    &lt;&#x2F;property&gt;</span><br><span class="line">&lt;&#x2F;configuration&gt;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p><strong>实验体会</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">1.安装与系统合适版本的hadoop</span><br><span class="line">2.善于利用日志文件进行debug</span><br><span class="line">3.通过学习前人的安装经验来减少障碍，少走弯路</span><br><span class="line">4.对hadoop系统有初步认识。文件分块存储，不同块可分布在不同机器节点上，通过元数据记录文件块位置；应用顺序读取各个块；</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>参考内容</p>
-<p><a href="https://blog.csdn.net/qq_41684957/article/details/81710190" target="_blank" rel="noopener">https://blog.csdn.net/qq_41684957/article/details/81710190</a></p>
-<p><a href="https://blog.csdn.net/hongxiao2016/article/details/88919176" target="_blank" rel="noopener">https://blog.csdn.net/hongxiao2016/article/details/88919176</a></p>
-<p><a href="https://blog.csdn.net/CHL123456789/article/details/88662085" target="_blank" rel="noopener">https://blog.csdn.net/CHL123456789/article/details/88662085</a></p>
-<p><a href="https://blog.csdn.net/vbirdbest/article/details/88189753" target="_blank" rel="noopener">https://blog.csdn.net/vbirdbest/article/details/88189753</a></p>
-</li>
-</ul>
-
+          <p><img src="https://cdn.jsdelivr.net/gh/a11enyang/Picture/img2/image-20200505211201857.png" alt="image-20200505211201857"></p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/05/05/%E5%A4%A7%E6%95%B0%E6%8D%AE%E5%AE%9E%E9%AA%8C/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
