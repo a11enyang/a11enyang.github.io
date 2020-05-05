@@ -182,7 +182,7 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2020-05-05 18:12:02 / 修改时间：18:13:05" itemprop="dateCreated datePublished" datetime="2020-05-05T18:12:02+08:00">2020-05-05</time>
+              <time title="创建时间：2020-05-05 18:12:02 / 修改时间：21:09:28" itemprop="dateCreated datePublished" datetime="2020-05-05T18:12:02+08:00">2020-05-05</time>
             </span>
 
           
@@ -226,7 +226,7 @@
 <li><p>查看hadoop是否启动成功</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">austin@localhost bin<span class="variable">$jps</span></span><br><span class="line">37568 Jps</span><br><span class="line">37408 ResourceManager</span><br><span class="line">36983 NameNode</span><br><span class="line">37082 DataNode</span><br><span class="line">37214 SecondaryNameNode</span><br><span class="line">37503 NodeManager</span><br></pre></td></tr></table></figure>
 
-<p><img src="/Users/austin/Desktop/%E4%BD%9C%E4%B8%9A/%E5%A4%A7%E6%95%B0%E6%8D%AE.assets/image-20200409095109976.png" alt="image-20200409095109976"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/a11enyang/Picture/img2/image-20200409095109976.png" alt="image-20200409095109976"></p>
 </li>
 <li><p>访问NameNode结点网站 <a href="http://localhost:9870/" target="_blank" rel="noopener">http://localhost:9870/</a></p>
 <p><img src="https://cdn.jsdelivr.net/gh/a11enyang/Picture/img2/image-20200409093948517.png" alt="image-20200409093948517"></p>
@@ -238,14 +238,14 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sbin/start-yarn.sh</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>访问网站<a href="http://localhost:8088/" target="_blank" rel="noopener">http://localhost:8088/</a></p>
-<p><img src="https://cdn.jsdelivr.net/gh/a11enyang/Picture/img2/image-20200409100440345.png" alt="image-20200409100440345"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/a11enyang/Picture/img2/image-20200409100440345.png" alt=""></p>
 </li>
 </ul>
 <h3 id="五、实验结果"><a href="#五、实验结果" class="headerlink" title="五、实验结果"></a>五、实验结果</h3><ul>
 <li><p>运行hadoop自带的wordcount程序</p>
 </li>
 <li><p>启动hadoop系统</p>
-<p><img src="/Users/austin/Desktop/%E4%BD%9C%E4%B8%9A/%E5%A4%A7%E6%95%B0%E6%8D%AE.assets/image-20200409095109976.png" alt="image-20200409095109976"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/a11enyang/Picture/img2/image-20200409095109976.png" alt="image-20200409095109976"></p>
 </li>
 <li><p>在HDFS系统中创建一个input目录</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hadoop fs -mkdir /input</span><br></pre></td></tr></table></figure>
@@ -255,7 +255,7 @@
 <li><p>查询HDFS的目录</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hadoop fs -ls</span><br></pre></td></tr></table></figure>
 
-<p><img src="/Users/austin/Documents/GitHub/%E5%9B%BE%E7%89%87/Picture/Picture/img2/image-20200409101405784.png" alt="image-20200409101405784"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/a11enyang/Picture/img2/image-20200409101405784.png" alt="image-20200409101405784"></p>
 </li>
 <li><p>上传传一个两个txt文件到HDFS中</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hadoop fs -put README.txt /input</span><br><span class="line">hadoop fs -put NOTICE.txt /input</span><br></pre></td></tr></table></figure>
