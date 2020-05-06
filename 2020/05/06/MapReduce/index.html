@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"yoursite.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="Hadoop MapReduce是一个软件框架，用于轻松编写应用程序，这些应用程序以可靠，容错的方式并行处理大型硬件集群（数千个节点）上的大量数据（多TB数据集）。 MapReduce作业通常将输入数据集分成独立的块，这些任务由Map任务以完全并行的方式处理。框架对地图的输出进行排序，然后将其输入到reduce任务。通常，作业的输入和输出都存储在文件系统中。该框架负责安排任务，监视任务并重新执行失">
+<meta property="og:type" content="article">
+<meta property="og:title" content="MapReduce">
+<meta property="og:url" content="http://yoursite.com/2020/05/06/MapReduce/index.html">
+<meta property="og:site_name" content="Allen Yang">
+<meta property="og:description" content="Hadoop MapReduce是一个软件框架，用于轻松编写应用程序，这些应用程序以可靠，容错的方式并行处理大型硬件集群（数千个节点）上的大量数据（多TB数据集）。 MapReduce作业通常将输入数据集分成独立的块，这些任务由Map任务以完全并行的方式处理。框架对地图的输出进行排序，然后将其输入到reduce任务。通常，作业的输入和输出都存储在文件系统中。该框架负责安排任务，监视任务并重新执行失">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-05-06T01:28:19.000Z">
+<meta property="article:modified_time" content="2020-05-06T15:55:52.126Z">
+<meta property="article:author" content="Allen Yang">
+<meta property="article:tag" content="Hadoop">
+<meta property="article:tag" content="Mapreduce">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://yoursite.com/2020/05/06/MapReduce/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>MapReduce | Allen Yang</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Allen Yang</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/05/06/MapReduce/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Allen Yang">
+      <meta itemprop="description" content="TO BE A BETTER MAN.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Allen Yang">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          MapReduce
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2020-05-06 09:28:19 / 修改时间：23:55:52" itemprop="dateCreated datePublished" datetime="2020-05-06T09:28:19+08:00">2020-05-06</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>Hadoop MapReduce是一个软件框架，用于轻松编写应用程序，这些应用程序以可靠，容错的方式并行处理大型硬件集群（数千个节点）上的大量数据（多TB数据集）。</p>
+<p>MapReduce作业通常将输入数据集分成独立的块，这些任务由Map任务以完全并行的方式处理。<br>框架对地图的输出进行排序，然后将其输入到reduce任务。<br>通常，作业的输入和输出都存储在文件系统中。<br>该框架负责安排任务，监视任务并重新执行失败的任务。</p>
+<p>通常，计算节点和存储节点是相同的，即MapReduce框架和Hadoop分布式文件系统（请参阅HDFS体系结构指南）在同一组节点上运行。<br>此配置使框架可以在已经存在数据的节点上有效地调度任务，从而在整个群集中产生很高的聚合带宽。</p>
+<p>MapReduce框架由一个主资源管理器，每个群集节点一个工作器NodeManager和每个应用程序MRAppMaster组成（请参阅YARN体系结构指南）。</p>
+<p>至少，应用程序通过适当的接口和/或抽象类的实现来指定输入/输出位置和供应图，并减少功能。<br>这些以及其他作业参数构成作业配置。</p>
+<p>然后，Hadoop作业客户端将作业（jar /可执行文件等）和配置提交给ResourceManager，然后由ResourceManager负责将软件/配置分发给工作人员，安排任务并对其进行监视，为工作提供状态和诊断信息，<br>客户。</p>
+<p>尽管Hadoop框架是用Java实现的，但MapReduce应用程序不必用Java编写。</p>
+<a id="more"></a>
+
+<h3 id="包装类"><a href="#包装类" class="headerlink" title="包装类"></a>包装类</h3><p><a href="https://zhuanlan.zhihu.com/p/78590948" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/78590948</a></p>
+<h3 id="序列化"><a href="#序列化" class="headerlink" title="序列化"></a>序列化</h3><p><a href="https://www.zhihu.com/question/47794528" target="_blank" rel="noopener">https://www.zhihu.com/question/47794528</a></p>
+<p><a href="https://www.jianshu.com/p/f62553fd69c2" target="_blank" rel="noopener">https://www.jianshu.com/p/f62553fd69c2</a></p>
+<p><a href="https://juejin.im/post/5ce3cdc8e51d45777b1a3cdf" target="_blank" rel="noopener">https://juejin.im/post/5ce3cdc8e51d45777b1a3cdf</a></p>
+<p>序列化：将一个对象用二进制表示</p>
+<p>作用：把对象字节序列永久保存在硬盘上；用于网络传输</p>
+<h3 id="持久化"><a href="#持久化" class="headerlink" title="持久化"></a>持久化</h3><p><a href="https://blog.csdn.net/lee576/article/details/1927021" target="_blank" rel="noopener">https://blog.csdn.net/lee576/article/details/1927021</a></p>
+<h3 id="MapReduce中的Writable"><a href="#MapReduce中的Writable" class="headerlink" title="MapReduce中的Writable"></a>MapReduce中的Writable</h3><p><a href="https://acadgild.com/blog/writable-and-writablecomparable-in-hadoop" target="_blank" rel="noopener">https://acadgild.com/blog/writable-and-writablecomparable-in-hadoop</a></p>
+<h3 id="官方WordCount项目阅读"><a href="#官方WordCount项目阅读" class="headerlink" title="官方WordCount项目阅读"></a>官方WordCount项目阅读</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.io.IOException;</span><br><span class="line"><span class="keyword">import</span> java.util.StringTokenizer;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.apache.hadoop.conf.Configuration;</span><br><span class="line"><span class="keyword">import</span> org.apache.hadoop.fs.Path;</span><br><span class="line"><span class="keyword">import</span> org.apache.hadoop.io.IntWritable;</span><br><span class="line"><span class="keyword">import</span> org.apache.hadoop.io.Text;</span><br><span class="line"><span class="keyword">import</span> org.apache.hadoop.mapreduce.Job;</span><br><span class="line"><span class="keyword">import</span> org.apache.hadoop.mapreduce.Mapper;</span><br><span class="line"><span class="keyword">import</span> org.apache.hadoop.mapreduce.Reducer;</span><br><span class="line"><span class="keyword">import</span> org.apache.hadoop.mapreduce.lib.input.FileInputFormat;</span><br><span class="line"><span class="keyword">import</span> org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">WordCount</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">TokenizerMapper</span></span></span><br><span class="line"><span class="class">            <span class="keyword">extends</span> <span class="title">Mapper</span>&lt;<span class="title">Object</span>, <span class="title">Text</span>, <span class="title">Text</span>, <span class="title">IntWritable</span>&gt; </span>&#123;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">static</span> IntWritable one = <span class="keyword">new</span> IntWritable(<span class="number">1</span>);</span><br><span class="line">        <span class="keyword">private</span> Text word = <span class="keyword">new</span> Text();</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">map</span><span class="params">(Object key, Text value, Context context</span></span></span><br><span class="line"><span class="function"><span class="params">        )</span> <span class="keyword">throws</span> IOException, InterruptedException </span>&#123;</span><br><span class="line">            StringTokenizer itr = <span class="keyword">new</span> StringTokenizer(value.toString());</span><br><span class="line">            <span class="keyword">while</span> (itr.hasMoreTokens()) &#123;</span><br><span class="line">                word.set(itr.nextToken());</span><br><span class="line">                context.write(word, one);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">IntSumReducer</span></span></span><br><span class="line"><span class="class">            <span class="keyword">extends</span> <span class="title">Reducer</span>&lt;<span class="title">Text</span>, <span class="title">IntWritable</span>, <span class="title">Text</span>, <span class="title">IntWritable</span>&gt; </span>&#123;</span><br><span class="line">        <span class="keyword">private</span> IntWritable result = <span class="keyword">new</span> IntWritable();</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">reduce</span><span class="params">(Text key, Iterable&lt;IntWritable&gt; values,</span></span></span><br><span class="line"><span class="function"><span class="params">                           Context context</span></span></span><br><span class="line"><span class="function"><span class="params">        )</span> <span class="keyword">throws</span> IOException, InterruptedException </span>&#123;</span><br><span class="line">            <span class="keyword">int</span> sum = <span class="number">0</span>;</span><br><span class="line">            <span class="keyword">for</span> (IntWritable val : values) &#123;</span><br><span class="line">                sum += val.get();</span><br><span class="line">            &#125;</span><br><span class="line">            result.set(sum);</span><br><span class="line">            context.write(key, result);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        Configuration conf = <span class="keyword">new</span> Configuration();</span><br><span class="line">        Job job = Job.getInstance(conf, <span class="string">"word count"</span>);</span><br><span class="line">        job.setJarByClass(WordCount<span class="class">.<span class="keyword">class</span>)</span>;</span><br><span class="line">        job.setMapperClass(TokenizerMapper<span class="class">.<span class="keyword">class</span>)</span>;</span><br><span class="line">        job.setCombinerClass(IntSumReducer<span class="class">.<span class="keyword">class</span>)</span>;</span><br><span class="line">        job.setReducerClass(IntSumReducer<span class="class">.<span class="keyword">class</span>)</span>;</span><br><span class="line">        job.setOutputKeyClass(Text<span class="class">.<span class="keyword">class</span>)</span>;</span><br><span class="line">        job.setOutputValueClass(IntWritable<span class="class">.<span class="keyword">class</span>)</span>;</span><br><span class="line">        FileInputFormat.addInputPath(job, <span class="keyword">new</span> Path(args[<span class="number">0</span>]));</span><br><span class="line">        FileOutputFormat.setOutputPath(job, <span class="keyword">new</span> Path(args[<span class="number">1</span>]));</span><br><span class="line">        System.exit(job.waitForCompletion(<span class="keyword">true</span>) ? <span class="number">0</span> : <span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>过程：</p>
+<ul>
+<li><p>JobTracker（用于分配和调度任务，一个集群只有一个JobTracker，类似于NameNode的作用）与TaskTracker（在集群的每台的机器上执行MapReduce任务，类似于DataNode）</p>
+</li>
+<li><p>设置job：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Configuration conf = <span class="keyword">new</span> Configuration();</span><br><span class="line">Job job = Job.getInstance(conf, <span class="string">"word count"</span>);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>配置相关内容：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">job.setJarByClass(WordCount<span class="class">.<span class="keyword">class</span>)</span>;<span class="comment">//设置当前类</span></span><br><span class="line">job.setMapperClass(TokenizerMapper<span class="class">.<span class="keyword">class</span>)</span>;<span class="comment">//设置充当Mapper的类</span></span><br><span class="line">job.setCombinerClass(IntSumReducer<span class="class">.<span class="keyword">class</span>)</span>;<span class="comment">//设置充当Combiner的类</span></span><br><span class="line">job.setReducerClass(IntSumReducer<span class="class">.<span class="keyword">class</span>)</span>;<span class="comment">//设置充当Reducer的类</span></span><br><span class="line">job.setOutputKeyClass(Text<span class="class">.<span class="keyword">class</span>)</span>;<span class="comment">//设置最后输出的key的类型</span></span><br><span class="line">job.setOutputValueClass(IntWritable<span class="class">.<span class="keyword">class</span>)</span>;<span class="comment">//设置最后输出的value的类型</span></span><br></pre></td></tr></table></figure>
+
+<p>上述类型是Mapper与Reducer的输出的key  value的类型相同的情况，如果类型不同，需要设置<code>setMapOutPutKeyClass</code>与<code>setMapOutPutValueClass</code></p>
+<blockquote>
+<p>参考链接：<a href="https://www.cnblogs.com/dtj007/p/5485629.html" target="_blank" rel="noopener">https://www.cnblogs.com/dtj007/p/5485629.html</a></p>
+<p><a href="https://blog.csdn.net/maixia24/article/details/14002235" target="_blank" rel="noopener">https://blog.csdn.net/maixia24/article/details/14002235</a></p>
+<p><a href="https://blog.csdn.net/qq_16403141/article/details/77598532?utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromBaidu-1&amp;depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromBaidu-1" target="_blank" rel="noopener">https://blog.csdn.net/qq_16403141/article/details/77598532?utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromBaidu-1&amp;depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromBaidu-1</a></p>
+</blockquote>
+</li>
+<li><p>设置输入输出路径</p>
+</li>
+<li><p>mapper类</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">TokenizerMapper</span> <span class="keyword">extends</span> <span class="title">Mapper</span>&lt;<span class="title">Object</span>, <span class="title">Text</span>, <span class="title">Text</span>, <span class="title">IntWritable</span>&gt; </span>&#123;</span><br><span class="line">        <span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">static</span> IntWritable one = <span class="keyword">new</span> IntWritable(<span class="number">1</span>);</span><br><span class="line">  			<span class="comment">//文件数据已经被处理为key，value的类型。key是偏移量，value是文本。&lt;Object, Text, Text, IntWritable&gt;表示输入&lt;Object, Text&gt;, 然后输出&lt;Text, IntWritable&gt;</span></span><br><span class="line">  			<span class="comment">//在MapReduce中的一切数据要序列化, 这里将int类型的1转化为Writable的值。</span></span><br><span class="line">        <span class="keyword">private</span> Text word = <span class="keyword">new</span> Text();</span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">map</span><span class="params">(Object key, Text value, Context context</span></span></span><br><span class="line"><span class="function"><span class="params">        )</span> <span class="keyword">throws</span> IOException, InterruptedException </span>&#123;</span><br><span class="line">          <span class="comment">//Context是相当于与MapReduce框架进行交互的接口，数据在各个机器之间的传递由框架来完成。</span></span><br><span class="line">            StringTokenizer itr = <span class="keyword">new</span> StringTokenizer(value.toString());</span><br><span class="line">          <span class="comment">//将输入的value转化为字符串，并且转化为单词列表</span></span><br><span class="line">            <span class="keyword">while</span> (itr.hasMoreTokens()) &#123;</span><br><span class="line">                word.set(itr.nextToken());</span><br><span class="line">                context.write(word, one);</span><br><span class="line">              <span class="comment">//对于每个单词都转化为&lt;word, 1&gt;的键值对</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>reducer类</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">IntSumReducer</span></span></span><br><span class="line"><span class="class">            <span class="keyword">extends</span> <span class="title">Reducer</span>&lt;<span class="title">Text</span>, <span class="title">IntWritable</span>, <span class="title">Text</span>, <span class="title">IntWritable</span>&gt; </span>&#123;</span><br><span class="line">        <span class="keyword">private</span> IntWritable result = <span class="keyword">new</span> IntWritable();</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">reduce</span><span class="params">(Text key, Iterable&lt;IntWritable&gt; values,</span></span></span><br><span class="line"><span class="function"><span class="params">                           Context context</span></span></span><br><span class="line"><span class="function"><span class="params">        )</span> <span class="keyword">throws</span> IOException, InterruptedException </span>&#123;</span><br><span class="line">          <span class="comment">//Iterable&lt;IntWritable&gt;，接受&lt;key,[1,1,1]&gt;中的[1,1,1], [1,1,1]的形成过程由MapReduce框架自己完成了。</span></span><br><span class="line">            <span class="keyword">int</span> sum = <span class="number">0</span>;</span><br><span class="line">            <span class="keyword">for</span> (IntWritable val : values) &#123;</span><br><span class="line">                sum += val.get();<span class="comment">//计算和</span></span><br><span class="line">            &#125;</span><br><span class="line">            result.set(sum);</span><br><span class="line">            context.write(key, result);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ul>
+<h3 id="MapReduce程序的基本框架"><a href="#MapReduce程序的基本框架" class="headerlink" title="MapReduce程序的基本框架"></a>MapReduce程序的基本框架</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.io.IOException;</span><br><span class="line"><span class="keyword">import</span> java.util.StringTokenizer;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.apache.hadoop.conf.Configuration;</span><br><span class="line"><span class="keyword">import</span> org.apache.hadoop.fs.Path;</span><br><span class="line"><span class="keyword">import</span> org.apache.hadoop.io.IntWritable;</span><br><span class="line"><span class="keyword">import</span> org.apache.hadoop.io.Text;</span><br><span class="line"><span class="keyword">import</span> org.apache.hadoop.mapreduce.Job;</span><br><span class="line"><span class="keyword">import</span> org.apache.hadoop.mapreduce.Mapper;</span><br><span class="line"><span class="keyword">import</span> org.apache.hadoop.mapreduce.Reducer;</span><br><span class="line"><span class="keyword">import</span> org.apache.hadoop.mapreduce.lib.input.FileInputFormat;</span><br><span class="line"><span class="keyword">import</span> org.apache.hadoop.mapreduce.lib.input.FileSplit;</span><br><span class="line"><span class="keyword">import</span> org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;</span><br><span class="line"><span class="keyword">import</span> org.apache.hadoop.mapreduce.lib.partition.HashPartitioner;</span><br><span class="line"><span class="keyword">import</span> org.apache.hadoop.util.GenericOptionsParser;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">InvertedIndex</span> </span>&#123;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * Mapper部分</span></span><br><span class="line"><span class="comment">     **/</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">InvertedIndexMapper</span> <span class="keyword">extends</span> <span class="title">Mapper</span>&lt;<span class="title">Object</span>, <span class="title">Text</span>, <span class="title">Text</span>, <span class="title">IntWritable</span>&gt; </span>&#123;</span><br><span class="line">        <span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">static</span> IntWritable one = <span class="keyword">new</span> IntWritable(<span class="number">1</span>);<span class="comment">//常量1</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">/**</span></span><br><span class="line"><span class="comment">         * 对输入的Text切分为多个word,每个word作为一个key输出</span></span><br><span class="line"><span class="comment">         * 输入：key:当前行偏移位置, value:当前行内容</span></span><br><span class="line"><span class="comment">         * 输出：key:word, value:1</span></span><br><span class="line"><span class="comment">         */</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">map</span><span class="params">(Object key, Text value, Context context)</span> <span class="keyword">throws</span> IOException, InterruptedException </span>&#123;</span><br><span class="line">            </span><br><span class="line">            Text word = <span class="keyword">new</span> Text();</span><br><span class="line">            StringTokenizer itr = <span class="keyword">new</span> StringTokenizer(value.toString());</span><br><span class="line">            <span class="keyword">for</span> (; itr.hasMoreTokens(); ) &#123;</span><br><span class="line">                word.set(itr.nextToken());</span><br><span class="line">                context.write(word, one);<span class="comment">//输出&lt;word, 1&gt;</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * Combiner部分</span></span><br><span class="line"><span class="comment">     **/</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">SumCombiner</span> <span class="keyword">extends</span> <span class="title">Reducer</span>&lt;<span class="title">Text</span>, <span class="title">IntWritable</span>, <span class="title">Text</span>, <span class="title">IntWritable</span>&gt; </span>&#123;</span><br><span class="line">        <span class="keyword">private</span> IntWritable result = <span class="keyword">new</span> IntWritable();</span><br><span class="line"></span><br><span class="line">        <span class="comment">/**</span></span><br><span class="line"><span class="comment">         * 将Mapper输出的中间结果相同key部分的value累加，减少向Reduce节点传输的数据量</span></span><br><span class="line"><span class="comment">         * 输出：key:word, value:累加和</span></span><br><span class="line"><span class="comment">         */</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">reduce</span><span class="params">(Text key, Iterable&lt;IntWritable&gt; values, Context context)</span> <span class="keyword">throws</span> IOException, InterruptedException </span>&#123;</span><br><span class="line">            <span class="keyword">int</span> sum = <span class="number">0</span>;</span><br><span class="line">            <span class="keyword">for</span> (IntWritable val : values) &#123;</span><br><span class="line">                sum += val.get();</span><br><span class="line">            &#125;</span><br><span class="line">            result.set(sum);</span><br><span class="line">            context.write(key, result);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * Partitioner部分</span></span><br><span class="line"><span class="comment">     **/</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">NewPartitioner</span> <span class="keyword">extends</span> <span class="title">HashPartitioner</span>&lt;<span class="title">Text</span>, <span class="title">IntWritable</span>&gt; </span>&#123;</span><br><span class="line">        <span class="comment">/**</span></span><br><span class="line"><span class="comment">         * 为了将同一个word的键值对发送到同一个Reduce节点，对key进行临时处理</span></span><br><span class="line"><span class="comment">         */</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getPartition</span><span class="params">(Text key, IntWritable value, <span class="keyword">int</span> numReduceTasks)</span> </span>&#123;</span><br><span class="line">            String term = key.toString();</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">super</span>.getPartition(<span class="keyword">new</span> Text(term), value, numReduceTasks);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * Reducer部分</span></span><br><span class="line"><span class="comment">     **/</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">InvertedIndexReducer</span> <span class="keyword">extends</span> <span class="title">Reducer</span>&lt;<span class="title">Text</span>, <span class="title">IntWritable</span>, <span class="title">Text</span>, <span class="title">Text</span>&gt; </span>&#123;</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">reduce</span><span class="params">(Text key, Iterable&lt;IntWritable&gt; values, Context context)</span> <span class="keyword">throws</span> IOException, InterruptedException </span>&#123;</span><br><span class="line">           </span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        Configuration conf = <span class="keyword">new</span> Configuration();</span><br><span class="line">        String[] otherArgs = <span class="keyword">new</span> GenericOptionsParser(conf, args).getRemainingArgs();</span><br><span class="line">        Job job = <span class="keyword">new</span> Job(conf, <span class="string">"name"</span>);</span><br><span class="line">        job.setJarByClass(InvertedIndex<span class="class">.<span class="keyword">class</span>)</span>;</span><br><span class="line">        job.setMapperClass(InvertedIndexMapper<span class="class">.<span class="keyword">class</span>)</span>;</span><br><span class="line">        job.setCombinerClass(SumCombiner<span class="class">.<span class="keyword">class</span>)</span>;</span><br><span class="line">        job.setReducerClass(InvertedIndexReducer<span class="class">.<span class="keyword">class</span>)</span>;</span><br><span class="line">        job.setNumReduceTasks(<span class="number">5</span>);<span class="comment">//设定使用Reduce节点个数</span></span><br><span class="line">        job.setPartitionerClass(NewPartitioner<span class="class">.<span class="keyword">class</span>)</span>;</span><br><span class="line">        job.setMapOutputKeyClass(Text<span class="class">.<span class="keyword">class</span>)</span>;</span><br><span class="line">        job.setMapOutputValueClass(IntWritable<span class="class">.<span class="keyword">class</span>)</span>;</span><br><span class="line">        job.setOutputKeyClass(Text<span class="class">.<span class="keyword">class</span>)</span>;</span><br><span class="line">        job.setOutputValueClass(Text<span class="class">.<span class="keyword">class</span>)</span>;</span><br><span class="line">        FileInputFormat.addInputPath(job, <span class="keyword">new</span> Path(otherArgs[<span class="number">0</span>]));</span><br><span class="line">        FileOutputFormat.setOutputPath(job, <span class="keyword">new</span> Path(otherArgs[<span class="number">1</span>]));</span><br><span class="line">        System.exit(job.waitForCompletion(<span class="keyword">true</span>) ? <span class="number">0</span> : <span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Hadoop/" rel="tag"># Hadoop</a>
+              <a href="/tags/Mapreduce/" rel="tag"># Mapreduce</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/05/05/%E5%A4%A7%E6%95%B0%E6%8D%AE%E5%AE%9E%E9%AA%8C2-hadoop%E5%80%92%E6%8E%92%E7%B4%A2%E5%BC%95/" rel="prev" title="大数据实验2 hadoop倒排索引">
+      <i class="fa fa-chevron-left"></i> 大数据实验2 hadoop倒排索引
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#包装类"><span class="nav-number">1.</span> <span class="nav-text">包装类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#序列化"><span class="nav-number">2.</span> <span class="nav-text">序列化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#持久化"><span class="nav-number">3.</span> <span class="nav-text">持久化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#MapReduce中的Writable"><span class="nav-number">4.</span> <span class="nav-text">MapReduce中的Writable</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#官方WordCount项目阅读"><span class="nav-number">5.</span> <span class="nav-text">官方WordCount项目阅读</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#MapReduce程序的基本框架"><span class="nav-number">6.</span> <span class="nav-text">MapReduce程序的基本框架</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Allen Yang</p>
+  <div class="site-description" itemprop="description">TO BE A BETTER MAN.</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">30</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">31</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Allen Yang</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="//cdn.jsdelivr.net/npm/animejs@3.1.0/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
