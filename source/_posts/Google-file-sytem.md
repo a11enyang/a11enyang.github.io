@@ -7,9 +7,11 @@ tags:
 	- 大数据
 ---
 
-<iframe width="966" height="543" src="https://www.youtube.com/embed/WLad7CCexo8" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+![image-20200430092713155](https://cdn.jsdelivr.net/gh/a11enyang/Picture/img2/image-20200430092713155.png)
 
 <!-- more -->
+
+<iframe width="966" height="543" src="https://www.youtube.com/embed/WLad7CCexo8" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 ## GFS简介
 

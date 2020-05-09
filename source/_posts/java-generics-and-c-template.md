@@ -6,6 +6,10 @@ tags:
 	- c++
 ---
 
+![image-20200430092846839](https://cdn.jsdelivr.net/gh/a11enyang/Picture/img2/image-20200430092846839.png)
+
+<!-- more -->
+
 # c++ 与 java 的相似之处
 
 ## 继承
@@ -15,7 +19,7 @@ tags:
 * java中需要使用`super（）进行显式访问`
 * c++不需要
 
-<!-- more -->
+
 
 ## 泛型
 

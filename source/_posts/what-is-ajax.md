@@ -5,14 +5,18 @@ tags:
 	- ajax
 ---
 
-### 什么是ajax
+![image-20200430093558594](https://cdn.jsdelivr.net/gh/a11enyang/Picture/img2/image-20200430093558594.png)
+
+<!-- more -->
+
+### 什么是Ajax
 
 * ajax全称asynchronous javascript and xml
 
 * 发音诶贾克斯
 * web技术，用于在后台发送和检索数据的技术
 
-<!-- more -->
+
 
 > 参考链接：https://developer.mozilla.org/zh-CN/docs/Web/Guide/AJAX/Getting_Started
 

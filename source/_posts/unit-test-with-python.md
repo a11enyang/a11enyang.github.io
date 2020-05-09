@@ -6,6 +6,10 @@ tags:
 	- unit test
 ---
 
+![image-20200430094028090](https://cdn.jsdelivr.net/gh/a11enyang/Picture/img2/image-20200430094028090.png)
+
+<!-- more -->
+
 ```python
 //test_clac.py
 import unittest
@@ -26,7 +30,7 @@ if __name__ == "__main__":
 python3 test_clac.py
 ```
 
-<!-- more -->
+
 
 单元测试属于白盒测试，可以看到测试的所有内容；
 

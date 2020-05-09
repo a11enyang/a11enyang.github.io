@@ -101,4 +101,10 @@ deploy:
   type: git
   repo: https://github.com/a11enyang/a11enyang.github.io.git
   branch: master
-  message: 
+  message:
+  
+# Security
+##
+encrypt:
+    enable: true
+

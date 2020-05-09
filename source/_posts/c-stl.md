@@ -6,6 +6,10 @@ tags:
 	- stl
 ---
 
+![image-20200430092149247](https://cdn.jsdelivr.net/gh/a11enyang/Picture/img2/image-20200430092149247.png)
+
+<!-- more -->
+
 # 什么是STL
 
 stl: standard template library 标准模板库
@@ -18,7 +22,7 @@ stl: standard template library 标准模板库
 
 不需要去自己create模板库，但是自己要学会使用
 
-<!-- more -->
+
 
 
 

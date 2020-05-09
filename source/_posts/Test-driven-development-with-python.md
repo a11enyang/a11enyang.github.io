@@ -6,11 +6,13 @@ tags:
 	- test
 ---
 
+![image-20200430093752071](https://cdn.jsdelivr.net/gh/a11enyang/Picture/img2/image-20200430093752071.png)
+
+<!-- more -->
+
 # 准备工作
 
 准备工作
-
-<!-- more -->
 
 
 

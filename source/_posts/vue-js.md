@@ -5,6 +5,10 @@ tags:
 	- vue.js
 ---
 
+![image-20200430093436430](https://cdn.jsdelivr.net/gh/a11enyang/Picture/img2/image-20200430093436430.png)
+
+<!-- more -->
+
 ```html
 <script src = "<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>"></script>
 <div id="app">
@@ -28,8 +32,6 @@ new Vue ({
 ```
 
 理解：html中的代码相当于是前置条件，js代码相当于是后置条件；在html代码的标签中指明要执行的动作，vue引擎会知道你想要干什么。
-
-<!-- more -->
 
 ### 5
 

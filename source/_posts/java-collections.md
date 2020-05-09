@@ -21,3 +21,17 @@ collections 是java中的一组框架，用于存储和处理对象（类似于c
 
 * 接口和它的实现
 * 算法
+
+
+
+### 结构
+
+![](/Users/austin/Documents/GitHub/图片/Picture/Picture/img2/java-collection-hierarchy.png)
+
+
+
+### Iterable
+
+https://blog.csdn.net/qq_33642117/article/details/52225247
+
+https://blog.csdn.net/shuanghujushi/article/details/51531170

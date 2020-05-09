@@ -6,9 +6,11 @@ tags:
 	- vuejs
 ---
 
-参考链接：https://dev.to/brunodrugowick/complete-api-in-5-minutes-with-spring-data-rest-aqap-series-1ie8
+![image-20200430094219940](https://cdn.jsdelivr.net/gh/a11enyang/Picture/img2/image-20200430094219940.png)
 
 <!-- more -->
+
+参考链接：https://dev.to/brunodrugowick/complete-api-in-5-minutes-with-spring-data-rest-aqap-series-1ie8
 
 ## 完成一个spring data 的restful api
 
