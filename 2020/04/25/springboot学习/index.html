@@ -28,7 +28,7 @@
 <meta property="og:image" content="https://cdn.jsdelivr.net/gh/a11enyang/Picture/img2/image-20200430093935388.png">
 <meta property="og:image" content="http://yoursite.com/Users/austin/Library/Application%20Support/typora-user-images/image-20200426095049246.png">
 <meta property="article:published_time" content="2020-04-25T12:32:23.000Z">
-<meta property="article:modified_time" content="2020-04-30T01:39:45.936Z">
+<meta property="article:modified_time" content="2020-05-14T06:59:56.628Z">
 <meta property="article:author" content="Allen Yang">
 <meta property="article:tag" content="springboot">
 <meta name="twitter:card" content="summary">
@@ -192,7 +192,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-04-30 09:39:45" itemprop="dateModified" datetime="2020-04-30T09:39:45+08:00">2020-04-30</time>
+                <time title="修改时间：2020-05-14 14:59:56" itemprop="dateModified" datetime="2020-05-14T14:59:56+08:00">2020-05-14</time>
               </span>
 
           
@@ -209,7 +209,7 @@
         <p><img src="https://cdn.jsdelivr.net/gh/a11enyang/Picture/img2/image-20200430093935388.png" alt="image-20200430093935388"></p>
 <a id="more"></a>
 
-<h3 id="层次"><a href="#层次" class="headerlink" title="层次"></a>层次</h3><p>三个层次：mvc的架构</p>
+<h1 id="Spring-Boot"><a href="#Spring-Boot" class="headerlink" title="Spring Boot"></a>Spring Boot</h1><h2 id="层次"><a href="#层次" class="headerlink" title="层次"></a>层次</h2><p>三个层次：mvc的架构</p>
 <p>m：model  实体类  model中一般有两种类，一种是实体类（用于创建数据库实体），一种是数据库类，用于执行数据库操作</p>
 <p>v：view 视图 html页面 </p>
 <p>c：controller 处理浏览器发送来的请求</p>
@@ -252,12 +252,12 @@
 <p>@Component 组件</p>
 <p>@Autowired</p>
 <blockquote>
-<p>参考链接： <a href="https://juejin.im/post/5ea2593f6fb9a03c73799bf4" target="_blank" rel="noopener">https://juejin.im/post/5ea2593f6fb9a03c73799bf4</a></p>
+<p>参考链接：<a href="https://juejin.im/post/5ea2593f6fb9a03c73799bf4" target="_blank" rel="noopener">常用注解总结</a></p>
 </blockquote>
-<h3 id="jpa"><a href="#jpa" class="headerlink" title="jpa"></a>jpa</h3><p>java持久化api，定义对象关系映射以及实体对象持久化的标准接口，jpa是一套接口规范。</p>
+<h2 id="cjpa"><a href="#cjpa" class="headerlink" title="çjpa"></a>çjpa</h2><p>java持久化api，定义对象关系映射以及实体对象持久化的标准接口，jpa是一套接口规范。</p>
 <p>spring data jpa是spring基于orm框架，jpa规范的基础上封装的一套jpa应用框架</p>
 <p>常见的jpa数据操作：[<a href="https://blog.csdn.net/wangmx1993328/article/details/89603744#JpaRepository%20%E6%8E%A5%E5%8F%A3%E5%B8%B8%E7%94%A8%20API%C2%A0]" target="_blank" rel="noopener">https://blog.csdn.net/wangmx1993328/article/details/89603744#JpaRepository%20%E6%8E%A5%E5%8F%A3%E5%B8%B8%E7%94%A8%20API%C2%A0]</a>(<a href="https://blog.csdn.net/wangmx1993328/article/details/89603744#JpaRepository" target="_blank" rel="noopener">https://blog.csdn.net/wangmx1993328/article/details/89603744#JpaRepository</a> 接口常用 API )</p>
-<h3 id="踩坑记录"><a href="#踩坑记录" class="headerlink" title="踩坑记录"></a>踩坑记录</h3><ul>
+<h2 id="踩坑记录"><a href="#踩坑记录" class="headerlink" title="踩坑记录"></a>踩坑记录</h2><ul>
 <li>在写实体类的时候记得加上get和set的方法，不然不可以获取数据库中的数据</li>
 <li>在设置dao层次的时候，记得将id设置正确</li>
 <li>putMapping需要在 form-urlencoded中设置</li>
@@ -265,8 +265,20 @@
 <li>当需要对数据库中的内容进行修改的时候，需要设置事务</li>
 <li>根据<a href="https://blog.csdn.net/itkool/article/details/82994124说，springboot2已经集成了thymeleaf3，不需要再去可以添加thymeleaf3" target="_blank" rel="noopener">https://blog.csdn.net/itkool/article/details/82994124说，springboot2已经集成了thymeleaf3，不需要再去可以添加thymeleaf3</a></li>
 <li>vue中的方法是methods，复数形式</li>
+<li>连接数据库的问题：数据库死活连接不上，应该是权限的问题，参考链接：<a href="https://stackoverflow.com/questions/50177216/how-to-grant-all-privileges-to-root-user-in-mysql-8-0/50197630" target="_blank" rel="noopener">https://stackoverflow.com/questions/50177216/how-to-grant-all-privileges-to-root-user-in-mysql-8-0/50197630</a></li>
 </ul>
-<h3 id="学习参考网站"><a href="#学习参考网站" class="headerlink" title="学习参考网站"></a>学习参考网站</h3><p><a href="http://www.masterspringboot.com/" target="_blank" rel="noopener">http://www.masterspringboot.com/</a></p>
+<h2 id="学习参考网站"><a href="#学习参考网站" class="headerlink" title="学习参考网站"></a>学习参考网站</h2><p><a href="http://www.masterspringboot.com/" target="_blank" rel="noopener">http://www.masterspringboot.com/</a></p>
+<h2 id="vue-js-axios-实现文件上传"><a href="#vue-js-axios-实现文件上传" class="headerlink" title="vue.js + axios 实现文件上传"></a>vue.js + axios 实现文件上传</h2><p><a href="http://www.programmersought.com/article/69251193048/;jsessionid=FD47B95FC680784DE4B66C0E571CF91A" target="_blank" rel="noopener">Vue+axios upload file</a></p>
+<p><a href="https://serversideup.net/uploading-files-vuejs-axios/" target="_blank" rel="noopener">Uploading Files With VueJS and Axios</a></p>
+<p><a href="https://bezkoder.com/vue-axios-file-upload/" target="_blank" rel="noopener">使用Axios的Vue文件上传示例</a></p>
+<p><a href="https://attacomsian.com/blog/processing-json-spring-boot" target="_blank" rel="noopener">Processing JSON Data in Spring Boot</a> json文件与对象之间的映射</p>
+<p><a href="https://www.youtube.com/watch?v=rGdKmF2UzSc" target="_blank" rel="noopener">How to read JSON data in Spring Boot and write to a database</a></p>
+<p><a href="https://mkyong.com/java/jackson-convert-json-array-string-to-list/?__cf_chl_captcha_tk__=fe0559937d630ed6048736019615d9b7b541a9f0-1589188867-0-AWJixSKWmNwNhKKzZ5bfVKSQp0F6qiMboAocR2I7IdfqWaWuPBF3hmySUAEZhduZgwbeMgPUGbOsSQ9z1E_609Ui-ZKFLV-cgH_u8PzuFe4QdO-OvFIH23CtXYCzo9zraLmfR8-3_WuDcBYdKt8BlegMQBDTGhyxF9WXQarl9F3L9nzC5JJD3JmSPnup7j-BNkI4mnUrVhZJVzSHlHqgq60-GFgpwbEhQHtSeBVPQ3kdoOcYV9nu5iOAvQtfXLiJYp56t1kZt2Wyi4TiRfnVOEPzeUdvhmUe_UEefGjLkBKloe4KAOSHHoi3t4wW5NSXlLEJkFUoH81dzle1zj2d-Yj1dhY4djXWE0okKO6yCiaN4DR37iczbkDmDh3PI4SuQ8Byh34z7zTFvcVetG_9YLgJV17A6UN42JV2YBd6kaAjJH1wozEyf3K9KQacez_C03Vu_89cepcgoh_Bqkk_go7EoQHejMBFmydu97Hnb3nQ1O-aM7a3XTlMaV9C9d563E7ZwaNXakKBdw-yNg1vMhhk_PSnjJzcXzxBAljYhZG6YM_OVb7TsYwa3DSS9kWCz0ymTwKQHHFu4jGDne6UxQD6Izn4aW33H8AZAeqxh_xI" target="_blank" rel="noopener">Jackson – Convert JSON array string to List</a></p>
+<p><a href="https://zh.javascript.info/" target="_blank" rel="noopener">js最完美的教程</a></p>
+<p><a href="https://blog.csdn.net/weixin_33766168/article/details/86024681" target="_blank" rel="noopener">文件部署到服务器</a></p>
+<h2 id="什么是cors-跨域资源共享"><a href="#什么是cors-跨域资源共享" class="headerlink" title="什么是cors 跨域资源共享"></a>什么是cors 跨域资源共享</h2><blockquote>
+<p>参考链接：<a href="https://www.codecademy.com/articles/what-is-cors?__cf_chl_captcha_tk__=66e4b6a2d60fe02099a8de06c0870b645e20541b-1589426508-0-AV92mdG8_8jw2oLV5WZYG1elAYYHmcJvLQAmu9DVCvpxmkXKZYBL4oHKPUeEK6khSdsquyYprC3yC5bRXib_jHmj0wnGeAn9QHmGo-vuVEnTGGl2O9iOcl9Wx1BDoNkoRenmItj2Bm83F4pHOgw5gqeRhqrdbehZRDrMiPB1NDdWCXfJ8GMK8x6XZWbT2sLO7r9ZdmB3P63gPIW5QgCibDenYXq7CRg3V21YADv0HkY17SwUyT8DxceaATVxtQ8EOL2gXxd5fQ5lULifE8OiW78k4tB_PIvNThORA4Q2nMnIX6LGXPmUnFXxHIisxBbxymdN1ZMilPCGrlorbwfZgQGubvnkuc7U1KaD6VmzNgE_UMZno1VnhWDUd7f5irFTFAm5Ui1XSQcXa9r7PC3c4as" target="_blank" rel="noopener">什么是CORS？</a></p>
+</blockquote>
 
     </div>
 
@@ -350,7 +362,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#层次"><span class="nav-number">1.</span> <span class="nav-text">层次</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#常用注解"><span class="nav-number">1.1.</span> <span class="nav-text">常用注解</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#jpa"><span class="nav-number">2.</span> <span class="nav-text">jpa</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#踩坑记录"><span class="nav-number">3.</span> <span class="nav-text">踩坑记录</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#学习参考网站"><span class="nav-number">4.</span> <span class="nav-text">学习参考网站</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Spring-Boot"><span class="nav-number">1.</span> <span class="nav-text">Spring Boot</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#层次"><span class="nav-number">1.1.</span> <span class="nav-text">层次</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#常用注解"><span class="nav-number">1.1.0.1.</span> <span class="nav-text">常用注解</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#cjpa"><span class="nav-number">1.2.</span> <span class="nav-text">çjpa</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#踩坑记录"><span class="nav-number">1.3.</span> <span class="nav-text">踩坑记录</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#学习参考网站"><span class="nav-number">1.4.</span> <span class="nav-text">学习参考网站</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#vue-js-axios-实现文件上传"><span class="nav-number">1.5.</span> <span class="nav-text">vue.js + axios 实现文件上传</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#什么是cors-跨域资源共享"><span class="nav-number">1.6.</span> <span class="nav-text">什么是cors 跨域资源共享</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -364,14 +376,14 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">32</span>
+          <span class="site-state-item-count">33</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">33</span>
+        <span class="site-state-item-count">35</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>

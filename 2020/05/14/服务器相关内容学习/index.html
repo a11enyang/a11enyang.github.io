@@ -20,22 +20,23 @@
     var CONFIG = {"hostname":"yoursite.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="Collections in javaThe Collection in Java is a framework that provides an architecture to store and manipulate the group of objects. Java Collections can achieve all the operations that you perform on">
+  <meta name="description" content="web服务器、应用服务器、web容器、反向代理 参考链接：一文搞清Web服务器、应用服务器、Web容器和反向代理   web服务器web服务器主要功能是获取用户代理的url请求，然后返回服务器上的静态资源，但是这个实在互联网发展的初级阶段实现的需求。随着web服务器朝着企业级应用的方向发展，快速的业务变化，迫使开发者面临新的挑战：“如何快速写出鲁棒，可靠，符合业务需求的程序并顺利部署？“web服务">
 <meta property="og:type" content="article">
-<meta property="og:title" content="java-collections">
-<meta property="og:url" content="http://yoursite.com/2020/04/20/java-collections/index.html">
+<meta property="og:title" content="服务器相关内容学习">
+<meta property="og:url" content="http://yoursite.com/2020/05/14/%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%9B%B8%E5%85%B3%E5%86%85%E5%AE%B9%E5%AD%A6%E4%B9%A0/index.html">
 <meta property="og:site_name" content="Allen Yang">
-<meta property="og:description" content="Collections in javaThe Collection in Java is a framework that provides an architecture to store and manipulate the group of objects. Java Collections can achieve all the operations that you perform on">
+<meta property="og:description" content="web服务器、应用服务器、web容器、反向代理 参考链接：一文搞清Web服务器、应用服务器、Web容器和反向代理   web服务器web服务器主要功能是获取用户代理的url请求，然后返回服务器上的静态资源，但是这个实在互联网发展的初级阶段实现的需求。随着web服务器朝着企业级应用的方向发展，快速的业务变化，迫使开发者面临新的挑战：“如何快速写出鲁棒，可靠，符合业务需求的程序并顺利部署？“web服务">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://yoursite.com/Users/austin/Documents/GitHub/%E5%9B%BE%E7%89%87/Picture/Picture/img2/java-collection-hierarchy.png">
-<meta property="article:published_time" content="2020-04-20T12:35:46.000Z">
-<meta property="article:modified_time" content="2020-05-06T15:47:40.716Z">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/a11enyang/Picture/img2/image-20200514094314151.png">
+<meta property="article:published_time" content="2020-05-14T01:13:07.000Z">
+<meta property="article:modified_time" content="2020-05-14T02:39:40.004Z">
 <meta property="article:author" content="Allen Yang">
-<meta property="article:tag" content="java">
+<meta property="article:tag" content="服务器">
+<meta property="article:tag" content="容器">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://yoursite.com/Users/austin/Documents/GitHub/%E5%9B%BE%E7%89%87/Picture/Picture/img2/java-collection-hierarchy.png">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/a11enyang/Picture/img2/image-20200514094314151.png">
 
-<link rel="canonical" href="http://yoursite.com/2020/04/20/java-collections/">
+<link rel="canonical" href="http://yoursite.com/2020/05/14/%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%9B%B8%E5%85%B3%E5%86%85%E5%AE%B9%E5%AD%A6%E4%B9%A0/">
 
 
 <script id="page-configurations">
@@ -48,7 +49,7 @@
   };
 </script>
 
-  <title>java-collections | Allen Yang</title>
+  <title>服务器相关内容学习 | Allen Yang</title>
   
 
 
@@ -163,7 +164,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/04/20/java-collections/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/05/14/%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%9B%B8%E5%85%B3%E5%86%85%E5%AE%B9%E5%AD%A6%E4%B9%A0/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -176,7 +177,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          java-collections
+          服务器相关内容学习
         </h1>
 
         <div class="post-meta">
@@ -185,16 +186,10 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
+              
 
-              <time title="创建时间：2020-04-20 20:35:46" itemprop="dateCreated datePublished" datetime="2020-04-20T20:35:46+08:00">2020-04-20</time>
+              <time title="创建时间：2020-05-14 09:13:07 / 修改时间：10:39:40" itemprop="dateCreated datePublished" datetime="2020-05-14T09:13:07+08:00">2020-05-14</time>
             </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-05-06 23:47:40" itemprop="dateModified" datetime="2020-05-06T23:47:40+08:00">2020-05-06</time>
-              </span>
 
           
 
@@ -207,20 +202,18 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h1 id="Collections-in-java"><a href="#Collections-in-java" class="headerlink" title="Collections in java"></a>Collections in java</h1><p>The <strong>Collection in Java</strong> is a framework that provides an architecture to store and manipulate the group of objects.</p>
-<p>Java Collections can achieve all the operations that you perform on a data such as searching, sorting, insertion, manipulation, and deletion.</p>
-<p>Java Collection means a single unit of objects. Java Collection framework provides many interfaces (Set, List, Queue, Deque) and classes (<a href="https://www.javatpoint.com/java-arraylist" target="_blank" rel="noopener">ArrayList</a>, Vector, <a href="https://www.javatpoint.com/java-linkedlist" target="_blank" rel="noopener">LinkedList</a>, <a href="https://www.javatpoint.com/java-priorityqueue" target="_blank" rel="noopener">PriorityQueue</a>, HashSet, LinkedHashSet, TreeSet).</p>
-<a id="more"></a>
-
-<p>collections 是java中的一组框架，用于存储和处理对象（类似于c++的标准模板库）</p>
-<p>包含了两个部分：</p>
-<ul>
-<li>接口和它的实现</li>
-<li>算法</li>
-</ul>
-<h3 id="结构"><a href="#结构" class="headerlink" title="结构"></a>结构</h3><p><img src="/Users/austin/Documents/GitHub/%E5%9B%BE%E7%89%87/Picture/Picture/img2/java-collection-hierarchy.png" alt=""></p>
-<h3 id="Iterable"><a href="#Iterable" class="headerlink" title="Iterable"></a>Iterable</h3><p><a href="https://blog.csdn.net/qq_33642117/article/details/52225247" target="_blank" rel="noopener">https://blog.csdn.net/qq_33642117/article/details/52225247</a></p>
-<p><a href="https://blog.csdn.net/shuanghujushi/article/details/51531170" target="_blank" rel="noopener">https://blog.csdn.net/shuanghujushi/article/details/51531170</a></p>
+        <h1 id="web服务器、应用服务器、web容器、反向代理"><a href="#web服务器、应用服务器、web容器、反向代理" class="headerlink" title="web服务器、应用服务器、web容器、反向代理"></a>web服务器、应用服务器、web容器、反向代理</h1><blockquote>
+<p>参考链接：<a href="https://www.sohu.com/a/202804198_411876" target="_blank" rel="noopener">一文搞清Web服务器、应用服务器、Web容器和反向代理 </a></p>
+</blockquote>
+<h2 id="web服务器"><a href="#web服务器" class="headerlink" title="web服务器"></a>web服务器</h2><p>web服务器主要功能是获取用户代理的url请求，然后返回服务器上的静态资源，但是这个实在互联网发展的初级阶段实现的需求。随着web服务器朝着企业级应用的方向发展，快速的业务变化，迫使开发者面临新的挑战：“如何快速写出鲁棒，可靠，符合业务需求的程序并顺利部署？“web服务器不再是简单地获取资源，而是需要设计更加复杂的业务逻辑。之前的服务器部署的时候需要手动调试和配置很多细节，如何将这些细节封装，web应用程序容器给出了答案。web应用程序就像是一个框架，在这个基础上进行定制和扩展。</p>
+<p>web容器本身具备了作为一个web服务器的功能，事实上通常实现Web容器功能的服务器就是一个Web服务器。</p>
+<h2 id="web应用程序服务器"><a href="#web应用程序服务器" class="headerlink" title="web应用程序服务器"></a>web应用程序服务器</h2><p>web应用服务器在web服务发展的同一时期也在发展，但是这是的应用服务器主要是企业的内部进行开发和使用，有封闭性。web应用服务器有着高负载、企业级特性、事务和队列的特点，并且在后期加入了http通信的功能，导致web服务器与web应用服务器之间的界限变窄了。当有人说到“web服务器”时，你通常要把它认为是以HTTP为核心、web UI为向导的应用。当有人说到“应用服务器”时，你可能想到“高负载、企业级特性、事务和队列、多通道通信（HTTP和更多的协议）”。但现在提供这些需求的基本上都是同一个产品。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/a11enyang/Picture/img2/image-20200514094314151.png" alt="image-20200514094314151"></p>
+<p><strong>WEB服务器</strong>:Apache、IIS、Nginx（也是反向代理服务器）</p>
+<p><strong>应用服务器</strong>:Tomcat、Weblogic、Jboss</p>
+<h2 id="web服务器与web应用程序之间的区别"><a href="#web服务器与web应用程序之间的区别" class="headerlink" title="web服务器与web应用程序之间的区别"></a>web服务器与web应用程序之间的区别</h2><p>[web服务器与web应用程序之间的区别](Web 服务器与应用服务器的区别是什么？)</p>
+<p><a href="https://my.oschina.net/luozhou/blog/3088908" target="_blank" rel="noopener">Tomcat是如何在springboot中启动的</a></p>
+<h2 id="servlet是什么"><a href="#servlet是什么" class="headerlink" title="servlet是什么"></a>servlet是什么</h2><p><a href="https://www.zhihu.com/question/21416727" target="_blank" rel="noopener">servlet的本质是什么，它是如何工作的？</a></p>
 
     </div>
 
@@ -230,7 +223,8 @@
 
       <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/java/" rel="tag"># java</a>
+              <a href="/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/" rel="tag"># 服务器</a>
+              <a href="/tags/%E5%AE%B9%E5%99%A8/" rel="tag"># 容器</a>
           </div>
 
         
@@ -239,13 +233,10 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2020/04/20/c-stl/" rel="prev" title="c++ stl">
-      <i class="fa fa-chevron-left"></i> c++ stl
+    <a href="/2020/05/08/%E5%88%86%E5%B8%83%E5%BC%8F%E8%AE%A1%E7%AE%97%E5%AE%9E%E9%AA%8C%E4%B8%80/" rel="prev" title="分布式计算实验一">
+      <i class="fa fa-chevron-left"></i> 分布式计算实验一
     </a></div>
-      <div class="post-nav-item">
-    <a href="/2020/04/21/unit-test-with-python/" rel="next" title="unit test with python">
-      unit test with python <i class="fa fa-chevron-right"></i>
-    </a></div>
+      <div class="post-nav-item"></div>
     </div>
       </footer>
     
@@ -304,7 +295,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Collections-in-java"><span class="nav-number">1.</span> <span class="nav-text">Collections in java</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#结构"><span class="nav-number">1.0.1.</span> <span class="nav-text">结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Iterable"><span class="nav-number">1.0.2.</span> <span class="nav-text">Iterable</span></a></li></ol></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#web服务器、应用服务器、web容器、反向代理"><span class="nav-number">1.</span> <span class="nav-text">web服务器、应用服务器、web容器、反向代理</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#web服务器"><span class="nav-number">1.1.</span> <span class="nav-text">web服务器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#web应用程序服务器"><span class="nav-number">1.2.</span> <span class="nav-text">web应用程序服务器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#web服务器与web应用程序之间的区别"><span class="nav-number">1.3.</span> <span class="nav-text">web服务器与web应用程序之间的区别</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#servlet是什么"><span class="nav-number">1.4.</span> <span class="nav-text">servlet是什么</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
