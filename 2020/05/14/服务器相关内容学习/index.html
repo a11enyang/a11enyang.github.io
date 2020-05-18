@@ -29,7 +29,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://cdn.jsdelivr.net/gh/a11enyang/Picture/img2/image-20200514094314151.png">
 <meta property="article:published_time" content="2020-05-14T01:13:07.000Z">
-<meta property="article:modified_time" content="2020-05-14T02:39:40.004Z">
+<meta property="article:modified_time" content="2020-05-18T14:04:24.621Z">
 <meta property="article:author" content="Allen Yang">
 <meta property="article:tag" content="服务器">
 <meta property="article:tag" content="容器">
@@ -186,10 +186,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2020-05-14 09:13:07 / 修改时间：10:39:40" itemprop="dateCreated datePublished" datetime="2020-05-14T09:13:07+08:00">2020-05-14</time>
+              <time title="创建时间：2020-05-14 09:13:07" itemprop="dateCreated datePublished" datetime="2020-05-14T09:13:07+08:00">2020-05-14</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-05-18 22:04:24" itemprop="dateModified" datetime="2020-05-18T22:04:24+08:00">2020-05-18</time>
+              </span>
 
           
 
@@ -207,6 +213,8 @@
 </blockquote>
 <h2 id="web服务器"><a href="#web服务器" class="headerlink" title="web服务器"></a>web服务器</h2><p>web服务器主要功能是获取用户代理的url请求，然后返回服务器上的静态资源，但是这个实在互联网发展的初级阶段实现的需求。随着web服务器朝着企业级应用的方向发展，快速的业务变化，迫使开发者面临新的挑战：“如何快速写出鲁棒，可靠，符合业务需求的程序并顺利部署？“web服务器不再是简单地获取资源，而是需要设计更加复杂的业务逻辑。之前的服务器部署的时候需要手动调试和配置很多细节，如何将这些细节封装，web应用程序容器给出了答案。web应用程序就像是一个框架，在这个基础上进行定制和扩展。</p>
 <p>web容器本身具备了作为一个web服务器的功能，事实上通常实现Web容器功能的服务器就是一个Web服务器。</p>
+<a id="more"></a>
+
 <h2 id="web应用程序服务器"><a href="#web应用程序服务器" class="headerlink" title="web应用程序服务器"></a>web应用程序服务器</h2><p>web应用服务器在web服务发展的同一时期也在发展，但是这是的应用服务器主要是企业的内部进行开发和使用，有封闭性。web应用服务器有着高负载、企业级特性、事务和队列的特点，并且在后期加入了http通信的功能，导致web服务器与web应用服务器之间的界限变窄了。当有人说到“web服务器”时，你通常要把它认为是以HTTP为核心、web UI为向导的应用。当有人说到“应用服务器”时，你可能想到“高负载、企业级特性、事务和队列、多通道通信（HTTP和更多的协议）”。但现在提供这些需求的基本上都是同一个产品。</p>
 <p><img src="https://cdn.jsdelivr.net/gh/a11enyang/Picture/img2/image-20200514094314151.png" alt="image-20200514094314151"></p>
 <p><strong>WEB服务器</strong>:Apache、IIS、Nginx（也是反向代理服务器）</p>
@@ -236,7 +244,10 @@
     <a href="/2020/05/08/%E5%88%86%E5%B8%83%E5%BC%8F%E8%AE%A1%E7%AE%97%E5%AE%9E%E9%AA%8C%E4%B8%80/" rel="prev" title="分布式计算实验一">
       <i class="fa fa-chevron-left"></i> 分布式计算实验一
     </a></div>
-      <div class="post-nav-item"></div>
+      <div class="post-nav-item">
+    <a href="/2020/05/15/Hbase/" rel="next" title="Hbase">
+      Hbase <i class="fa fa-chevron-right"></i>
+    </a></div>
     </div>
       </footer>
     
@@ -309,14 +320,14 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">33</span>
+          <span class="site-state-item-count">34</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">35</span>
+        <span class="site-state-item-count">36</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
